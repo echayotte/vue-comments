@@ -1,38 +1,36 @@
+# Commentaires différents sur plusieurs pages
+> Test simple de commentaires ajoutés sur plusieurs pages par l'utilisateur.  
+ On peut modifier et répondre à un commentaire.  
+ Il y a une pagination définie à 3 commentaires après un reload du navigateur
 # Installation
 
+- utilisation de sqlite3
+- faire 'npm install' et 'composer install'
+- tester l'application : 
+	> php artisan serve  
+	> npm run watch
+
 ## Utilisation de dépendances
-- [Laravel Mix Tailwind](https://github.com/JeffreyWay/laravel-mix-tailwind) for using [Tailwind css](https://tailwindcss.com/docs/what-is-tailwind/). *(see he doc to install it)*
-- [date-fns](https://date-fns.org/), a Modern JavaScript date utility library. *( I install with `'npm install date-fns@next --save-dev'` because of `formatRelative()`'s use )*
+- [Laravel Mix Tailwind](https://github.com/JeffreyWay/laravel-mix-tailwind) pour utiliser [Tailwind css v.0.7.4 ](https://tailwindcss.com/docs/what-is-tailwind/) *(Voir la doc pour l'installer)*
+- [date-fns](https://date-fns.org/), Une bibliothèque javascript pour formater les dates.   
+( Installer avec`'npm install date-fns@next --save-dev'` pour la version qui utilise `formatRelative()` )
 
-# utilisation de sqlite
+# Utilisation de sqlite
 
-accéder  
+accéder :  
 `sqlite3`
 
-quiter  
+quiter :   
 `.quit`
 
+# Utilisation de Tinker
+`php artisan tinker`  
 
-# info Vuejs
-**les props sont immutables**. Pour résoudre ce pb : 
-1. on renomme la propriété  
-2. on crée une data qui sera une copie de cette propriété et cette data là pourra, elle être modifiée.
+Voir tous les commentaires :  
+`App\Comment::all();`
 
-## 1. renommer la propriété (nomenclature) :
-dans blade 'welcome':
-```js 
-:data-comments {{ $comments }} //immutable 
-```
- dans component:
-```js
-props: ['dataComments]
-```
-## 2. créer une data copie de props
-dans component:
-```js
- data() {
-	return {
-		comments: this.dataComments //mutable
- 	}
-}
-```
+Supprimer tous les commentaires :  
+`DB::table('comments)->truncate();`
+
+Supprimer un commentaire en fonction de son ID (ex ici : 6) :  
+`$comment = Comment::where('id',6)->delete();`
