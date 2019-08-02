@@ -1698,8 +1698,7 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
-var _name$props$computed$;
-
+/* harmony import */ var date_fns_locale__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/locale */ "./node_modules/date-fns/esm/locale/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1762,48 +1761,95 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // date-fns : Modern JavaScript date utility library (https://date-fns.org/)
- // import { fr } from "date-fns/locale";
+ // import { formatDistanceStrict } from "date-fns/fp";
 
-/* harmony default export */ __webpack_exports__["default"] = (_name$props$computed$ = {
+
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: "comment",
   props: ["comment", "now"],
-  computed: {
-    diffForHumans: function diffForHumans() {
-      return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["formatDistance"])(new Date(this.comment.created_at), this.now, {
-        locale: fr
-      });
-    }
-  },
   data: function data() {
     return {
       edit: false,
       bodyUpdate: this.comment.body
     };
-  }
-}, _defineProperty(_name$props$computed$, "computed", {
-  fullForm: function fullForm() {
-    if (this.respondTo) {
-      return _objectSpread({}, this.form, {
-        respond_to_id: this.respondTo.id
-      });
-    }
-
-    return this.form;
-  }
-}), _defineProperty(_name$props$computed$, "methods", {
-  // updateComment($id, $bodyUpdate) {
-  updateComment: function updateComment() {
-    this.comment.body = this.bodyUpdate;
-    this.edit = false; // axios
-    // .post("/comments/" +this.comment.id, this.comment.body)
-    //  .then(response) => {this.comments.push(response.data)}=.then({data}) => {this.comments.push(data)}
   },
-  cancel: function cancel() {
-    this.edit = false;
-    this.bodyUpdate = this.comment.body;
+  computed: {
+    diffDateForHumans: function diffDateForHumans() {
+      return Object(date_fns__WEBPACK_IMPORTED_MODULE_0__["formatDistance"])(new Date(this.comment.created_at), this.now, {
+        locale: date_fns_locale__WEBPACK_IMPORTED_MODULE_1__["fr"]
+      });
+    },
+    fullForm: function fullForm() {
+      if (this.respondTo) {
+        return _objectSpread({}, this.form, {
+          respond_to_id: this.respondTo.id
+        });
+      }
+
+      return this.form;
+    }
+  },
+  methods: {
+    // updateComment($id, $bodyUpdate) {
+    updateComment: function updateComment() {
+      this.comment.body = this.bodyUpdate;
+      this.edit = false; // axios
+      // .post("/comments/" +this.comment.id, this.comment.body)
+      //  .then(response) => {this.comments.push(response.data)}=.then({data}) => {this.comments.push(data)}
+    },
+    cancel: function cancel() {
+      this.edit = false;
+      this.bodyUpdate = this.comment.body;
+    }
   }
-}), _name$props$computed$);
+});
 
 /***/ }),
 
@@ -1903,7 +1949,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this.$emit("cancel-respond-to");
         }
       })["catch"](function (error) {
-        // console.log(error.response.data.errors);
+        console.log(error.response.data.errors);
         _this.errors = error.response.data.errors;
       });
     }
@@ -1923,7 +1969,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Comment_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comment.vue */ "./resources/js/components/Comment.vue");
 /* harmony import */ var _CommentForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CommentForm.vue */ "./resources/js/components/CommentForm.vue");
-//
 //
 //
 //
@@ -7833,6 +7878,32 @@ function getUTCWeekYear(dirtyDate, dirtyOptions) {
   } else {
     return year - 1;
   }
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/_lib/isSameUTCWeek/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/date-fns/esm/_lib/isSameUTCWeek/index.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return isSameUTCWeek; });
+/* harmony import */ var _startOfUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../startOfUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/startOfUTCWeek/index.js");
+ // This function will be a part of public API when UTC function will be implemented.
+// See issue: https://github.com/date-fns/date-fns/issues/376
+
+function isSameUTCWeek(dirtyDateLeft, dirtyDateRight, options) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 argument required, but only ' + arguments.length + ' present');
+  }
+
+  var dateLeftStartOfWeek = Object(_startOfUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(dirtyDateLeft, options);
+  var dateRightStartOfWeek = Object(_startOfUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(dirtyDateRight, options);
+  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime();
 }
 
 /***/ }),
@@ -17303,6 +17374,5551 @@ function buildMatchPatternFn(args) {
 
 /***/ }),
 
+/***/ "./node_modules/date-fns/esm/locale/af/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/af/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'minder as \'n sekonde',
+    other: 'minder as {{count}} sekondes'
+  },
+  xSeconds: {
+    one: '1 sekonde',
+    other: '{{count}} sekondes'
+  },
+  halfAMinute: '\'n halwe minuut',
+  lessThanXMinutes: {
+    one: 'minder as \'n minuut',
+    other: 'minder as {{count}} minute'
+  },
+  xMinutes: {
+    one: '\'n minuut',
+    other: '{{count}} minute'
+  },
+  aboutXHours: {
+    one: 'ongeveer 1 uur',
+    other: 'ongeveer {{count}} ure'
+  },
+  xHours: {
+    one: '1 uur',
+    other: '{{count}} ure'
+  },
+  xDays: {
+    one: '1 dag',
+    other: '{{count}} dae'
+  },
+  aboutXMonths: {
+    one: 'ongeveer 1 maand',
+    other: 'ongeveer {{count}} maande'
+  },
+  xMonths: {
+    one: '1 maand',
+    other: '{{count}} maande'
+  },
+  aboutXYears: {
+    one: 'ongeveer 1 jaar',
+    other: 'ongeveer {{count}} jaar'
+  },
+  xYears: {
+    one: '1 jaar',
+    other: '{{count}} jaar'
+  },
+  overXYears: {
+    one: 'meer as 1 jaar',
+    other: 'meer as {{count}} jaar'
+  },
+  almostXYears: {
+    one: 'byna 1 jaar',
+    other: 'byna {{count}} jaar'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'oor ' + result;
+    } else {
+      return result + ' gelede';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/af/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/af/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, d MMMM yyyy',
+  long: 'd MMMM yyyy',
+  medium: 'd MMM yyyy',
+  short: 'yyyy/MM/dd'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'om' {{time}}",
+  long: "{{date}} 'om' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/af/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/af/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'verlede' eeee 'om' p",
+  yesterday: "'gister om' p",
+  today: "'vandag om' p",
+  tomorrow: "'môre om' p",
+  nextWeek: "eeee 'om' p",
+  other: 'P'
+};
+function formatRelative(token) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/af/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/af/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['vC', 'nC'],
+  abbreviated: ['vC', 'nC'],
+  wide: ['voor Christus', 'na Christus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['1ste kwartaal', '2de kwartaal', '3de kwartaal', '4de kwartaal']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
+  wide: ['Januarie', 'Februarie', 'Maart', 'April', 'Mei', 'Junie', 'Julie', 'Augustus', 'September', 'Oktober', 'November', 'Desember']
+};
+var dayValues = {
+  narrow: ['S', 'M', 'D', 'W', 'D', 'V', 'S'],
+  short: ['So', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Sa'],
+  abbreviated: ['Son', 'Maa', 'Din', 'Woe', 'Don', 'Vry', 'Sat'],
+  wide: ['Sondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrydag', 'Saterdag']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'vm',
+    pm: 'nm',
+    midnight: 'middernag',
+    noon: 'middaguur',
+    morning: 'oggend',
+    afternoon: 'middag',
+    evening: 'laat middag',
+    night: 'aand'
+  },
+  abbreviated: {
+    am: 'vm',
+    pm: 'nm',
+    midnight: 'middernag',
+    noon: 'middaguur',
+    morning: 'oggend',
+    afternoon: 'middag',
+    evening: 'laat middag',
+    night: 'aand'
+  },
+  wide: {
+    am: 'vm',
+    pm: 'nm',
+    midnight: 'middernag',
+    noon: 'middaguur',
+    morning: 'oggend',
+    afternoon: 'middag',
+    evening: 'laat middag',
+    night: 'aand'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'vm',
+    pm: 'nm',
+    midnight: 'middernag',
+    noon: 'uur die middag',
+    morning: 'uur die oggend',
+    afternoon: 'uur die middag',
+    evening: 'uur die aand',
+    night: 'uur die aand'
+  },
+  abbreviated: {
+    am: 'vm',
+    pm: 'nm',
+    midnight: 'middernag',
+    noon: 'uur die middag',
+    morning: 'uur die oggend',
+    afternoon: 'uur die middag',
+    evening: 'uur die aand',
+    night: 'uur die aand'
+  },
+  wide: {
+    am: 'vm',
+    pm: 'nm',
+    midnight: 'middernag',
+    noon: 'uur die middag',
+    morning: 'uur die oggend',
+    afternoon: 'uur die middag',
+    evening: 'uur die aand',
+    night: 'uur die aand'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  var rem100 = number % 100;
+
+  if (rem100 < 20) {
+    switch (rem100) {
+      case 1:
+      case 8:
+        return number + 'ste';
+
+      default:
+        return number + 'de';
+    }
+  }
+
+  return number + 'ste';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/af/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/af/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(ste|de)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^([vn]\.? ?C\.?)/,
+  abbreviated: /^([vn]\. ?C\.?)/,
+  wide: /^((voor|na) Christus)/
+};
+var parseEraPatterns = {
+  any: [/^v/, /^n/]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^K[1234]/i,
+  wide: /^[1234](st|d)e kwartaal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(Jan|Feb|Mrt|Apr|Mei|Jun|Jul|Aug|Sep|Okt|Nov|Dec)\.?/i,
+  wide: /^(Januarie|Februarie|Maart|April|Mei|Junie|Julie|Augustus|September|Oktober|November|Desember)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^J/i, /^F/i, /^M/i, /^A/i, /^M/i, /^J/i, /^J/i, /^A/i, /^S/i, /^O/i, /^N/i, /^D/i],
+  any: [/^Jan/i, /^Feb/i, /^Mrt/i, /^Apr/i, /^Mei/i, /^Jun/i, /^Jul/i, /^Aug/i, /^Sep/i, /^Okt/i, /^Nov/i, /^Dec/i]
+};
+var matchDayPatterns = {
+  narrow: /^[smdwv]/i,
+  short: /^(So|Ma|Di|Wo|Do|Vr|Sa)/i,
+  abbreviated: /^(Son|Maa|Din|Woe|Don|Vry|Sat)/i,
+  wide: /^(Sondag|Maandag|Dinsdag|Woensdag|Donderdag|Vrydag|Saterdag)/i
+};
+var parseDayPatterns = {
+  narrow: [/^S/i, /^M/i, /^D/i, /^W/i, /^D/i, /^V/i, /^S/i],
+  any: [/^So/i, /^Ma/i, /^Di/i, /^Wo/i, /^Do/i, /^Vr/i, /^Sa/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(vm|nm|middernag|(?:uur )?die (oggend|middag|aand))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^vm/i,
+    pm: /^nm/i,
+    midnight: /^middernag/i,
+    noon: /^middaguur/i,
+    morning: /oggend/i,
+    afternoon: /middag/i,
+    evening: /laat middag/i,
+    night: /aand/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/af/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/af/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/af/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/af/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/af/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/af/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/af/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Afrikaans locale.
+ * @language Afrikaans
+ * @iso-639-2 afr
+ * @author Marnus Weststrate [@marnusw]{@link https://github.com/marnusw}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/formatDistance/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-DZ/_lib/formatDistance/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'أقل من ثانية واحدة',
+    two: 'أقل من ثانتين',
+    threeToTen: 'أقل من {{count}} ثواني',
+    other: 'أقل من {{count}} ثانية'
+  },
+  xSeconds: {
+    one: 'ثانية واحدة',
+    two: 'ثانتين',
+    threeToTen: '{{count}} ثواني',
+    other: '{{count}} ثانية'
+  },
+  halfAMinute: 'نصف دقيقة',
+  lessThanXMinutes: {
+    one: 'أقل من دقيقة',
+    two: 'أقل من دقيقتين',
+    threeToTen: 'أقل من {{count}} دقائق',
+    other: 'أقل من {{count}} دقيقة'
+  },
+  xMinutes: {
+    one: 'دقيقة واحدة',
+    two: 'دقيقتين',
+    threeToTen: '{{count}} دقائق',
+    other: '{{count}} دقيقة'
+  },
+  aboutXHours: {
+    one: 'ساعة واحدة تقريباً',
+    two: 'ساعتين تقريباً',
+    threeToTen: '{{count}} ساعات تقريباً',
+    other: '{{count}} ساعة تقريباً'
+  },
+  xHours: {
+    one: 'ساعة واحدة',
+    two: 'ساعتين',
+    threeToTen: '{{count}} ساعات',
+    other: '{{count}} ساعة'
+  },
+  xDays: {
+    one: 'يوم واحد',
+    two: 'يومين',
+    threeToTen: '{{count}} أيام',
+    other: '{{count}} يوم'
+  },
+  aboutXMonths: {
+    one: 'شهر واحد تقريباً',
+    two: 'شهرين تقريباً',
+    threeToTen: '{{count}} أشهر تقريباً',
+    other: '{{count}} شهر تقريباً'
+  },
+  xMonths: {
+    one: 'شهر واحد',
+    two: 'شهرين',
+    threeToTen: '{{count}} أشهر',
+    other: '{{count}} شهر'
+  },
+  aboutXYears: {
+    one: 'عام واحد تقريباً',
+    two: 'عامين تقريباً',
+    threeToTen: '{{count}} أعوام تقريباً',
+    other: '{{count}} عام تقريباً'
+  },
+  xYears: {
+    one: 'عام واحد',
+    two: 'عامين',
+    threeToTen: '{{count}} أعوام',
+    other: '{{count}} عام'
+  },
+  overXYears: {
+    one: 'أكثر من عام',
+    two: 'أكثر من عامين',
+    threeToTen: 'أكثر من {{count}} أعوام',
+    other: 'أكثر من {{count}} عام'
+  },
+  almostXYears: {
+    one: 'عام واحد تقريباً',
+    two: 'عامين تقريباً',
+    threeToTen: '{{count}} أعوام تقريباً',
+    other: '{{count}} عام تقريباً'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else if (count === 2) {
+    result = formatDistanceLocale[token].two;
+  } else if (count <= 10) {
+    result = formatDistanceLocale[token].threeToTen.replace('{{count}}', count);
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'في خلال ' + result;
+    } else {
+      return 'منذ ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/formatLong/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-DZ/_lib/formatLong/index.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, MMMM do, y',
+  long: 'MMMM do, y',
+  medium: 'MMM d, y',
+  short: 'MM/dd/yyyy'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'عند' {{time}}",
+  long: "{{date}} 'عند' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/formatRelative/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-DZ/_lib/formatRelative/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'أخر' eeee 'عند' p",
+  yesterday: "'أمس عند' p",
+  today: "'اليوم عند' p",
+  tomorrow: "'غداً عند' p",
+  nextWeek: "eeee 'عند' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/localize/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-DZ/_lib/localize/index.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['ق', 'ب'],
+  abbreviated: ['ق.م.', 'ب.م.'],
+  wide: ['قبل الميلاد', 'بعد الميلاد']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['ر1', 'ر2', 'ر3', 'ر4'],
+  wide: ['الربع الأول', 'الربع الثاني', 'الربع الثالث', 'الربع الرابع']
+};
+var monthValues = {
+  narrow: ['ج', 'ف', 'م', 'أ', 'م', 'ج', 'ج', 'أ', 'س', 'أ', 'ن', 'د'],
+  abbreviated: ['جانـ', 'فيفـ', 'مارس', 'أفريل', 'مايـ', 'جوانـ', 'جويـ', 'أوت', 'سبتـ', 'أكتـ', 'نوفـ', 'ديسـ'],
+  wide: ['جانفي', 'فيفري', 'مارس', 'أفريل', 'ماي', 'جوان', 'جويلية', 'أوت', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
+};
+var dayValues = {
+  narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
+  short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
+  abbreviated: ['أحد', 'اثنـ', 'ثلا', 'أربـ', 'خميـ', 'جمعة', 'سبت'],
+  wide: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'ن',
+    noon: 'ظ',
+    morning: 'صباحاً',
+    afternoon: 'بعد الظهر',
+    evening: 'مساءاً',
+    night: 'ليلاً'
+  },
+  abbreviated: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'نصف الليل',
+    noon: 'ظهر',
+    morning: 'صباحاً',
+    afternoon: 'بعد الظهر',
+    evening: 'مساءاً',
+    night: 'ليلاً'
+  },
+  wide: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'نصف الليل',
+    noon: 'ظهر',
+    morning: 'صباحاً',
+    afternoon: 'بعد الظهر',
+    evening: 'مساءاً',
+    night: 'ليلاً'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'ن',
+    noon: 'ظ',
+    morning: 'في الصباح',
+    afternoon: 'بعد الظـهر',
+    evening: 'في المساء',
+    night: 'في الليل'
+  },
+  abbreviated: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'نصف الليل',
+    noon: 'ظهر',
+    morning: 'في الصباح',
+    evening: 'في المساء',
+    night: 'في الليل'
+  },
+  wide: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'نصف الليل',
+    noon: 'ظهر',
+    afternoon: 'بعد الظـهر',
+    evening: 'في المساء',
+    night: 'في الليل'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  return String(dirtyNumber);
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/match/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-DZ/_lib/match/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ق|ب)/i,
+  abbreviated: /^(ق\.?\s?م\.?|ق\.?\s?م\.?\s?|a\.?\s?d\.?|c\.?\s?)/i,
+  wide: /^(قبل الميلاد|قبل الميلاد|بعد الميلاد|بعد الميلاد)/i
+};
+var parseEraPatterns = {
+  any: [/^قبل/i, /^بعد/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^ر[1234]/i,
+  wide: /^الربع [1234]/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[جفمأسند]/i,
+  abbreviated: /^(جان|فيف|مار|أفر|ماي|جوا|جوي|أوت|سبت|أكت|نوف|ديس)/i,
+  wide: /^(جانفي|فيفري|مارس|أفريل|ماي|جوان|جويلية|أوت|سبتمبر|أكتوبر|نوفمبر|ديسمبر)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^ج/i, /^ف/i, /^م/i, /^أ/i, /^م/i, /^ج/i, /^ج/i, /^أ/i, /^س/i, /^أ/i, /^ن/i, /^د/i],
+  any: [/^جان/i, /^فيف/i, /^مار/i, /^أفر/i, /^ماي/i, /^جوا/i, /^جوي/i, /^أوت/i, /^سبت/i, /^أكت/i, /^نوف/i, /^ديس/i]
+};
+var matchDayPatterns = {
+  narrow: /^[حنثرخجس]/i,
+  short: /^(أحد|اثنين|ثلاثاء|أربعاء|خميس|جمعة|سبت)/i,
+  abbreviated: /^(أحد|اثن|ثلا|أرب|خمي|جمعة|سبت)/i,
+  wide: /^(الأحد|الاثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|السبت)/i
+};
+var parseDayPatterns = {
+  narrow: [/^ح/i, /^ن/i, /^ث/i, /^ر/i, /^خ/i, /^ج/i, /^س/i],
+  wide: [/^الأحد/i, /^الاثنين/i, /^الثلاثاء/i, /^الأربعاء/i, /^الخميس/i, /^الجمعة/i, /^السبت/i],
+  any: [/^أح/i, /^اث/i, /^ث/i, /^أر/i, /^خ/i, /^ج/i, /^س/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mi/i,
+    noon: /^no/i,
+    morning: /morning/i,
+    afternoon: /afternoon/i,
+    evening: /evening/i,
+    night: /night/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-DZ/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-DZ/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/ar-DZ/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Arabic locale (Modern Standard Arabic ).
+ * @language Modern Standard Arabic (Algeria) [ar-dz]
+ * @iso-639-2 ara
+ * @author Badreddine Boumaza [@badre429]{@link https://github.com/badre429}
+ * @author Ahmed ElShahat [@elshahat]{@link https://github.com/elshahat}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-SA/_lib/formatDistance/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-SA/_lib/formatDistance/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'أقل من ثانية واحدة',
+    two: 'أقل من ثانتين',
+    threeToTen: 'أقل من {{count}} ثواني',
+    other: 'أقل من {{count}} ثانية'
+  },
+  xSeconds: {
+    one: 'ثانية واحدة',
+    two: 'ثانتين',
+    threeToTen: '{{count}} ثواني',
+    other: '{{count}} ثانية'
+  },
+  halfAMinute: 'نصف دقيقة',
+  lessThanXMinutes: {
+    one: 'أقل من دقيقة',
+    two: 'أقل من دقيقتين',
+    threeToTen: 'أقل من {{count}} دقائق',
+    other: 'أقل من {{count}} دقيقة'
+  },
+  xMinutes: {
+    one: 'دقيقة واحدة',
+    two: 'دقيقتين',
+    threeToTen: '{{count}} دقائق',
+    other: '{{count}} دقيقة'
+  },
+  aboutXHours: {
+    one: 'ساعة واحدة تقريباً',
+    two: 'ساعتين تقريباً',
+    threeToTen: '{{count}} ساعات تقريباً',
+    other: '{{count}} ساعة تقريباً'
+  },
+  xHours: {
+    one: 'ساعة واحدة',
+    two: 'ساعتين',
+    threeToTen: '{{count}} ساعات',
+    other: '{{count}} ساعة'
+  },
+  xDays: {
+    one: 'يوم واحد',
+    two: 'يومين',
+    threeToTen: '{{count}} أيام',
+    other: '{{count}} يوم'
+  },
+  aboutXMonths: {
+    one: 'شهر واحد تقريباً',
+    two: 'شهرين تقريباً',
+    threeToTen: '{{count}} أشهر تقريباً',
+    other: '{{count}} شهر تقريباً'
+  },
+  xMonths: {
+    one: 'شهر واحد',
+    two: 'شهرين',
+    threeToTen: '{{count}} أشهر',
+    other: '{{count}} شهر'
+  },
+  aboutXYears: {
+    one: 'عام واحد تقريباً',
+    two: 'عامين تقريباً',
+    threeToTen: '{{count}} أعوام تقريباً',
+    other: '{{count}} عام تقريباً'
+  },
+  xYears: {
+    one: 'عام واحد',
+    two: 'عامين',
+    threeToTen: '{{count}} أعوام',
+    other: '{{count}} عام'
+  },
+  overXYears: {
+    one: 'أكثر من عام',
+    two: 'أكثر من عامين',
+    threeToTen: 'أكثر من {{count}} أعوام',
+    other: 'أكثر من {{count}} عام'
+  },
+  almostXYears: {
+    one: 'عام واحد تقريباً',
+    two: 'عامين تقريباً',
+    threeToTen: '{{count}} أعوام تقريباً',
+    other: '{{count}} عام تقريباً'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else if (count === 2) {
+    result = formatDistanceLocale[token].two;
+  } else if (count <= 10) {
+    result = formatDistanceLocale[token].threeToTen.replace('{{count}}', count);
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'في خلال ' + result;
+    } else {
+      return 'منذ ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-SA/_lib/formatLong/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-SA/_lib/formatLong/index.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, MMMM do, y',
+  long: 'MMMM do, y',
+  medium: 'MMM d, y',
+  short: 'MM/dd/yyyy'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'عند' {{time}}",
+  long: "{{date}} 'عند' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-SA/_lib/formatRelative/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-SA/_lib/formatRelative/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'أخر' eeee 'عند' p",
+  yesterday: "'أمس عند' p",
+  today: "'اليوم عند' p",
+  tomorrow: "'غداً عند' p",
+  nextWeek: "eeee 'عند' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-SA/_lib/localize/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-SA/_lib/localize/index.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['ق', 'ب'],
+  abbreviated: ['ق.م.', 'ب.م.'],
+  wide: ['قبل الميلاد', 'بعد الميلاد']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['ر1', 'ر2', 'ر3', 'ر4'],
+  wide: ['الربع الأول', 'الربع الثاني', 'الربع الثالث', 'الربع الرابع']
+};
+var monthValues = {
+  narrow: ['ي', 'ف', 'م', 'أ', 'م', 'ي', 'ي', 'أ', 'س', 'أ', 'ن', 'د'],
+  abbreviated: ['ينا', 'فبر', 'مارس', 'أبريل', 'مايو', 'يونـ', 'يولـ', 'أغسـ', 'سبتـ', 'أكتـ', 'نوفـ', 'ديسـ'],
+  wide: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
+};
+var dayValues = {
+  narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
+  short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
+  abbreviated: ['أحد', 'اثنـ', 'ثلا', 'أربـ', 'خميـ', 'جمعة', 'سبت'],
+  wide: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'ن',
+    noon: 'ظ',
+    morning: 'صباحاً',
+    afternoon: 'بعد الظهر',
+    evening: 'مساءاً',
+    night: 'ليلاً'
+  },
+  abbreviated: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'نصف الليل',
+    noon: 'ظهر',
+    morning: 'صباحاً',
+    afternoon: 'بعد الظهر',
+    evening: 'مساءاً',
+    night: 'ليلاً'
+  },
+  wide: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'نصف الليل',
+    noon: 'ظهر',
+    morning: 'صباحاً',
+    afternoon: 'بعد الظهر',
+    evening: 'مساءاً',
+    night: 'ليلاً'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'ن',
+    noon: 'ظ',
+    morning: 'في الصباح',
+    afternoon: 'بعد الظـهر',
+    evening: 'في المساء',
+    night: 'في الليل'
+  },
+  abbreviated: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'نصف الليل',
+    noon: 'ظهر',
+    morning: 'في الصباح',
+    evening: 'في المساء',
+    night: 'في الليل'
+  },
+  wide: {
+    am: 'ص',
+    pm: 'م',
+    midnight: 'نصف الليل',
+    noon: 'ظهر',
+    afternoon: 'بعد الظـهر',
+    evening: 'في المساء',
+    night: 'في الليل'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  return String(dirtyNumber);
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-SA/_lib/match/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-SA/_lib/match/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ق|ب)/i,
+  abbreviated: /^(ق\.?\s?م\.?|ق\.?\s?م\.?\s?|a\.?\s?d\.?|c\.?\s?)/i,
+  wide: /^(قبل الميلاد|قبل الميلاد|بعد الميلاد|بعد الميلاد)/i
+};
+var parseEraPatterns = {
+  any: [/^قبل/i, /^بعد/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^ر[1234]/i,
+  wide: /^الربع [1234]/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[يفمأمسند]/i,
+  abbreviated: /^(ين|ف|مار|أب|ماي|يون|يول|أغ|س|أك|ن|د)/i,
+  wide: /^(ين|ف|مار|أب|ماي|يون|يول|أغ|س|أك|ن|د)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^ي/i, /^ف/i, /^م/i, /^أ/i, /^م/i, /^ي/i, /^ي/i, /^أ/i, /^س/i, /^أ/i, /^ن/i, /^د/i],
+  any: [/^ين/i, /^ف/i, /^مار/i, /^أب/i, /^ماي/i, /^يون/i, /^يول/i, /^أغ/i, /^س/i, /^أك/i, /^ن/i, /^د/i]
+};
+var matchDayPatterns = {
+  narrow: /^[حنثرخجس]/i,
+  short: /^(أحد|اثنين|ثلاثاء|أربعاء|خميس|جمعة|سبت)/i,
+  abbreviated: /^(أحد|اثن|ثلا|أرب|خمي|جمعة|سبت)/i,
+  wide: /^(الأحد|الاثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|السبت)/i
+};
+var parseDayPatterns = {
+  narrow: [/^ح/i, /^ن/i, /^ث/i, /^ر/i, /^خ/i, /^ج/i, /^س/i],
+  wide: [/^الأحد/i, /^الاثنين/i, /^الثلاثاء/i, /^الأربعاء/i, /^الخميس/i, /^الجمعة/i, /^السبت/i],
+  any: [/^أح/i, /^اث/i, /^ث/i, /^أر/i, /^خ/i, /^ج/i, /^س/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mi/i,
+    noon: /^no/i,
+    morning: /morning/i,
+    afternoon: /afternoon/i,
+    evening: /evening/i,
+    night: /night/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ar-SA/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ar-SA/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/ar-SA/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/ar-SA/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/ar-SA/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/ar-SA/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/ar-SA/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Arabic locale (Sauid Arabic).
+ * @language Arabic
+ * @iso-639-2 ara
+ * @author Dhaifallah Alwadani [@dalwadani]{@link https://github.com/dalwadani}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/be/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/be/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+function declension(scheme, count) {
+  // scheme for count=1 exists
+  if (scheme.one !== undefined && count === 1) {
+    return scheme.one;
+  }
+
+  var rem10 = count % 10;
+  var rem100 = count % 100; // 1, 21, 31, ...
+
+  if (rem10 === 1 && rem100 !== 11) {
+    return scheme.singularNominative.replace('{{count}}', count); // 2, 3, 4, 22, 23, 24, 32 ...
+  } else if (rem10 >= 2 && rem10 <= 4 && (rem100 < 10 || rem100 > 20)) {
+    return scheme.singularGenitive.replace('{{count}}', count); // 5, 6, 7, 8, 9, 10, 11, ...
+  } else {
+    return scheme.pluralGenitive.replace('{{count}}', count);
+  }
+}
+
+function buildLocalizeTokenFn(scheme) {
+  return function (count, options) {
+    if (options.addSuffix) {
+      if (options.comparison > 0) {
+        if (scheme.future) {
+          return declension(scheme.future, count);
+        } else {
+          return 'праз ' + declension(scheme.regular, count);
+        }
+      } else {
+        if (scheme.past) {
+          return declension(scheme.past, count);
+        } else {
+          return declension(scheme.regular, count) + ' таму';
+        }
+      }
+    } else {
+      return declension(scheme.regular, count);
+    }
+  };
+}
+
+var formatDistanceLocale = {
+  lessThanXSeconds: buildLocalizeTokenFn({
+    regular: {
+      one: 'менш за секунду',
+      singularNominative: 'менш за {{count}} секунду',
+      singularGenitive: 'менш за {{count}} секунды',
+      pluralGenitive: 'менш за {{count}} секунд'
+    },
+    future: {
+      one: 'менш, чым праз секунду',
+      singularNominative: 'менш, чым праз {{count}} секунду',
+      singularGenitive: 'менш, чым праз {{count}} секунды',
+      pluralGenitive: 'менш, чым праз {{count}} секунд'
+    }
+  }),
+  xSeconds: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} секунда',
+      singularGenitive: '{{count}} секунды',
+      pluralGenitive: '{{count}} секунд'
+    },
+    past: {
+      singularNominative: '{{count}} секунду таму',
+      singularGenitive: '{{count}} секунды таму',
+      pluralGenitive: '{{count}} секунд таму'
+    },
+    future: {
+      singularNominative: 'праз {{count}} секунду',
+      singularGenitive: 'праз {{count}} секунды',
+      pluralGenitive: 'праз {{count}} секунд'
+    }
+  }),
+  halfAMinute: function (_, options) {
+    if (options.addSuffix) {
+      if (options.comparison > 0) {
+        return 'праз паўхвіліны';
+      } else {
+        return 'паўхвіліны таму';
+      }
+    }
+
+    return 'паўхвіліны';
+  },
+  lessThanXMinutes: buildLocalizeTokenFn({
+    regular: {
+      one: 'менш за хвіліну',
+      singularNominative: 'менш за {{count}} хвіліну',
+      singularGenitive: 'менш за {{count}} хвіліны',
+      pluralGenitive: 'менш за {{count}} хвілін'
+    },
+    future: {
+      one: 'менш, чым праз хвіліну',
+      singularNominative: 'менш, чым праз {{count}} хвіліну',
+      singularGenitive: 'менш, чым праз {{count}} хвіліны',
+      pluralGenitive: 'менш, чым праз {{count}} хвілін'
+    }
+  }),
+  xMinutes: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} хвіліна',
+      singularGenitive: '{{count}} хвіліны',
+      pluralGenitive: '{{count}} хвілін'
+    },
+    past: {
+      singularNominative: '{{count}} хвіліну таму',
+      singularGenitive: '{{count}} хвіліны таму',
+      pluralGenitive: '{{count}} хвілін таму'
+    },
+    future: {
+      singularNominative: 'праз {{count}} хвіліну',
+      singularGenitive: 'праз {{count}} хвіліны',
+      pluralGenitive: 'праз {{count}} хвілін'
+    }
+  }),
+  aboutXHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'каля {{count}} гадзіны',
+      singularGenitive: 'каля {{count}} гадзін',
+      pluralGenitive: 'каля {{count}} гадзін'
+    },
+    future: {
+      singularNominative: 'прыблізна праз {{count}} гадзіну',
+      singularGenitive: 'прыблізна праз {{count}} гадзіны',
+      pluralGenitive: 'прыблізна праз {{count}} гадзін'
+    }
+  }),
+  xHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} гадзіна',
+      singularGenitive: '{{count}} гадзіны',
+      pluralGenitive: '{{count}} гадзін'
+    },
+    past: {
+      singularNominative: '{{count}} гадзіну таму',
+      singularGenitive: '{{count}} гадзіны таму',
+      pluralGenitive: '{{count}} гадзін таму'
+    },
+    future: {
+      singularNominative: 'праз {{count}} гадзіну',
+      singularGenitive: 'праз {{count}} гадзіны',
+      pluralGenitive: 'праз {{count}} гадзін'
+    }
+  }),
+  xDays: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} дзень',
+      singularGenitive: '{{count}} дні',
+      pluralGenitive: '{{count}} дзён'
+    }
+  }),
+  aboutXMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'каля {{count}} месяца',
+      singularGenitive: 'каля {{count}} месяцаў',
+      pluralGenitive: 'каля {{count}} месяцаў'
+    },
+    future: {
+      singularNominative: 'прыблізна праз {{count}} месяц',
+      singularGenitive: 'прыблізна праз {{count}} месяцы',
+      pluralGenitive: 'прыблізна праз {{count}} месяцаў'
+    }
+  }),
+  xMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} месяц',
+      singularGenitive: '{{count}} месяцы',
+      pluralGenitive: '{{count}} месяцаў'
+    }
+  }),
+  aboutXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'каля {{count}} года',
+      singularGenitive: 'каля {{count}} гадоў',
+      pluralGenitive: 'каля {{count}} гадоў'
+    },
+    future: {
+      singularNominative: 'прыблізна праз {{count}} год',
+      singularGenitive: 'прыблізна праз {{count}} гады',
+      pluralGenitive: 'прыблізна праз {{count}} гадоў'
+    }
+  }),
+  xYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} год',
+      singularGenitive: '{{count}} гады',
+      pluralGenitive: '{{count}} гадоў'
+    }
+  }),
+  overXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'больш за {{count}} год',
+      singularGenitive: 'больш за {{count}} гады',
+      pluralGenitive: 'больш за {{count}} гадоў'
+    },
+    future: {
+      singularNominative: 'больш, чым праз {{count}} год',
+      singularGenitive: 'больш, чым праз {{count}} гады',
+      pluralGenitive: 'больш, чым праз {{count}} гадоў'
+    }
+  }),
+  almostXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'амаль {{count}} год',
+      singularGenitive: 'амаль {{count}} гады',
+      pluralGenitive: 'амаль {{count}} гадоў'
+    },
+    future: {
+      singularNominative: 'амаль праз {{count}} год',
+      singularGenitive: 'амаль праз {{count}} гады',
+      pluralGenitive: 'амаль праз {{count}} гадоў'
+    }
+  })
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  return formatDistanceLocale[token](count, options);
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/be/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/be/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "EEEE, d MMMM y 'г.'",
+  long: "d MMMM y 'г.'",
+  medium: "d MMM y 'г.'",
+  short: 'dd.MM.y'
+};
+var timeFormats = {
+  full: 'H:mm:ss zzzz',
+  long: 'H:mm:ss z',
+  medium: 'H:mm:ss',
+  short: 'H:mm'
+};
+var dateTimeFormats = {
+  any: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/be/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/be/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+/* harmony import */ var _lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../_lib/isSameUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/isSameUTCWeek/index.js");
+
+var accusativeWeekdays = ['нядзелю', 'панядзелак', 'аўторак', 'сераду', 'чацвер', 'пятніцу', 'суботу'];
+
+function lastWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  switch (day) {
+    case 0:
+    case 3:
+    case 5:
+    case 6:
+      return "'у мінулую " + weekday + " а' p";
+
+    case 1:
+    case 2:
+    case 4:
+      return "'у мінулы " + weekday + " а' p";
+  }
+}
+
+function thisWeek(day) {
+  var weekday = accusativeWeekdays[day];
+  return "'у " + weekday + " а' p";
+}
+
+function nextWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  switch (day) {
+    case 0:
+    case 3:
+    case 5:
+    case 6:
+      return "'у наступную " + weekday + " а' p";
+
+    case 1:
+    case 2:
+    case 4:
+      return "'у наступны " + weekday + " а' p";
+  }
+}
+
+var formatRelativeLocale = {
+  lastWeek: function (date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return lastWeek(day);
+    }
+  },
+  yesterday: "'учора а' p",
+  today: "'сёння а' p",
+  tomorrow: "'заўтра а' p",
+  nextWeek: function (date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return nextWeek(day);
+    }
+  },
+  other: 'P'
+};
+function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/be/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/be/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['да н.э.', 'н.э.'],
+  abbreviated: ['да н. э.', 'н. э.'],
+  wide: ['да нашай эры', 'нашай эры']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1-ы кв.', '2-і кв.', '3-і кв.', '4-ы кв.'],
+  wide: ['1-ы квартал', '2-і квартал', '3-і квартал', '4-ы квартал']
+};
+var monthValues = {
+  narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'],
+  abbreviated: ['студз.', 'лют.', 'сак.', 'крас.', 'май', 'чэрв.', 'ліп.', 'жн.', 'вер.', 'кастр.', 'ліст.', 'снеж.'],
+  wide: ['студзень', 'люты', 'сакавік', 'красавік', 'май', 'чэрвень', 'ліпень', 'жнівень', 'верасень', 'кастрычнік', 'лістапад', 'снежань']
+};
+var formattingMonthValues = {
+  narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'],
+  abbreviated: ['студз.', 'лют.', 'сак.', 'крас.', 'мая', 'чэрв.', 'ліп.', 'жн.', 'вер.', 'кастр.', 'ліст.', 'снеж.'],
+  wide: ['студзеня', 'лютага', 'сакавіка', 'красавіка', 'мая', 'чэрвеня', 'ліпеня', 'жніўня', 'верасня', 'кастрычніка', 'лістапада', 'снежня']
+};
+var dayValues = {
+  narrow: ['Н', 'П', 'А', 'С', 'Ч', 'П', 'С'],
+  short: ['нд', 'пн', 'аў', 'ср', 'чц', 'пт', 'сб'],
+  abbreviated: ['нядз', 'пан', 'аўт', 'сер', 'чац', 'пят', 'суб'],
+  wide: ['нядзеля', 'панядзелак', 'аўторак', 'серада', 'чацвер', 'пятніца', 'субота']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'поўн.',
+    noon: 'поўд.',
+    morning: 'ран.',
+    afternoon: 'дзень',
+    evening: 'веч.',
+    night: 'ноч'
+  },
+  abbreviated: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'поўн.',
+    noon: 'поўд.',
+    morning: 'ран.',
+    afternoon: 'дзень',
+    evening: 'веч.',
+    night: 'ноч'
+  },
+  wide: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'поўнач',
+    noon: 'поўдзень',
+    morning: 'раніца',
+    afternoon: 'дзень',
+    evening: 'вечар',
+    night: 'ноч'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'поўн.',
+    noon: 'поўд.',
+    morning: 'ран.',
+    afternoon: 'дня',
+    evening: 'веч.',
+    night: 'ночы'
+  },
+  abbreviated: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'поўн.',
+    noon: 'поўд.',
+    morning: 'ран.',
+    afternoon: 'дня',
+    evening: 'веч.',
+    night: 'ночы'
+  },
+  wide: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'поўнач',
+    noon: 'поўдзень',
+    morning: 'раніцы',
+    afternoon: 'дня',
+    evening: 'вечара',
+    night: 'ночы'
+  }
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var options = dirtyOptions || {};
+  var unit = String(options.unit);
+  var number = Number(dirtyNumber);
+  var suffix;
+  /** Though it's an incorrect ordinal form of a date we use it here for consistency with other similar locales (ru, uk)
+   *  For date-month combinations should be used `d` formatter.
+   *  Correct:   `d MMMM` (4 верасня)
+   *  Incorrect: `do MMMM` (4-га верасня)
+   *
+   *  But following the consistency leads to mistakes for literal uses of `do` formatter (ordinal day of month).
+   *  So for phrase "5th day of month" (`do дзень месяца`)
+   *  library will produce:            `5-га дзень месяца`
+   *  but correct spelling should be:  `5-ы дзень месяца`
+   *
+   *  So I guess there should be a stand-alone and a formatting version of "day of month" formatters
+   */
+
+  if (unit === 'date') {
+    suffix = '-га';
+  } else if (unit === 'hour' || unit === 'minute' || unit === 'second') {
+    suffix = '-я';
+  } else {
+    suffix = (number % 10 === 2 || number % 10 === 3) && number % 100 !== 12 && number % 100 !== 13 ? '-і' : '-ы';
+  }
+
+  return number + suffix;
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'any',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/be/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/be/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(-?(е|я|га|і|ы|ае|ая|яя|шы|гі|ці|ты|мы))?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^((да )?н\.?\s?э\.?)/i,
+  abbreviated: /^((да )?н\.?\s?э\.?)/i,
+  wide: /^(да нашай эры|нашай эры|наша эра)/i
+};
+var parseEraPatterns = {
+  any: [/^д/i, /^н/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234](-?[ыі]?)? кв.?/i,
+  wide: /^[1234](-?[ыі]?)? квартал/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[слкмчжв]/i,
+  abbreviated: /^(студз|лют|сак|крас|ма[йя]|чэрв|ліп|жн|вер|кастр|ліст|снеж)\.?/i,
+  wide: /^(студзен[ья]|лют(ы|ага)|сакавіка?|красавіка?|ма[йя]|чэрвен[ья]|ліпен[ья]|жні(вень|ўня)|верас(ень|ня)|кастрычніка?|лістапада?|снеж(ань|ня))/i
+};
+var parseMonthPatterns = {
+  narrow: [/^с/i, /^л/i, /^с/i, /^к/i, /^м/i, /^ч/i, /^л/i, /^ж/i, /^в/i, /^к/i, /^л/i, /^с/i],
+  any: [/^ст/i, /^лю/i, /^са/i, /^кр/i, /^ма/i, /^ч/i, /^ліп/i, /^ж/i, /^в/i, /^ка/i, /^ліс/i, /^сн/i]
+};
+var matchDayPatterns = {
+  narrow: /^[нпасч]/i,
+  short: /^(нд|ня|пн|па|аў|ат|ср|се|чц|ча|пт|пя|сб|су)\.?/i,
+  abbreviated: /^(нядз?|ндз|пнд|пан|аўт|срд|сер|чцв|чац|птн|пят|суб).?/i,
+  wide: /^(нядзел[яі]|панядзел(ак|ка)|аўтор(ак|ка)|серад[аы]|чацв(ер|ярга)|пятніц[аы]|субот[аы])/i
+};
+var parseDayPatterns = {
+  narrow: [/^н/i, /^п/i, /^а/i, /^с/i, /^ч/i, /^п/i, /^с/i],
+  any: [/^н/i, /^п[ан]/i, /^а/i, /^с[ер]/i, /^ч/i, /^п[ят]/i, /^с[уб]/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^([дп]п|поўн\.?|поўд\.?|ран\.?|дзень|дня|веч\.?|ночы?)/i,
+  abbreviated: /^([дп]п|поўн\.?|поўд\.?|ран\.?|дзень|дня|веч\.?|ночы?)/i,
+  wide: /^([дп]п|поўнач|поўдзень|раніц[аы]|дзень|дня|вечара?|ночы?)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^дп/i,
+    pm: /^пп/i,
+    midnight: /^поўн/i,
+    noon: /^поўд/i,
+    morning: /^р/i,
+    afternoon: /^д[зн]/i,
+    evening: /^в/i,
+    night: /^н/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/be/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/be/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/be/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/be/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/be/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/be/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/be/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Belarusian locale.
+ * @language Belarusian
+ * @iso-639-2 bel
+ * @author Kiryl Anokhin [@alyrik]{@link https://github.com/alyrik}
+ * @author Martin Wind [@arvigeus]{@link https://github.com/mawi12345}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/bn/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/bn/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+/* harmony import */ var _localize_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../localize/index.js */ "./node_modules/date-fns/esm/locale/bn/_lib/localize/index.js");
+
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'প্রায় ১ সেকেন্ড',
+    other: 'প্রায় {{count}} সেকেন্ড'
+  },
+  xSeconds: {
+    one: '১ সেকেন্ড',
+    other: '{{count}} সেকেন্ড'
+  },
+  halfAMinute: 'আধ মিনিট',
+  lessThanXMinutes: {
+    one: 'প্রায় ১ মিনিট',
+    other: 'প্রায় {{count}} মিনিট'
+  },
+  xMinutes: {
+    one: '১ মিনিট',
+    other: '{{count}} মিনিট'
+  },
+  aboutXHours: {
+    one: 'প্রায় ১ ঘন্টা',
+    other: 'প্রায় {{count}} ঘন্টা'
+  },
+  xHours: {
+    one: '১ ঘন্টা',
+    other: '{{count}} ঘন্টা'
+  },
+  xDays: {
+    one: '১ দিন',
+    other: '{{count}} দিন'
+  },
+  aboutXMonths: {
+    one: 'প্রায় ১ মাস',
+    other: 'প্রায় {{count}} মাস'
+  },
+  xMonths: {
+    one: '১ মাস',
+    other: '{{count}} মাস'
+  },
+  aboutXYears: {
+    one: 'প্রায় ১ বছর',
+    other: 'প্রায় {{count}} বছর'
+  },
+  xYears: {
+    one: '১ বছর',
+    other: '{{count}} বছর'
+  },
+  overXYears: {
+    one: '১ বছরের বেশি',
+    other: '{{count}} বছরের বেশি'
+  },
+  almostXYears: {
+    one: 'প্রায় ১ বছর',
+    other: 'প্রায় {{count}} বছর'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', _localize_index_js__WEBPACK_IMPORTED_MODULE_0__["default"].numberToLocale(count));
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return result + ' এর মধ্যে';
+    } else {
+      return result + ' আগে';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/bn/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/bn/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, MMMM do, y',
+  long: 'MMMM do, y',
+  medium: 'MMM d, y',
+  short: 'MM/dd/yyyy'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: "{{date}} {{time}} 'সময়'",
+  long: "{{date}} {{time}} 'সময়'",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/bn/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/bn/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'গত' eeee 'সময়' p",
+  yesterday: "'গতকাল' 'সময়' p",
+  today: "'আজ' 'সময়' p",
+  tomorrow: "'আগামীকাল' 'সময়' p",
+  nextWeek: "eeee 'সময়' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/bn/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/bn/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var numberValues = {
+  locale: {
+    '1': '১',
+    '2': '২',
+    '3': '৩',
+    '4': '৪',
+    '5': '৫',
+    '6': '৬',
+    '7': '৭',
+    '8': '৮',
+    '9': '৯',
+    '0': '০'
+  },
+  number: {
+    '১': '1',
+    '২': '2',
+    '৩': '3',
+    '৪': '4',
+    '৫': '5',
+    '৬': '6',
+    '৭': '7',
+    '৮': '8',
+    '৯': '9',
+    '০': '0'
+  }
+};
+var eraValues = {
+  narrow: ['খ্রিঃপূঃ', 'খ্রিঃ'],
+  abbreviated: ['খ্রিঃপূর্ব', 'খ্রিঃ'],
+  wide: ['খ্রিস্টপূর্ব', 'খ্রিস্টাব্দ']
+};
+var quarterValues = {
+  narrow: ['১', '২', '৩', '৪'],
+  abbreviated: ['১ত্রৈ', '২ত্রৈ', '৩ত্রৈ', '৪ত্রৈ'],
+  wide: ['১ম ত্রৈমাসিক', '২য় ত্রৈমাসিক', '৩য় ত্রৈমাসিক', '৪র্থ ত্রৈমাসিক']
+};
+var monthValues = {
+  narrow: ['জানু', 'ফেব্রু', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্ট', 'অক্টো', 'নভে', 'ডিসে'],
+  abbreviated: ['জানু', 'ফেব্রু', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্ট', 'অক্টো', 'নভে', 'ডিসে'],
+  wide: ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর']
+};
+var dayValues = {
+  narrow: ['র', 'সো', 'ম', 'বু', 'বৃ', 'শু', 'শ'],
+  short: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'],
+  abbreviated: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'],
+  wide: ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার ', 'শুক্রবার', 'শনিবার']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'পূ',
+    pm: 'অপ',
+    midnight: 'মধ্যরাত',
+    noon: 'মধ্যাহ্ন',
+    morning: 'সকাল',
+    afternoon: 'বিকাল',
+    evening: 'সন্ধ্যা',
+    night: 'রাত'
+  },
+  abbreviated: {
+    am: 'পূর্বাহ্ন',
+    pm: 'অপরাহ্ন',
+    midnight: 'মধ্যরাত',
+    noon: 'মধ্যাহ্ন',
+    morning: 'সকাল',
+    afternoon: 'বিকাল',
+    evening: 'সন্ধ্যা',
+    night: 'রাত'
+  },
+  wide: {
+    am: 'পূর্বাহ্ন',
+    pm: 'অপরাহ্ন',
+    midnight: 'মধ্যরাত',
+    noon: 'মধ্যাহ্ন',
+    morning: 'সকাল',
+    afternoon: 'বিকাল',
+    evening: 'সন্ধ্যা',
+    night: 'রাত'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'পূ',
+    pm: 'অপ',
+    midnight: 'মধ্যরাত',
+    noon: 'মধ্যাহ্ন',
+    morning: 'সকাল',
+    afternoon: 'বিকাল',
+    evening: 'সন্ধ্যা',
+    night: 'রাত'
+  },
+  abbreviated: {
+    am: 'পূর্বাহ্ন',
+    pm: 'অপরাহ্ন',
+    midnight: 'মধ্যরাত',
+    noon: 'মধ্যাহ্ন',
+    morning: 'সকাল',
+    afternoon: 'বিকাল',
+    evening: 'সন্ধ্যা',
+    night: 'রাত'
+  },
+  wide: {
+    am: 'পূর্বাহ্ন',
+    pm: 'অপরাহ্ন',
+    midnight: 'মধ্যরাত',
+    noon: 'মধ্যাহ্ন',
+    morning: 'সকাল',
+    afternoon: 'বিকাল',
+    evening: 'সন্ধ্যা',
+    night: 'রাত'
+  }
+};
+
+function dateOrdinalNumber(number, localeNumber) {
+  if (number > 18 && number <= 31) {
+    return localeNumber + 'শে';
+  } else {
+    switch (number) {
+      case 1:
+        return localeNumber + 'লা';
+
+      case 2:
+      case 3:
+        return localeNumber + 'রা';
+
+      case 4:
+        return localeNumber + 'ঠা';
+
+      default:
+        return localeNumber + 'ই';
+    }
+  }
+}
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var number = localize.localeToNumber(dirtyNumber);
+  var localeNumber = localize.numberToLocale(number);
+  var unit = dirtyOptions.unit;
+
+  if (unit === 'date') {
+    return dateOrdinalNumber(number, localeNumber);
+  }
+
+  if (number > 10 || number === 0) return localeNumber + 'তম';
+  var rem10 = number % 10;
+
+  switch (rem10) {
+    case 2:
+    case 3:
+      return localeNumber + 'য়';
+
+    case 4:
+      return localeNumber + 'র্থ';
+
+    case 6:
+      return localeNumber + 'ষ্ঠ';
+
+    case 1:
+    case 5:
+    case 7:
+    case 8:
+    case 9:
+    case 0:
+      return localeNumber + 'ম';
+  }
+}
+
+function localeToNumber(locale) {
+  var number = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function (match) {
+    return numberValues.number[match];
+  });
+  return Number(number);
+}
+
+function numberToLocale(number) {
+  return number.toString().replace(/\d/g, function (match) {
+    return numberValues.locale[match];
+  });
+}
+
+var localize = {
+  localeToNumber: localeToNumber,
+  numberToLocale: numberToLocale,
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/bn/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/bn/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(ম|য়|র্থ|ষ্ঠ|শে|ই|তম)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(খ্রিঃপূঃ|খ্রিঃ)/i,
+  abbreviated: /^(খ্রিঃপূর্ব|খ্রিঃ)/i,
+  wide: /^(খ্রিস্টপূর্ব|খ্রিস্টাব্দ)/i
+};
+var parseEraPatterns = {
+  narrow: [/^খ্রিঃপূঃ/i, /^খ্রিঃ/i],
+  abbreviated: [/^খ্রিঃপূর্ব/i, /^খ্রিঃ/i],
+  wide: [/^খ্রিস্টপূর্ব/i, /^খ্রিস্টাব্দ/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[১২৩৪]/i,
+  abbreviated: /^[১২৩৪]ত্রৈ/i,
+  wide: /^[১২৩৪](ম|য়|র্থ)? ত্রৈমাসিক/i
+};
+var parseQuarterPatterns = {
+  any: [/১/i, /২/i, /৩/i, /৪/i]
+};
+var matchMonthPatterns = {
+  narrow: /^(জানু|ফেব্রু|মার্চ|এপ্রিল|মে|জুন|জুলাই|আগস্ট|সেপ্ট|অক্টো|নভে|ডিসে)/i,
+  abbreviated: /^(জানু|ফেব্রু|মার্চ|এপ্রিল|মে|জুন|জুলাই|আগস্ট|সেপ্ট|অক্টো|নভে|ডিসে)/i,
+  wide: /^(জানুয়ারি|ফেব্রুয়ারি|মার্চ|এপ্রিল|মে|জুন|জুলাই|আগস্ট|সেপ্টেম্বর|অক্টোবর|নভেম্বর|ডিসেম্বর)/i
+};
+var parseMonthPatterns = {
+  any: [/^জানু/i, /^ফেব্রু/i, /^মার্চ/i, /^এপ্রিল/i, /^মে/i, /^জুন/i, /^জুলাই/i, /^আগস্ট/i, /^সেপ্ট/i, /^অক্টো/i, /^নভে/i, /^ডিসে/i]
+};
+var matchDayPatterns = {
+  narrow: /^(র|সো|ম|বু|বৃ|শু|শ)+/i,
+  short: /^(রবি|সোম|মঙ্গল|বুধ|বৃহ|শুক্র|শনি)+/i,
+  abbreviated: /^(রবি|সোম|মঙ্গল|বুধ|বৃহ|শুক্র|শনি)+/i,
+  wide: /^(রবিবার|সোমবার|মঙ্গলবার|বুধবার|বৃহস্পতিবার |শুক্রবার|শনিবার)+/i
+};
+var parseDayPatterns = {
+  narrow: [/^র/i, /^সো/i, /^ম/i, /^বু/i, /^বৃ/i, /^শু/i, /^শ/i],
+  short: [/^রবি/i, /^সোম/i, /^মঙ্গল/i, /^বুধ/i, /^বৃহ/i, /^শুক্র/i, /^শনি/i],
+  abbreviated: [/^রবি/i, /^সোম/i, /^মঙ্গল/i, /^বুধ/i, /^বৃহ/i, /^শুক্র/i, /^শনি/i],
+  wide: [/^রবিবার/i, /^সোমবার/i, /^মঙ্গলবার/i, /^বুধবার/i, /^বৃহস্পতিবার /i, /^শুক্রবার/i, /^শনিবার/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(পূ|অপ|মধ্যরাত|মধ্যাহ্ন|সকাল|বিকাল|সন্ধ্যা|রাত)/i,
+  abbreviated: /^(পূর্বাহ্ন|অপরাহ্ন|মধ্যরাত|মধ্যাহ্ন|সকাল|বিকাল|সন্ধ্যা|রাত)/i,
+  wide: /^(পূর্বাহ্ন|অপরাহ্ন|মধ্যরাত|মধ্যাহ্ন|সকাল|বিকাল|সন্ধ্যা|রাত)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^পূ/i,
+    pm: /^অপ/i,
+    midnight: /^মধ্যরাত/i,
+    noon: /^মধ্যাহ্ন/i,
+    morning: /সকাল/i,
+    afternoon: /বিকাল/i,
+    evening: /সন্ধ্যা/i,
+    night: /রাত/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/bn/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/bn/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/bn/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/bn/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/bn/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/bn/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/bn/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Bengali locale.
+ * @language Bengali
+ * @iso-639-2 ben
+ * @author Touhidur Rahman [@touhidrahman]{@link https://github.com/touhidrahman}
+ * @author Farhad Yasir [@nutboltu]{@link https://github.com/nutboltu}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cs/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cs/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: {
+      regular: 'méně než vteřina',
+      past: 'před méně než vteřinou',
+      future: 'za méně než vteřinu'
+    },
+    few: {
+      regular: 'méně než {{count}} vteřiny',
+      past: 'před méně než {{count}} vteřinami',
+      future: 'za méně než {{count}} vteřiny'
+    },
+    many: {
+      regular: 'méně než {{count}} vteřin',
+      past: 'před méně než {{count}} vteřinami',
+      future: 'za méně než {{count}} vteřin'
+    }
+  },
+  xSeconds: {
+    one: {
+      regular: 'vteřina',
+      past: 'před vteřinou',
+      future: 'za vteřinu'
+    },
+    few: {
+      regular: '{{count}} vteřiny',
+      past: 'před {{count}} vteřinami',
+      future: 'za {{count}} vteřiny'
+    },
+    many: {
+      regular: '{{count}} vteřin',
+      past: 'před {{count}} vteřinami',
+      future: 'za {{count}} vteřin'
+    }
+  },
+  halfAMinute: {
+    other: {
+      regular: 'půl minuty',
+      past: 'před půl minutou',
+      future: 'za půl minuty'
+    }
+  },
+  lessThanXMinutes: {
+    one: {
+      regular: 'méně než minuta',
+      past: 'před méně než minutou',
+      future: 'za méně než minutu'
+    },
+    few: {
+      regular: 'méně než {{count}} minuty',
+      past: 'před méně než {{count}} minutami',
+      future: 'za méně než {{count}} minuty'
+    },
+    many: {
+      regular: 'méně než {{count}} minut',
+      past: 'před méně než {{count}} minutami',
+      future: 'za méně než {{count}} minut'
+    }
+  },
+  xMinutes: {
+    one: {
+      regular: 'minuta',
+      past: 'před minutou',
+      future: 'za minutu'
+    },
+    few: {
+      regular: '{{count}} minuty',
+      past: 'před {{count}} minutami',
+      future: 'za {{count}} minuty'
+    },
+    many: {
+      regular: '{{count}} minut',
+      past: 'před {{count}} minutami',
+      future: 'za {{count}} minut'
+    }
+  },
+  aboutXHours: {
+    one: {
+      regular: 'přibližně hodina',
+      past: 'přibližně před hodinou',
+      future: 'přibližně za hodinu'
+    },
+    few: {
+      regular: 'přibližně {{count}} hodiny',
+      past: 'přibližně před {{count}} hodinami',
+      future: 'přibližně za {{count}} hodiny'
+    },
+    many: {
+      regular: 'přibližně {{count}} hodin',
+      past: 'přibližně před {{count}} hodinami',
+      future: 'přibližně za {{count}} hodin'
+    }
+  },
+  xHours: {
+    one: {
+      regular: 'hodina',
+      past: 'před hodinou',
+      future: 'za hodinu'
+    },
+    few: {
+      regular: '{{count}} hodiny',
+      past: 'před {{count}} hodinami',
+      future: 'za {{count}} hodiny'
+    },
+    many: {
+      regular: '{{count}} hodin',
+      past: 'před {{count}} hodinami',
+      future: 'za {{count}} hodin'
+    }
+  },
+  xDays: {
+    one: {
+      regular: 'den',
+      past: 'před dnem',
+      future: 'za den'
+    },
+    few: {
+      regular: '{{count}} dni',
+      past: 'před {{count}} dny',
+      future: 'za {{count}} dny'
+    },
+    many: {
+      regular: '{{count}} dní',
+      past: 'před {{count}} dny',
+      future: 'za {{count}} dní'
+    }
+  },
+  aboutXMonths: {
+    one: {
+      regular: 'přibližně měsíc',
+      past: 'přibližně před měsícem',
+      future: 'přibližně za měsíc'
+    },
+    few: {
+      regular: 'přibližně {{count}} měsíce',
+      past: 'přibližně před {{count}} měsíci',
+      future: 'přibližně za {{count}} měsíce'
+    },
+    many: {
+      regular: 'přibližně {{count}} měsíců',
+      past: 'přibližně před {{count}} měsíci',
+      future: 'přibližně za {{count}} měsíců'
+    }
+  },
+  xMonths: {
+    one: {
+      regular: 'měsíc',
+      past: 'před měsícem',
+      future: 'za měsíc'
+    },
+    few: {
+      regular: '{{count}} měsíce',
+      past: 'před {{count}} měsíci',
+      future: 'za {{count}} měsíce'
+    },
+    many: {
+      regular: '{{count}} měsíců',
+      past: 'před {{count}} měsíci',
+      future: 'za {{count}} měsíců'
+    }
+  },
+  aboutXYears: {
+    one: {
+      regular: 'přibližně rok',
+      past: 'přibližně před rokem',
+      future: 'přibližně za rok'
+    },
+    few: {
+      regular: 'přibližně {{count}} roky',
+      past: 'přibližně před {{count}} roky',
+      future: 'přibližně za {{count}} roky'
+    },
+    many: {
+      regular: 'přibližně {{count}} roků',
+      past: 'přibližně před {{count}} roky',
+      future: 'přibližně za {{count}} roků'
+    }
+  },
+  xYears: {
+    one: {
+      regular: 'rok',
+      past: 'před rokem',
+      future: 'za rok'
+    },
+    few: {
+      regular: '{{count}} roky',
+      past: 'před {{count}} roky',
+      future: 'za {{count}} roky'
+    },
+    many: {
+      regular: '{{count}} roků',
+      past: 'před {{count}} roky',
+      future: 'za {{count}} roků'
+    }
+  },
+  overXYears: {
+    one: {
+      regular: 'více než rok',
+      past: 'před více než rokem',
+      future: 'za více než rok'
+    },
+    few: {
+      regular: 'více než {{count}} roky',
+      past: 'před více než {{count}} roky',
+      future: 'za více než {{count}} roky'
+    },
+    many: {
+      regular: 'více než {{count}} roků',
+      past: 'před více než {{count}} roky',
+      future: 'za více než {{count}} roků'
+    }
+  },
+  almostXYears: {
+    one: {
+      regular: 'skoro rok',
+      past: 'skoro před rokem',
+      future: 'skoro za rok'
+    },
+    few: {
+      regular: 'skoro {{count}} roky',
+      past: 'skoro před {{count}} roky',
+      future: 'skoro za {{count}} roky'
+    },
+    many: {
+      regular: 'skoro {{count}} roků',
+      past: 'skoro před {{count}} roky',
+      future: 'skoro za {{count}} roků'
+    }
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var scheme = formatDistanceLocale[token]; // cs pluralization
+
+  var pluralToken;
+
+  if (typeof scheme.other === 'object') {
+    pluralToken = 'other';
+  } else if (count === 1) {
+    pluralToken = 'one';
+  } else if (count > 1 && count < 5 || count === 0) {
+    pluralToken = 'few';
+  } else {
+    pluralToken = 'many';
+  } // times
+
+
+  var suffixExist = options.addSuffix === true;
+  var comparison = options.comparison;
+  var timeToken;
+
+  if (suffixExist && comparison === -1) {
+    timeToken = 'past';
+  } else if (suffixExist && comparison === 1) {
+    timeToken = 'future';
+  } else {
+    timeToken = 'regular';
+  }
+
+  return scheme[pluralToken][timeToken].replace('{{count}}', count);
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cs/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cs/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, d. MMMM yyyy',
+  long: 'd. MMMM yyyy',
+  medium: 'd.M.yyyy',
+  short: 'd.M.yy'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'v' {{time}}",
+  long: "{{date}} 'v' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cs/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cs/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var accusativeWeekdays = ['neděli', 'pondělí', 'úterý', 'středu', 'čtvrtek', 'pátek', 'sobotu'];
+var formatRelativeLocale = {
+  lastWeek: "'poslední' eeee 've' p",
+  yesterday: "'včera v' p",
+  today: "'dnes v' p",
+  tomorrow: "'zítra v' p",
+  nextWeek: function (date, _baseDate, _options) {
+    var day = date.getUTCDay();
+    return "'v " + accusativeWeekdays[day] + " o' p";
+  },
+  other: 'P'
+};
+function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cs/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cs/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['př. n. l.', 'n. l.'],
+  abbreviated: ['př. n. l.', 'n. l.'],
+  wide: ['před naším letopočtem', 'našeho letopočtu']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí'],
+  wide: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí']
+};
+var monthValues = {
+  narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'],
+  abbreviated: ['led', 'úno', 'bře', 'dub', 'kvě', 'čvn', 'čvc', 'srp', 'zář', 'říj', 'lis', 'pro'],
+  wide: ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec']
+};
+var formattingMonthValues = {
+  narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'],
+  abbreviated: ['led', 'úno', 'bře', 'dub', 'kvě', 'čvn', 'čvc', 'srp', 'zář', 'říj', 'lis', 'pro'],
+  wide: ['ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince']
+};
+var dayValues = {
+  narrow: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
+  short: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
+  abbreviated: ['ned', 'pon', 'úte', 'stř', 'čtv', 'pát', 'sob'],
+  wide: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'odp.',
+    pm: 'dop.',
+    midnight: 'půlnoc',
+    noon: 'poledne',
+    morning: 'ráno',
+    afternoon: 'odpoledne',
+    evening: 'večer',
+    night: 'noc'
+  },
+  abbreviated: {
+    am: 'odp.',
+    pm: 'dop.',
+    midnight: 'půlnoc',
+    noon: 'poledne',
+    morning: 'ráno',
+    afternoon: 'odpoledne',
+    evening: 'večer',
+    night: 'noc'
+  },
+  wide: {
+    am: 'odpoledne',
+    pm: 'dopoledne',
+    midnight: 'půlnoc',
+    noon: 'poledne',
+    morning: 'ráno',
+    afternoon: 'odpoledne',
+    evening: 'večer',
+    night: 'noc'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'odp.',
+    pm: 'dop.',
+    midnight: 'půlnoc',
+    noon: 'poledne',
+    morning: 'ráno',
+    afternoon: 'odpoledne',
+    evening: 'večer',
+    night: 'noc'
+  },
+  abbreviated: {
+    am: 'odp.',
+    pm: 'dop.',
+    midnight: 'půlnoc',
+    noon: 'poledne',
+    morning: 'ráno',
+    afternoon: 'odpoledne',
+    evening: 'večer',
+    night: 'noc'
+  },
+  wide: {
+    am: 'odpoledne',
+    pm: 'dopoledne',
+    midnight: 'půlnoc',
+    noon: 'poledne',
+    morning: 'ráno',
+    afternoon: 'odpoledne',
+    evening: 'večer',
+    night: 'noc'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cs/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cs/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)\.?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(p[řr]ed Kr\.|pred n\. l\.|po Kr\.|n\. l\.)/i,
+  abbreviated: /^(pe[řr]ed Kr\.|pe[řr]ed n\. l\.|po Kr\.|n\. l\.)/i,
+  wide: /^(p[řr]ed Kristem|pred na[šs][íi]m letopo[čc]tem|po Kristu|na[šs]eho letopo[čc]tu)/i
+};
+var parseEraPatterns = {
+  any: [/^p[řr]/i, /^(po|n)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234]\. [čc]tvrtlet[íi]/i,
+  wide: /^[1234]\. [čc]tvrtlet[íi]/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[lúubdkčcszřrlp]/i,
+  abbreviated: /^(led|[úu]no|b[řr]e|dub|kv[ěe]|[čc]vn|[čc]vc|srp|z[áa][řr]|[řr][íi]j|lis|pro)/i,
+  wide: /^(leden|ledna|[úu]nora?|b[řr]ezen|b[řr]ezna|duben|dubna|kv[ěe]ten|kv[ěe]tna|[čc]erven|[čc]ervna|[čc]ervenec|[čc]ervence|srpen|srpna|z[áa][řr][íi]|[řr][íi]jen|[řr][íi]jna|listopada?|prosinec|prosince)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^l/i, /^[úu]/i, /^b/i, /^d/i, /^k/i, /^[čc]/i, /^[čc]/i, /^s/i, /^z/i, /^[řr]/i, /^l/i, /^p/i],
+  any: [/^led/i, /^[úu]n/i, /^brez/i, /^dub/i, /^kvet/i, /^[čc]erv/i, /^[čc]erven/i, /^srp/i, /^z[áa]r/i, /^[řr][íi]j/i, /^list/i, /^pros/i]
+};
+var matchDayPatterns = {
+  narrow: /^[npuúsčps]/i,
+  short: /^(ne|po|[úu]t|st|[čc]t|p[áa]|so)/i,
+  abbreviated: /^(ne|po|[úu]t|st|[čc]t|p[áa]|so)/i,
+  wide: /^(ned[ěe]le|pond[ěe]l[íi]|[úu]ter[ýy]|st[řr]eda|[čc]tvrtek|p[áa]tek|sobota)/i
+};
+var parseDayPatterns = {
+  narrow: [/^n/i, /^p/i, /^[úu]/i, /^s/i, /^[čc]/i, /^p/i, /^s/i],
+  any: [/^ne/i, /^po/i, /^ut/i, /^st/i, /^[čc]t/i, /^p/i, /^so/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^((dopoledne|odpoledne)|půlnoc|poledne|(r[áa]no|odpoledne|ve[čc]er|(v )?noci))/i,
+  any: /^((dopoledne|odpoledne)|půlnoc|poledne|(r[áa]no|odpoledne|ve[čc]er|(v )?noci))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^dopoledne/i,
+    pm: /^odpoledne/i,
+    midnight: /^p[ůu]lnoc/i,
+    noon: /^poledne/i,
+    morning: /r[áa]no/i,
+    afternoon: /odpoledne/i,
+    evening: /ve[čc]er/i,
+    night: /noc/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cs/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cs/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/cs/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/cs/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/cs/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/cs/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/cs/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Czech locale.
+ * @language Czech
+ * @iso-639-2 ces
+ * @author David Rus [@davidrus]{@link https://github.com/davidrus}
+ * @author Pavel Hrách [@SilenY]{@link https://github.com/SilenY}
+ * @author Jozef Bíroš [@JozefBiros]{@link https://github.com/JozefBiros}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cy/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cy/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'llai na eiliad',
+    other: 'llai na {{count}} eiliad'
+  },
+  xSeconds: {
+    one: '1 eiliad',
+    other: '{{count}} eiliad'
+  },
+  halfAMinute: 'hanner munud',
+  lessThanXMinutes: {
+    one: 'llai na munud',
+    two: 'llai na 2 funud',
+    other: 'llai na {{count}} munud'
+  },
+  xMinutes: {
+    one: '1 funud',
+    two: '2 funud',
+    other: '{{count}} munud'
+  },
+  aboutXHours: {
+    one: 'tua 1 awr',
+    other: 'tua {{count}} awr'
+  },
+  xHours: {
+    one: '1 awr',
+    other: '{{count}} awr'
+  },
+  xDays: {
+    one: '1 diwrnod',
+    other: '{{count}} diwrnod'
+  },
+  aboutXMonths: {
+    one: 'tua 1 mis',
+    two: 'tua 2 fis',
+    other: 'tua {{count}} mis'
+  },
+  xMonths: {
+    one: '1 mis',
+    two: '2 fis',
+    other: '{{count}} mis'
+  },
+  aboutXYears: {
+    one: 'tua 1 flwyddyn',
+    two: 'tua 2 flynedd',
+    other: 'tua {{count}} mlynedd'
+  },
+  xYears: {
+    one: '1 flwyddyn',
+    two: '2 flynedd',
+    other: '{{count}} mlynedd'
+  },
+  overXYears: {
+    one: 'dros 1 flwyddyn',
+    two: 'dros 2 flynedd',
+    other: 'dros {{count}} mlynedd'
+  },
+  almostXYears: {
+    one: 'bron 1 flwyddyn',
+    two: 'bron 2 flynedd',
+    other: 'bron {{count}} mlynedd'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else if (count === 2 && !!formatDistanceLocale[token].two) {
+    result = formatDistanceLocale[token].two;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'mewn ' + result;
+    } else {
+      return result + ' yn ôl';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cy/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cy/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, d MMMM yyyy',
+  long: 'd MMMM yyyy',
+  medium: 'd MMM yyyy',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'am' {{time}}",
+  long: "{{date}} 'am' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cy/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cy/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee 'diwethaf am' p",
+  yesterday: "'ddoe am' p",
+  today: "'heddiw am' p",
+  tomorrow: "'yfory am' p",
+  nextWeek: "eeee 'am' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cy/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cy/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['C', 'O'],
+  abbreviated: ['CC', 'OC'],
+  wide: ['Cyn Crist', 'Ar ôl Crist']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Ch1', 'Ch2', 'Ch3', 'Ch4'],
+  wide: ['Chwarter 1af', '2ail chwarter', '3ydd chwarter', '4ydd chwarter'] // Note: in English, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+};
+var monthValues = {
+  narrow: ['I', 'Ch', 'Ma', 'E', 'Mi', 'Me', 'G', 'A', 'Md', 'H', 'T', 'Rh'],
+  abbreviated: ['Ion', 'Chwe', 'Maw', 'Ebr', 'Mai', 'Meh', 'Gor', 'Aws', 'Med', 'Hyd', 'Tach', 'Rhag'],
+  wide: ['Ionawr', 'Chwefror', 'Mawrth', 'Ebrill', 'Mai', 'Mehefin', 'Gorffennaf', 'Awst', 'Medi', 'Hydref', 'Tachwedd', 'Rhagfyr']
+};
+var dayValues = {
+  narrow: ['S', 'Ll', 'M', 'M', 'I', 'G', 'S'],
+  short: ['Su', 'Ll', 'Ma', 'Me', 'Ia', 'Gw', 'Sa'],
+  abbreviated: ['Sul', 'Llun', 'Maw', 'Mer', 'Iau', 'Gwe', 'Sad'],
+  wide: ['dydd Sul', 'dydd Llun', 'dydd Mawrth', 'dydd Mercher', 'dydd Iau', 'dydd Gwener', 'dydd Sadwrn']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'b',
+    pm: 'h',
+    midnight: 'hn',
+    noon: 'hd',
+    morning: 'bore',
+    afternoon: 'prynhawn',
+    evening: "gyda'r nos",
+    night: 'nos'
+  },
+  abbreviated: {
+    am: 'yb',
+    pm: 'yh',
+    midnight: 'hanner nos',
+    noon: 'hanner dydd',
+    morning: 'bore',
+    afternoon: 'prynhawn',
+    evening: "gyda'r nos",
+    night: 'nos'
+  },
+  wide: {
+    am: 'y.b.',
+    pm: 'y.h.',
+    midnight: 'hanner nos',
+    noon: 'hanner dydd',
+    morning: 'bore',
+    afternoon: 'prynhawn',
+    evening: "gyda'r nos",
+    night: 'nos'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'b',
+    pm: 'h',
+    midnight: 'hn',
+    noon: 'hd',
+    morning: 'yn y bore',
+    afternoon: 'yn y prynhawn',
+    evening: "gyda'r nos",
+    night: 'yn y nos'
+  },
+  abbreviated: {
+    am: 'yb',
+    pm: 'yh',
+    midnight: 'hanner nos',
+    noon: 'hanner dydd',
+    morning: 'yn y bore',
+    afternoon: 'yn y prynhawn',
+    evening: "gyda'r nos",
+    night: 'yn y nos'
+  },
+  wide: {
+    am: 'y.b.',
+    pm: 'y.h.',
+    midnight: 'hanner nos',
+    noon: 'hanner dydd',
+    morning: 'yn y bore',
+    afternoon: 'yn y prynhawn',
+    evening: "gyda'r nos",
+    night: 'yn y nos'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  var number = Number(dirtyNumber);
+
+  if (number < 20) {
+    switch (number) {
+      case 0:
+        return number + 'fed';
+
+      case 1:
+        return number + 'af';
+
+      case 2:
+        return number + 'ail';
+
+      case 3:
+      case 4:
+        return number + 'ydd';
+
+      case 5:
+      case 6:
+        return number + 'ed';
+
+      case 7:
+      case 8:
+      case 9:
+      case 10:
+      case 12:
+      case 15:
+      case 18:
+        return number + 'fed';
+
+      case 11:
+      case 13:
+      case 14:
+      case 16:
+      case 17:
+      case 19:
+        return number + 'eg';
+    }
+  } else if (number >= 50 && number <= 60 || number === 80 || number >= 100) {
+    return number + 'fed';
+  }
+
+  return number + 'ain';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cy/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cy/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(af|ail|ydd|ed|fed|eg|ain)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(c|o)/i,
+  abbreviated: /^(c\.?\s?c\.?|o\.?\s?c\.?)/i,
+  wide: /^(cyn christ|ar ôl crist|ar ol crist)/i
+};
+var parseEraPatterns = {
+  wide: [/^c/i, /^(ar ôl crist|ar ol crist)/i],
+  any: [/^c/i, /^o/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^ch[1234]/i,
+  wide: /^(chwarter 1af)|([234](ail|ydd)? chwarter)/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^(i|ch|m|e|g|a|h|t|rh)/i,
+  abbreviated: /^(ion|chwe|maw|ebr|mai|meh|gor|aws|med|hyd|tach|rhag)/i,
+  wide: /^(ionawr|chwefror|mawrth|ebrill|mai|mehefin|gorffennaf|awst|medi|hydref|tachwedd|rhagfyr)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^i/i, /^ch/i, /^m/i, /^e/i, /^m/i, /^m/i, /^g/i, /^a/i, /^m/i, /^h/i, /^t/i, /^rh/i],
+  any: [/^io/i, /^ch/i, /^maw/i, /^e/i, /^mai/i, /^meh/i, /^g/i, /^a/i, /^med/i, /^h/i, /^t/i, /^rh/i]
+};
+var matchDayPatterns = {
+  narrow: /^(s|ll|m|i|g)/i,
+  short: /^(su|ll|ma|me|ia|gw|sa)/i,
+  abbreviated: /^(sul|llun|maw|mer|iau|gwe|sad)/i,
+  wide: /^dydd (sul|llun|mawrth|mercher|iau|gwener|sadwrn)/i
+};
+var parseDayPatterns = {
+  narrow: [/^s/i, /^ll/i, /^m/i, /^m/i, /^i/i, /^g/i, /^s/i],
+  wide: [/^dydd su/i, /^dydd ll/i, /^dydd ma/i, /^dydd me/i, /^dydd i/i, /^dydd g/i, /^dydd sa/i],
+  any: [/^su/i, /^ll/i, /^ma/i, /^me/i, /^i/i, /^g/i, /^sa/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(b|h|hn|hd|(yn y|y|yr|gyda'r) (bore|prynhawn|nos|hwyr))/i,
+  any: /^(y\.?\s?[bh]\.?|hanner nos|hanner dydd|(yn y|y|yr|gyda'r) (bore|prynhawn|nos|hwyr))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^b|(y\.?\s?b\.?)/i,
+    pm: /^h|(y\.?\s?h\.?)|(yr hwyr)/i,
+    midnight: /^hn|hanner nos/i,
+    noon: /^hd|hanner dydd/i,
+    morning: /bore/i,
+    afternoon: /prynhawn/i,
+    evening: /^gyda'r nos$/i,
+    night: /blah/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/cy/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/cy/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/cy/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/cy/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/cy/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/cy/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/cy/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Welsh locale.
+ * @language Welsh
+ * @iso-639-2 cym
+ * @author Elwyn Malethan [@elmomalmo]{@link https://github.com/elmomalmo}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/da/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/da/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'mindre end ét sekund',
+    other: 'mindre end {{count}} sekunder'
+  },
+  xSeconds: {
+    one: '1 sekund',
+    other: '{{count}} sekunder'
+  },
+  halfAMinute: 'ét halvt minut',
+  lessThanXMinutes: {
+    one: 'mindre end ét minut',
+    other: 'mindre end {{count}} minutter'
+  },
+  xMinutes: {
+    one: '1 minut',
+    other: '{{count}} minutter'
+  },
+  aboutXHours: {
+    one: 'cirka 1 time',
+    other: 'cirka {{count}} timer'
+  },
+  xHours: {
+    one: '1 time',
+    other: '{{count}} timer'
+  },
+  xDays: {
+    one: '1 dag',
+    other: '{{count}} dage'
+  },
+  aboutXMonths: {
+    one: 'cirka 1 måned',
+    other: 'cirka {{count}} måneder'
+  },
+  xMonths: {
+    one: '1 måned',
+    other: '{{count}} måneder'
+  },
+  aboutXYears: {
+    one: 'cirka 1 år',
+    other: 'cirka {{count}} år'
+  },
+  xYears: {
+    one: '1 år',
+    other: '{{count}} år'
+  },
+  overXYears: {
+    one: 'over 1 år',
+    other: 'over {{count}} år'
+  },
+  almostXYears: {
+    one: 'næsten 1 år',
+    other: 'næsten {{count}} år'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'om ' + result;
+    } else {
+      return result + ' siden';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/da/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/da/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "EEEE 'den' d. MMMM y",
+  long: 'd. MMMM y',
+  medium: 'd. MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'kl'. {{time}}",
+  long: "{{date}} 'kl'. {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/da/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/da/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'sidste' eeee 'kl.' p",
+  yesterday: "'i går kl.' p",
+  today: "'i dag kl.' p",
+  tomorrow: "'i morgen kl.' p",
+  nextWeek: "'på' eeee 'kl.' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/da/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/da/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['fvt', 'vt'],
+  abbreviated: ['f.v.t.', 'v.t.'],
+  wide: ['før vesterlandsk tidsregning', 'vesterlandsk tidsregning']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1. kvt.', '2. kvt.', '3. kvt.', '4. kvt.'],
+  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+  wide: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'] // Note that 'Days - abbreviated - Formatting' has periods at the end.
+  // https://www.unicode.org/cldr/charts/32/summary/da.html#1760
+  // This makes grammatical sense in danish, as most abbreviations have periods.
+
+};
+var dayValues = {
+  narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'],
+  short: ['sø', 'ma', 'ti', 'on', 'to', 'fr', 'lø'],
+  abbreviated: ['søn.', 'man.', 'tir.', 'ons.', 'tor.', 'fre.', 'lør.'],
+  wide: ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'midnat',
+    noon: 'middag',
+    morning: 'morgen',
+    afternoon: 'eftermiddag',
+    evening: 'aften',
+    night: 'nat'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'midnat',
+    noon: 'middag',
+    morning: 'morgen',
+    afternoon: 'eftermiddag',
+    evening: 'aften',
+    night: 'nat'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnat',
+    noon: 'middag',
+    morning: 'morgen',
+    afternoon: 'eftermiddag',
+    evening: 'aften',
+    night: 'nat'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'midnat',
+    noon: 'middag',
+    morning: 'om morgenen',
+    afternoon: 'om eftermiddagen',
+    evening: 'om aftenen',
+    night: 'om natten'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'midnat',
+    noon: 'middag',
+    morning: 'om morgenen',
+    afternoon: 'om eftermiddagen',
+    evening: 'om aftenen',
+    night: 'om natten'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnat',
+    noon: 'middag',
+    morning: 'om morgenen',
+    afternoon: 'om eftermiddagen',
+    evening: 'om aftenen',
+    night: 'om natten'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/da/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/da/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(\.)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(fKr|fvt|eKr|vt)/i,
+  abbreviated: /^(f\.Kr\.?|f\.v\.t\.?|e\.Kr\.?|v\.t\.)/i,
+  wide: /^(f.Kr.|før vesterlandsk tidsregning|e.Kr.|vesterlandsk tidsregning)/i
+};
+var parseEraPatterns = {
+  any: [/^f/i, /^(v|e)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234]. kvt\./i,
+  wide: /^[1234]\.? kvartal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|maj|jun|jul|aug|sep|okt|nov|dec)/i,
+  wide: /^(januar|februar|marts|april|maj|juni|juli|august|september|oktober|november|december)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^maj/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[smtofl]/i,
+  short: /^(søn.|man.|tir.|ons.|tor.|fre.|lør.)/i,
+  abbreviated: /^(søn|man|tir|ons|tor|fre|lør)/i,
+  wide: /^(søndag|mandag|tirsdag|onsdag|torsdag|fredag|lørdag)/i
+};
+var parseDayPatterns = {
+  narrow: [/^s/i, /^m/i, /^t/i, /^o/i, /^t/i, /^f/i, /^l/i],
+  any: [/^s/i, /^m/i, /^ti/i, /^o/i, /^to/i, /^f/i, /^l/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|midnat|middag|(om) (morgenen|eftermiddagen|aftenen|natten))/i,
+  any: /^([ap]\.?\s?m\.?|midnat|middag|(om) (morgenen|eftermiddagen|aftenen|natten))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /midnat/i,
+    noon: /middag/i,
+    morning: /morgen/i,
+    afternoon: /eftermiddag/i,
+    evening: /aften/i,
+    night: /nat/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/da/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/da/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/da/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/da/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/da/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/da/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/da/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Danish locale.
+ * @language Danish
+ * @iso-639-2 dan
+ * @author Mathias Wøbbe [@MathiasKandelborg]{@link https://github.com/MathiasKandelborg}
+ * @author Anders B. Hansen [@Andersbiha]{@link https://github.com/Andersbiha}
+ * @author [@kgram]{@link https://github.com/kgram}
+ * @author [@stefanbugge]{@link https://github.com/stefanbugge}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/de/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/de/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    standalone: {
+      one: 'weniger als eine Sekunde',
+      other: 'weniger als {{count}} Sekunden'
+    },
+    withPreposition: {
+      one: 'weniger als einer Sekunde',
+      other: 'weniger als {{count}} Sekunden'
+    }
+  },
+  xSeconds: {
+    standalone: {
+      one: 'eine Sekunde',
+      other: '{{count}} Sekunden'
+    },
+    withPreposition: {
+      one: 'einer Sekunde',
+      other: '{{count}} Sekunden'
+    }
+  },
+  halfAMinute: {
+    standalone: 'eine halbe Minute',
+    withPreposition: 'einer halben Minute'
+  },
+  lessThanXMinutes: {
+    standalone: {
+      one: 'weniger als eine Minute',
+      other: 'weniger als {{count}} Minuten'
+    },
+    withPreposition: {
+      one: 'weniger als einer Minute',
+      other: 'weniger als {{count}} Minuten'
+    }
+  },
+  xMinutes: {
+    standalone: {
+      one: 'eine Minute',
+      other: '{{count}} Minuten'
+    },
+    withPreposition: {
+      one: 'einer Minute',
+      other: '{{count}} Minuten'
+    }
+  },
+  aboutXHours: {
+    standalone: {
+      one: 'etwa eine Stunde',
+      other: 'etwa {{count}} Stunden'
+    },
+    withPreposition: {
+      one: 'etwa einer Stunde',
+      other: 'etwa {{count}} Stunden'
+    }
+  },
+  xHours: {
+    standalone: {
+      one: 'eine Stunde',
+      other: '{{count}} Stunden'
+    },
+    withPreposition: {
+      one: 'einer Stunde',
+      other: '{{count}} Stunden'
+    }
+  },
+  xDays: {
+    standalone: {
+      one: 'ein Tag',
+      other: '{{count}} Tage'
+    },
+    withPreposition: {
+      one: 'einem Tag',
+      other: '{{count}} Tagen'
+    }
+  },
+  aboutXMonths: {
+    standalone: {
+      one: 'etwa ein Monat',
+      other: 'etwa {{count}} Monate'
+    },
+    withPreposition: {
+      one: 'etwa einem Monat',
+      other: 'etwa {{count}} Monaten'
+    }
+  },
+  xMonths: {
+    standalone: {
+      one: 'ein Monat',
+      other: '{{count}} Monate'
+    },
+    withPreposition: {
+      one: 'einem Monat',
+      other: '{{count}} Monaten'
+    }
+  },
+  aboutXYears: {
+    standalone: {
+      one: 'etwa ein Jahr',
+      other: 'etwa {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'etwa einem Jahr',
+      other: 'etwa {{count}} Jahren'
+    }
+  },
+  xYears: {
+    standalone: {
+      one: 'ein Jahr',
+      other: '{{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'einem Jahr',
+      other: '{{count}} Jahren'
+    }
+  },
+  overXYears: {
+    standalone: {
+      one: 'mehr als ein Jahr',
+      other: 'mehr als {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'mehr als einem Jahr',
+      other: 'mehr als {{count}} Jahren'
+    }
+  },
+  almostXYears: {
+    standalone: {
+      one: 'fast ein Jahr',
+      other: 'fast {{count}} Jahre'
+    },
+    withPreposition: {
+      one: 'fast einem Jahr',
+      other: 'fast {{count}} Jahren'
+    }
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var usageGroup = options.addSuffix ? formatDistanceLocale[token].withPreposition : formatDistanceLocale[token].standalone;
+  var result;
+
+  if (typeof usageGroup === 'string') {
+    result = usageGroup;
+  } else if (count === 1) {
+    result = usageGroup.one;
+  } else {
+    result = usageGroup.other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'in ' + result;
+    } else {
+      return 'vor ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/de/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/de/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+ // DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
+
+var dateFormats = {
+  full: 'EEEE, do MMMM y',
+  // Montag, 7. Januar 2018
+  long: 'do MMMM y',
+  // 7. Januar 2018
+  medium: 'do MMM. y',
+  // 7. Jan. 2018
+  short: 'dd.MM.y' // 07.01.2018
+
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'um' {{time}}",
+  long: "{{date}} 'um' {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/de/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/de/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'letzten' eeee 'um' p",
+  yesterday: "'gestern um' p",
+  today: "'heute um' p",
+  tomorrow: "'morgen um' p",
+  nextWeek: "eeee 'um' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/de/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/de/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['v.Chr.', 'n.Chr.'],
+  abbreviated: ['v.Chr.', 'n.Chr.'],
+  wide: ['vor Christus', 'nach Christus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal'] // Note: in German, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+  wide: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+};
+var dayValues = {
+  narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
+  short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+  abbreviated: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
+  wide: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'] // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
+
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'vm.',
+    pm: 'nm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachm.',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  abbreviated: {
+    am: 'vorm.',
+    pm: 'nachm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  wide: {
+    am: 'vormittags',
+    pm: 'nachmittags',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'vm.',
+    pm: 'nm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachm.',
+    evening: 'abends',
+    night: 'nachts'
+  },
+  abbreviated: {
+    am: 'vorm.',
+    pm: 'nachm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachmittags',
+    evening: 'abends',
+    night: 'nachts'
+  },
+  wide: {
+    am: 'vormittags',
+    pm: 'nachmittags',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'morgens',
+    afternoon: 'nachmittags',
+    evening: 'abends',
+    night: 'nachts'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/de/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/de/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(\.)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
+  abbreviated: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
+  wide: /^(vor Christus|vor unserer Zeitrechnung|nach Christus|unserer Zeitrechnung)/i
+};
+var parseEraPatterns = {
+  any: [/^v/i, /^n/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](\.)? Quartal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mär|apr|mai|jun|jul|aug|sep|okt|nov|dez)/i,
+  wide: /^(januar|februar|märz|april|mai|juni|juli|august|september|oktober|november|dezember)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mär/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[smdmf]/i,
+  short: /^(so|mo|di|mi|do|fr|sa)/i,
+  abbreviated: /^(son?|mon?|die?|mit?|don?|fre?|sam?)\.?/i,
+  wide: /^(sonntag|montag|dienstag|mittwoch|donnerstag|freitag|samstag)/i
+};
+var parseDayPatterns = {
+  any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(vm\.?|nm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  abbreviated: /^(vorm\.?|nachm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  wide: /^(vormittags|nachmittags|Mitternacht|Mittag|morgens|nachmittags|abends|nachts)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^v/i,
+    pm: /^n/i,
+    midnight: /^Mitte/i,
+    noon: /^Mitta/i,
+    morning: /morgens/i,
+    afternoon: /nachmittags/i,
+    // will never be matched. Afternoon is matched by `pm`
+    evening: /abends/i,
+    night: /nachts/i // will never be matched. Night is matched by `pm`
+
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/de/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/de/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/de/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/de/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/de/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/de/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/de/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary German locale.
+ * @language German
+ * @iso-639-2 deu
+ * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
+ * @author Asia [@asia-t]{@link https://github.com/asia-t}
+ * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
+ * @author RomanErnst [@pex]{@link https://github.com/pex}
+ * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/el/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/el/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'λιγότερο από ένα δευτερόλεπτο',
+    other: 'λιγότερο από {{count}} δευτερόλεπτα'
+  },
+  xSeconds: {
+    one: '1 δευτερόλεπτο',
+    other: '{{count}} δευτερόλεπτα'
+  },
+  halfAMinute: 'μισό λεπτό',
+  lessThanXMinutes: {
+    one: 'λιγότερο από ένα λεπτό',
+    other: 'λιγότερο από {{count}} λεπτά'
+  },
+  xMinutes: {
+    one: '1 λεπτό',
+    other: '{{count}} λεπτά'
+  },
+  aboutXHours: {
+    one: 'περίπου 1 ώρα',
+    other: 'περίπου {{count}} ώρες'
+  },
+  xHours: {
+    one: '1 ώρα',
+    other: '{{count}} ώρες'
+  },
+  xDays: {
+    one: '1 ημέρα',
+    other: '{{count}} ημέρες'
+  },
+  aboutXMonths: {
+    one: 'περίπου 1 μήνας',
+    other: 'περίπου {{count}} μήνες'
+  },
+  xMonths: {
+    one: '1 μήνας',
+    other: '{{count}} μήνες'
+  },
+  aboutXYears: {
+    one: 'περίπου 1 χρόνο',
+    other: 'περίπου {{count}} χρόνια'
+  },
+  xYears: {
+    one: '1 χρόνο',
+    other: '{{count}} χρόνια'
+  },
+  overXYears: {
+    one: 'πάνω από 1 χρόνο',
+    other: 'πάνω από {{count}} χρόνια'
+  },
+  almostXYears: {
+    one: 'περίπου 1 χρόνο',
+    other: 'περίπου {{count}} χρόνια'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'σε ' + result;
+    } else {
+      return result + ' πριν';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/el/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/el/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'd/M/yy'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: '{{date}} - {{time}}',
+  long: '{{date}} - {{time}}',
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/el/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/el/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'την προηγούμενη' eeee 'στις' p",
+  yesterday: "'χθες στις' p",
+  today: "'σήμερα στις' p",
+  tomorrow: "'αύριο στις' p",
+  nextWeek: "eeee 'στις' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/el/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/el/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['πΧ', 'μΧ'],
+  abbreviated: ['π.Χ.', 'μ.Χ.'],
+  wide: ['προ Χριστού', 'μετά Χριστόν']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Τ1', 'Τ2', 'Τ3', 'Τ4'],
+  wide: ['1ο τρίμηνο', '2ο τρίμηνο', '3ο τρίμηνο', '4ο τρίμηνο']
+};
+var monthValues = {
+  narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
+  abbreviated: ['Ιαν', 'Φεβ', 'Μάρ', 'Απρ', 'Μάι', 'Ιούν', 'Ιούλ', 'Αύγ', 'Σεπ', 'Οκτ', 'Νοέ', 'Δεκ'],
+  wide: ['Ιανουάριος', 'Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάιος', 'Ιούνιος', 'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος']
+};
+var formattingMonthValues = {
+  narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
+  abbreviated: ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαΐ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'],
+  wide: ['Ιανουαρίου', 'Φεβρουαρίου', 'Μαρτίου', 'Απριλίου', 'Μαΐου', 'Ιουνίου', 'Ιουλίου', 'Αυγούστου', 'Σεπτεμβρίου', 'Οκτωβρίου', 'Νοεμβρίου', 'Δεκεμβρίου']
+};
+var dayValues = {
+  narrow: ['Κ', 'Δ', 'T', 'Τ', 'Π', 'Π', 'Σ'],
+  short: ['Κυ', 'Δε', 'Τρ', 'Τε', 'Πέ', 'Πα', 'Σά'],
+  abbreviated: ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'],
+  wide: ['Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'πμ',
+    pm: 'μμ',
+    midnight: 'μεσάνυχτα',
+    noon: 'μεσημέρι',
+    morning: 'πρωί',
+    afternoon: 'απόγευμα',
+    evening: 'βράδυ',
+    night: 'νύχτα'
+  },
+  abbreviated: {
+    am: 'π.μ.',
+    pm: 'μ.μ.',
+    midnight: 'μεσάνυχτα',
+    noon: 'μεσημέρι',
+    morning: 'πρωί',
+    afternoon: 'απόγευμα',
+    evening: 'βράδυ',
+    night: 'νύχτα'
+  },
+  wide: {
+    am: 'π.μ.',
+    pm: 'μ.μ.',
+    midnight: 'μεσάνυχτα',
+    noon: 'μεσημέρι',
+    morning: 'πρωί',
+    afternoon: 'απόγευμα',
+    evening: 'βράδυ',
+    night: 'νύχτα'
+  }
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var options = dirtyOptions || {};
+  var unit = String(options.unit);
+  var suffix;
+
+  if (unit === 'year' || unit === 'month') {
+    suffix = 'ος';
+  } else if (unit === 'week' || unit === 'dayOfYear' || unit === 'day' || unit === 'hour' || unit === 'date') {
+    suffix = 'η';
+  } else {
+    suffix = 'ο';
+  }
+
+  return dirtyNumber + suffix;
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/el/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/el/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(ος|η|ο)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(πΧ|μΧ)/i,
+  abbreviated: /^(π\.?\s?χ\.?|π\.?\s?κ\.?\s?χ\.?|μ\.?\s?χ\.?|κ\.?\s?χ\.?)/i,
+  wide: /^(προ Χριστο(ύ|υ)|πριν απ(ό|ο) την Κοιν(ή|η) Χρονολογ(ί|ι)α|μετ(ά|α) Χριστ(ό|ο)ν|Κοιν(ή|η) Χρονολογ(ί|ι)α)/i
+};
+var parseEraPatterns = {
+  any: [/^π/i, /^(μ|κ)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^τ[1234]/i,
+  wide: /^[1234]ο? τρ(ί|ι)μηνο/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[ιφμαμιιασονδ]/i,
+  abbreviated: /^(ιαν|φεβ|μαρ|απρ|μαι|ιουν|ιουλ|αυγ|σεπ|οκτ|νοε|δεκ)/i,
+  wide: /^(ιανου(ά|α)ριος|φεβρου(ά|α)ριος|μ(ά|α)ρτιος|απρ(ί|ί)λιος|μ(ά|α)ιος|ιο(ύ|υ)νιος|ιο(ύ|υ)λιος|α(ύ|υ)γουστος|σεπτ(έ|ε)μβριος|οκτ(ώ|ω)βριος|νο(έ|ε)μβριος|δεκ(έ|ε)μβριος)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^ι/i, /^φ/i, /^μ/i, /^α/i, /^μ/i, /^ι/i, /^ι/i, /^α/i, /^σ/i, /^ο/i, /^ν/i, /^δ/i],
+  any: [/^ια/i, /^φ/i, /^μαρ/i, /^απ/i, /^μαι/i, /^ιουν/i, /^ιουλ/i, /^αυ/i, /^σ/i, /^ο/i, /^ν/i, /^δ/i]
+};
+var matchDayPatterns = {
+  narrow: /^[κδτπ]/i,
+  short: /^(κυ|δε|τρ|τε|πε|πα|σα)/i,
+  abbreviated: /^(κυρ|δευ|τρι|τετ|πεμ|παρ|σαβ)/i,
+  wide: /^(κυριακ(ή|η)|δευτ(έ|ε)ρα|τρ(ί|ι)τη|τετ(ά|α)ρτη|π(έ|ε)μπτη|παρασκευ(ή|η)|σ(ά|α)ββατο)/i
+};
+var parseDayPatterns = {
+  narrow: [/^κ/i, /^δ/i, /^τ/i, /^τ/i, /^π/i, /^π/i, /^σ/i],
+  any: [/^κ/i, /^δ/i, /^τρ/i, /^τε/i, /^πε/i, /^πα/i, /^σ/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(πμ|μμ|μεσ(ά|α)νυχτα|μεσημ(έ|ε)ρι|(τη|το) (πρω(ί|ι)|απ(ό|ο)γευμα|βρ(ά|α)δυ|ν(ύ|υ)χτα))/i,
+  any: /^([πμ]\.?\s?μ\.?|μεσ(ά|α)νυχτα|μεσημ(έ|ε)ρι|(τη|το) (πρω(ί|ι)|απ(ό|ο)γευμα|βρ(ά|α)δυ|ν(ύ|υ)χτα))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^πμ/i,
+    pm: /^μμ/i,
+    midnight: /^μεσάν/i,
+    noon: /^μεσημ(έ|ε)/i,
+    morning: /πρω(ί|ι)/i,
+    afternoon: /απ(ό|ο)γευμα/i,
+    evening: /βρ(ά|α)δυ/i,
+    night: /ν(ύ|υ)χτα/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/el/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/el/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/el/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/el/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/el/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/el/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/el/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Greek locale.
+ * @language Greek
+ * @iso-639-2 ell
+ * @author Fanis Katsimpas [@fanixk]{@link https://github.com/fanixk}
+ * @author Theodoros Orfanidis [@teoulas]{@link https://github.com/teoulas}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/en-CA/_lib/formatDistance/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/en-CA/_lib/formatDistance/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'less than a second',
+    other: 'less than {{count}} seconds'
+  },
+  xSeconds: {
+    one: 'a second',
+    other: '{{count}} seconds'
+  },
+  halfAMinute: 'half a minute',
+  lessThanXMinutes: {
+    one: 'less than a minute',
+    other: 'less than {{count}} minutes'
+  },
+  xMinutes: {
+    one: 'a minute',
+    other: '{{count}} minutes'
+  },
+  aboutXHours: {
+    one: 'about an hour',
+    other: 'about {{count}} hours'
+  },
+  xHours: {
+    one: 'an hour',
+    other: '{{count}} hours'
+  },
+  xDays: {
+    one: 'a day',
+    other: '{{count}} days'
+  },
+  aboutXMonths: {
+    one: 'about a month',
+    other: 'about {{count}} months'
+  },
+  xMonths: {
+    one: 'a month',
+    other: '{{count}} months'
+  },
+  aboutXYears: {
+    one: 'about a year',
+    other: 'about {{count}} years'
+  },
+  xYears: {
+    one: 'a year',
+    other: '{{count}} years'
+  },
+  overXYears: {
+    one: 'over a year',
+    other: 'over {{count}} years'
+  },
+  almostXYears: {
+    one: 'almost a year',
+    other: 'almost {{count}} years'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'in ' + result;
+    } else {
+      return result + ' ago';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/en-CA/_lib/formatLong/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/en-CA/_lib/formatLong/index.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, MMMM do, yyyy',
+  long: 'MMMM do, yyyy',
+  medium: 'MMM d, yyyy',
+  short: 'yyyy-MM-dd'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'at' {{time}}",
+  long: "{{date}} 'at' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/en-CA/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/en-CA/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/en-CA/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/en-CA/_lib/formatLong/index.js");
+/* harmony import */ var _en_US_lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../en-US/_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/en-US/_lib/formatRelative/index.js");
+/* harmony import */ var _en_US_lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../en-US/_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/en-US/_lib/localize/index.js");
+/* harmony import */ var _en_US_lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../en-US/_lib/match/index.js */ "./node_modules/date-fns/esm/locale/en-US/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary English locale (Canada).
+ * @language English
+ * @iso-639-2 eng
+ * @author Mark Owsiak [@markowsiak]{@link https://github.com/markowsiak}
+ * @author Marco Imperatore [@mimperatore]{@link https://github.com/mimperatore}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _en_US_lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _en_US_lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _en_US_lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/en-GB/_lib/formatLong/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/en-GB/_lib/formatLong/index.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, d MMMM yyyy',
+  long: 'd MMMM yyyy',
+  medium: 'd MMM yyyy',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'at' {{time}}",
+  long: "{{date}} 'at' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/en-GB/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/en-GB/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _en_US_lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../en-US/_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/en-US/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/en-GB/_lib/formatLong/index.js");
+/* harmony import */ var _en_US_lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../en-US/_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/en-US/_lib/formatRelative/index.js");
+/* harmony import */ var _en_US_lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../en-US/_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/en-US/_lib/localize/index.js");
+/* harmony import */ var _en_US_lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../en-US/_lib/match/index.js */ "./node_modules/date-fns/esm/locale/en-US/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary English locale (United Kingdom).
+ * @language English
+ * @iso-639-2 eng
+ * @author Alex [@glintik]{@link https://github.com/glintik}
+ */
+
+var locale = {
+  formatDistance: _en_US_lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _en_US_lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _en_US_lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _en_US_lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
 /***/ "./node_modules/date-fns/esm/locale/en-US/_lib/formatDistance/index.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/date-fns/esm/locale/en-US/_lib/formatDistance/index.js ***!
@@ -17778,6 +23394,16812 @@ var locale = {
     /* Sunday */
     ,
     firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/eo/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/eo/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'malpli ol sekundo',
+    other: 'malpli ol {{count}} sekundoj'
+  },
+  xSeconds: {
+    one: '1 sekundo',
+    other: '{{count}} sekundoj'
+  },
+  halfAMinute: 'duonminuto',
+  lessThanXMinutes: {
+    one: 'malpli ol minuto',
+    other: 'malpli ol {{count}} minutoj'
+  },
+  xMinutes: {
+    one: '1 minuto',
+    other: '{{count}} minutoj'
+  },
+  aboutXHours: {
+    one: 'proksimume 1 horo',
+    other: 'proksimume {{count}} horoj'
+  },
+  xHours: {
+    one: '1 horo',
+    other: '{{count}} horoj'
+  },
+  xDays: {
+    one: '1 tago',
+    other: '{{count}} tagoj'
+  },
+  aboutXMonths: {
+    one: 'proksimume 1 monato',
+    other: 'proksimume {{count}} monatoj'
+  },
+  xMonths: {
+    one: '1 monato',
+    other: '{{count}} monatoj'
+  },
+  aboutXYears: {
+    one: 'proksimume 1 jaro',
+    other: 'proksimume {{count}} jaroj'
+  },
+  xYears: {
+    one: '1 jaro',
+    other: '{{count}} jaroj'
+  },
+  overXYears: {
+    one: 'pli ol 1 jaro',
+    other: 'pli ol {{count}} jaroj'
+  },
+  almostXYears: {
+    one: 'preskaŭ 1 jaro',
+    other: 'preskaŭ {{count}} jaroj'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'post ' + result;
+    } else {
+      return 'antaŭ ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/eo/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/eo/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "EEEE, do 'de' MMMM y",
+  long: 'y-MMMM-dd',
+  medium: 'y-MMM-dd',
+  short: 'yyyy-MM-dd'
+};
+var timeFormats = {
+  full: "Ho 'horo kaj' m:ss zzzz",
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  any: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/eo/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/eo/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'pasinta' eeee 'je' p",
+  yesterday: "'hieraŭ je' p",
+  today: "'hodiaŭ je' p",
+  tomorrow: "'morgaŭ je' p",
+  nextWeek: "eeee 'je' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/eo/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/eo/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['aK', 'pK'],
+  abbreviated: ['a.K.E.', 'p.K.E.'],
+  wide: ['antaŭ Komuna Erao', 'Komuna Erao']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['1-a kvaronjaro', '2-a kvaronjaro', '3-a kvaronjaro', '4-a kvaronjaro']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aŭg', 'sep', 'okt', 'nov', 'dec'],
+  wide: ['januaro', 'februaro', 'marto', 'aprilo', 'majo', 'junio', 'julio', 'aŭgusto', 'septembro', 'oktobro', 'novembro', 'decembro']
+};
+var dayValues = {
+  narrow: ['D', 'L', 'M', 'M', 'Ĵ', 'V', 'S'],
+  short: ['di', 'lu', 'ma', 'me', 'ĵa', 've', 'sa'],
+  abbreviated: ['dim', 'lun', 'mar', 'mer', 'ĵaŭ', 'ven', 'sab'],
+  wide: ['dimanĉo', 'lundo', 'mardo', 'merkredo', 'ĵaŭdo', 'vendredo', 'sabato']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'noktomezo',
+    noon: 'tagmezo',
+    morning: 'matene',
+    afternoon: 'posttagmeze',
+    evening: 'vespere',
+    night: 'nokte'
+  },
+  abbreviated: {
+    am: 'a.t.m.',
+    pm: 'p.t.m.',
+    midnight: 'noktomezo',
+    noon: 'tagmezo',
+    morning: 'matene',
+    afternoon: 'posttagmeze',
+    evening: 'vespere',
+    night: 'nokte'
+  },
+  wide: {
+    am: 'antaŭtagmeze',
+    pm: 'posttagmeze',
+    midnight: 'noktomezo',
+    noon: 'tagmezo',
+    morning: 'matene',
+    afternoon: 'posttagmeze',
+    evening: 'vespere',
+    night: 'nokte'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '-a';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/eo/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/eo/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(-?a)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^([ap]k)/i,
+  abbreviated: /^([ap]\.?\s?k\.?\s?e\.?)/i,
+  wide: /^((antaǔ |post )?komuna erao)/i
+};
+var parseEraPatterns = {
+  any: [/^a/i, /^[kp]/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^k[1234]/i,
+  wide: /^[1234](-?a)? kvaronjaro/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|maj|jun|jul|a(ŭ|ux|uh|u)g|sep|okt|nov|dec)/i,
+  wide: /^(januaro|februaro|marto|aprilo|majo|junio|julio|a(ŭ|ux|uh|u)gusto|septembro|oktobro|novembro|decembro)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^maj/i, /^jun/i, /^jul/i, /^a(u|ŭ)/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[dlmĵjvs]/i,
+  short: /^(di|lu|ma|me|(ĵ|jx|jh|j)a|ve|sa)/i,
+  abbreviated: /^(dim|lun|mar|mer|(ĵ|jx|jh|j)a(ŭ|ux|uh|u)|ven|sab)/i,
+  wide: /^(diman(ĉ|cx|ch|c)o|lundo|mardo|merkredo|(ĵ|jx|jh|j)a(ŭ|ux|uh|u)do|vendredo|sabato)/i
+};
+var parseDayPatterns = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^(j|ĵ)/i, /^v/i, /^s/i],
+  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^(j|ĵ)/i, /^v/i, /^s/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^([ap]|(posttagmez|noktomez|tagmez|maten|vesper|nokt)[eo])/i,
+  abbreviated: /^([ap][.\s]?t[.\s]?m[.\s]?|(posttagmez|noktomez|tagmez|maten|vesper|nokt)[eo])/i,
+  wide: /^(anta(ŭ|ux)tagmez|posttagmez|noktomez|tagmez|maten|vesper|nokt)[eo]/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^noktom/i,
+    noon: /^t/i,
+    morning: /^m/i,
+    afternoon: /^posttagmeze/i,
+    evening: /^v/i,
+    night: /^n/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/eo/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/eo/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/eo/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/eo/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/eo/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/eo/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/eo/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Esperanto locale.
+ * @language Esperanto
+ * @iso-639-2 epo
+ * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/es/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/es/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'menos de un segundo',
+    other: 'menos de {{count}} segundos'
+  },
+  xSeconds: {
+    one: '1 segundo',
+    other: '{{count}} segundos'
+  },
+  halfAMinute: 'medio minuto',
+  lessThanXMinutes: {
+    one: 'menos de un minuto',
+    other: 'menos de {{count}} minutos'
+  },
+  xMinutes: {
+    one: '1 minuto',
+    other: '{{count}} minutos'
+  },
+  aboutXHours: {
+    one: 'alrededor de 1 hora',
+    other: 'alrededor de {{count}} horas'
+  },
+  xHours: {
+    one: '1 hora',
+    other: '{{count}} horas'
+  },
+  xDays: {
+    one: '1 día',
+    other: '{{count}} días'
+  },
+  aboutXMonths: {
+    one: 'alrededor de 1 mes',
+    other: 'alrededor de {{count}} meses'
+  },
+  xMonths: {
+    one: '1 mes',
+    other: '{{count}} meses'
+  },
+  aboutXYears: {
+    one: 'alrededor de 1 año',
+    other: 'alrededor de {{count}} años'
+  },
+  xYears: {
+    one: '1 año',
+    other: '{{count}} años'
+  },
+  overXYears: {
+    one: 'más de 1 año',
+    other: 'más de {{count}} años'
+  },
+  almostXYears: {
+    one: 'casi 1 año',
+    other: 'casi {{count}} años'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'en ' + result;
+    } else {
+      return 'hace ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/es/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/es/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "EEEE, d 'de' MMMM y",
+  long: "d 'de' MMMM y",
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'a las' {{time}}",
+  long: "{{date}} 'a las' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/es/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/es/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'el' eeee 'pasado a la' LT",
+  yesterday: "'ayer a la' p",
+  today: "'hoy a la' p",
+  tomorrow: "'mañana a la' p",
+  nextWeek: "eeee 'a la' p",
+  other: 'P'
+};
+var formatRelativeLocalePlural = {
+  lastWeek: "'el' eeee 'pasado a las' p",
+  yesterday: "'ayer a las' p",
+  today: "'hoy a las' p",
+  tomorrow: "'mañana a las' p",
+  nextWeek: "eeee 'a las' p",
+  other: 'P'
+};
+function formatRelative(token, date, _baseDate, _options) {
+  if (date.getUTCHours() !== 1) {
+    return formatRelativeLocalePlural[token];
+  }
+
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/es/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/es/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['AC', 'DC'],
+  abbreviated: ['AC', 'DC'],
+  wide: ['antes de cristo', 'después de cristo']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues = {
+  narrow: ['e', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+  wide: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+};
+var dayValues = {
+  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
+  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa'],
+  abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sab'],
+  wide: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'mañana',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noche'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoche',
+    noon: 'mediodia',
+    morning: 'de la mañana',
+    afternoon: 'de la tarde',
+    evening: 'de la tarde',
+    night: 'de la noche'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + 'º';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/es/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/es/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ac|dc|a|d)/i,
+  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
+  wide: /^(antes de cristo|antes de la era com[uú]n|despu[eé]s de cristo|era com[uú]n)/i
+};
+var parseEraPatterns = {
+  any: [/^ac/i, /^dc/i],
+  wide: [/^(antes de cristo|antes de la era com[uú]n)/i, /^(despu[eé]s de cristo|era com[uú]n)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^T[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[efmajsond]/i,
+  abbreviated: /^(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)/i,
+  wide: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^e/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^en/i, /^feb/i, /^mar/i, /^abr/i, /^may/i, /^jun/i, /^jul/i, /^ago/i, /^sep/i, /^oct/i, /^nov/i, /^dic/i]
+};
+var matchDayPatterns = {
+  narrow: /^[dlmjvs]/i,
+  short: /^(do|lu|ma|mi|ju|vi|sa)/i,
+  abbreviated: /^(dom|lun|mar|mie|jue|vie|sab)/i,
+  wide: /^(domingo|lunes|martes|miercoles|jueves|viernes|s[áa]bado)/i
+};
+var parseDayPatterns = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  any: [/^do/i, /^lu/i, /^ma/i, /^mi/i, /^ju/i, /^vi/i, /^sa/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|mn|md|(de la|a las) (mañana|tarde|noche))/i,
+  any: /^([ap]\.?\s?m\.?|medianoche|mediodia|(de la|a las) (mañana|tarde|noche))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mn/i,
+    noon: /^md/i,
+    morning: /mañana/i,
+    afternoon: /tarde/i,
+    evening: /tarde/i,
+    night: /noche/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/es/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/es/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/es/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/es/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/es/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/es/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/es/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Spanish locale.
+ * @language Spanish
+ * @iso-639-2 spa
+ * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
+ * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
+ * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
+ * @author Gastón Haro [@harogaston]{@link https://github.com/harogaston}
+ * @author Yago Carballo [@YagoCarballo]{@link https://github.com/YagoCarballo}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/et/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/et/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    standalone: {
+      one: 'vähem kui üks sekund',
+      other: 'vähem kui {{count}} sekundit'
+    },
+    withPreposition: {
+      one: 'vähem kui ühe sekundi',
+      other: 'vähem kui {{count}} sekundi'
+    }
+  },
+  xSeconds: {
+    standalone: {
+      one: 'üks sekund',
+      other: '{{count}} sekundit'
+    },
+    withPreposition: {
+      one: 'ühe sekundi',
+      other: '{{count}} sekundi'
+    }
+  },
+  halfAMinute: {
+    standalone: 'pool minutit',
+    withPreposition: 'poole minuti'
+  },
+  lessThanXMinutes: {
+    standalone: {
+      one: 'vähem kui üks minut',
+      other: 'vähem kui {{count}} minutit'
+    },
+    withPreposition: {
+      one: 'vähem kui ühe minuti',
+      other: 'vähem kui {{count}} minuti'
+    }
+  },
+  xMinutes: {
+    standalone: {
+      one: 'üks minut',
+      other: '{{count}} minutit'
+    },
+    withPreposition: {
+      one: 'ühe minuti',
+      other: '{{count}} minuti'
+    }
+  },
+  aboutXHours: {
+    standalone: {
+      one: 'umbes üks tund',
+      other: 'umbes {{count}} tundi'
+    },
+    withPreposition: {
+      one: 'umbes ühe tunni',
+      other: 'umbes {{count}} tunni'
+    }
+  },
+  xHours: {
+    standalone: {
+      one: 'üks tund',
+      other: '{{count}} tundi'
+    },
+    withPreposition: {
+      one: 'ühe tunni',
+      other: '{{count}} tunni'
+    }
+  },
+  xDays: {
+    standalone: {
+      one: 'üks päev',
+      other: '{{count}} päeva'
+    },
+    withPreposition: {
+      one: 'ühe päeva',
+      other: '{{count}} päeva'
+    }
+  },
+  aboutXMonths: {
+    standalone: {
+      one: 'umbes üks kuu',
+      other: 'umbes {{count}} kuud'
+    },
+    withPreposition: {
+      one: 'umbes ühe kuu',
+      other: 'umbes {{count}} kuu'
+    }
+  },
+  xMonths: {
+    standalone: {
+      one: 'üks kuu',
+      other: '{{count}} kuud'
+    },
+    withPreposition: {
+      one: 'ühe kuu',
+      other: '{{count}} kuu'
+    }
+  },
+  aboutXYears: {
+    standalone: {
+      one: 'umbes üks aasta',
+      other: 'umbes {{count}} aastat'
+    },
+    withPreposition: {
+      one: 'umbes ühe aasta',
+      other: 'umbes {{count}} aasta'
+    }
+  },
+  xYears: {
+    standalone: {
+      one: 'üks aasta',
+      other: '{{count}} aastat'
+    },
+    withPreposition: {
+      one: 'ühe aasta',
+      other: '{{count}} aasta'
+    }
+  },
+  overXYears: {
+    standalone: {
+      one: 'rohkem kui üks aasta',
+      other: 'rohkem kui {{count}} aastat'
+    },
+    withPreposition: {
+      one: 'rohkem kui ühe aasta',
+      other: 'rohkem kui {{count}} aasta'
+    }
+  },
+  almostXYears: {
+    standalone: {
+      one: 'peaaegu üks aasta',
+      other: 'peaaegu {{count}} aastat'
+    },
+    withPreposition: {
+      one: 'peaaegu ühe aasta',
+      other: 'peaaegu {{count}} aasta'
+    }
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var usageGroup = options.addSuffix ? formatDistanceLocale[token].withPreposition : formatDistanceLocale[token].standalone;
+  var result;
+
+  if (typeof usageGroup === 'string') {
+    result = usageGroup;
+  } else if (count === 1) {
+    result = usageGroup.one;
+  } else {
+    result = usageGroup.other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return result + ' pärast';
+    } else {
+      return result + ' eest';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/et/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/et/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'eeee, d. MMMM y',
+  long: 'd. MMMM y',
+  medium: 'd. MMM y',
+  short: 'dd.MM.y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'kell' {{time}}",
+  long: "{{date}} 'kell' {{time}}",
+  medium: '{{date}}. {{time}}',
+  short: '{{date}}. {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/et/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/et/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'eelmine' eeee 'kell' p",
+  yesterday: "'eile kell' p",
+  today: "'täna kell' p",
+  tomorrow: "'homme kell' p",
+  nextWeek: "'järgmine' eeee 'kell' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/et/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/et/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['e.m.a', 'm.a.j'],
+  abbreviated: ['e.m.a', 'm.a.j'],
+  wide: ['enne meie ajaarvamist', 'meie ajaarvamise järgi']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
+};
+var monthValues = {
+  narrow: ['J', 'V', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jaan', 'veebr', 'märts', 'apr', 'mai', 'juuni', 'juuli', 'aug', 'sept', 'okt', 'nov', 'dets'],
+  wide: ['jaanuar', 'veebruar', 'märts', 'aprill', 'mai', 'juuni', 'juuli', 'august', 'september', 'oktoober', 'november', 'detsember']
+};
+var dayValues = {
+  narrow: ['P', 'E', 'T', 'K', 'N', 'R', 'L'],
+  short: ['P', 'E', 'T', 'K', 'N', 'R', 'L'],
+  abbreviated: ['pühap.', 'esmasp.', 'teisip.', 'kolmap.', 'neljap.', 'reede.', 'laup.'],
+  wide: ['pühapäev', 'esmaspäev', 'teisipäev', 'kolmapäev', 'neljapäev', 'reede', 'laupäev']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'kesköö',
+    noon: 'keskpäev',
+    morning: 'hommik',
+    afternoon: 'pärastlõuna',
+    evening: 'õhtu',
+    night: 'öö'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'kesköö',
+    noon: 'keskpäev',
+    morning: 'hommik',
+    afternoon: 'pärastlõuna',
+    evening: 'õhtu',
+    night: 'öö'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'kesköö',
+    noon: 'keskpäev',
+    morning: 'hommik',
+    afternoon: 'pärastlõuna',
+    evening: 'õhtu',
+    night: 'öö'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'keskööl',
+    noon: 'keskpäeval',
+    morning: 'hommikul',
+    afternoon: 'pärastlõunal',
+    evening: 'õhtul',
+    night: 'öösel'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'keskööl',
+    noon: 'keskpäeval',
+    morning: 'hommikul',
+    afternoon: 'pärastlõunal',
+    evening: 'õhtul',
+    night: 'öösel'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'keskööl',
+    noon: 'keskpäeval',
+    morning: 'hommikul',
+    afternoon: 'pärastlõunal',
+    evening: 'õhtul',
+    night: 'öösel'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    formattingValues: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    formattingValues: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    formattingValues: formattingDayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/et/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/et/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^\d+\./i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(e\.m\.a|m\.a\.j|eKr|pKr)/i,
+  abbreviated: /^(e\.m\.a|m\.a\.j|eKr|pKr)/i,
+  wide: /^(enne meie ajaarvamist|meie ajaarvamise järgi|enne Kristust|pärast Kristust)/i
+};
+var parseEraPatterns = {
+  any: [/^e/i, /^(m|p)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^K[1234]/i,
+  wide: /^[1234](\.)? kvartal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jvmasond]/i,
+  abbreviated: /^('jaan|veebr|märts|apr|mai|juuni|juuli|aug|sept|okt|nov|dets')/i,
+  wide: /^('jaanuar|veebruar|märts|aprill|mai|juuni|juuli|august|september|oktoober|november|detsember')/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^v/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^v/i, /^mär/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[petknrl]/i,
+  short: /^[petknrl]/i,
+  abbreviated: /^(püh?|esm?|tei?|kolm?|nel?|ree?|laup?)\.?/i,
+  wide: /^('pühapäev|esmaspäev|teisipäev|kolmapäev|neljapäev|reede|laupäev')/i
+};
+var parseDayPatterns = {
+  any: [/^p/i, /^e/i, /^t/i, /^k/i, /^n/i, /^r/i, /^l/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(am|pm|kesköö|keskpäev|hommik|pärastlõuna|õhtu|öö)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^keskö/i,
+    noon: /^keskp/i,
+    morning: /hommik/i,
+    afternoon: /pärastlõuna/i,
+    evening: /õhtu/i,
+    night: /öö/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/et/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/et/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/et/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/et/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/et/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/et/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/et/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Estonian locale.
+ * @language Estonian
+ * @iso-639-2 est
+ * @author Priit Hansen [@HansenPriit]{@link https://github.com/priithansen}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fa-IR/_lib/formatDistance/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fa-IR/_lib/formatDistance/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'کمتر از یک ثانیه',
+    other: 'کمتر از {{count}} ثانیه'
+  },
+  xSeconds: {
+    one: '1 ثانیه',
+    other: '{{count}} ثانیه'
+  },
+  halfAMinute: 'نیم دقیقه',
+  lessThanXMinutes: {
+    one: 'کمتر از یک دقیقه',
+    other: 'کمتر از {{count}} دقیقه'
+  },
+  xMinutes: {
+    one: '1 دقیقه',
+    other: '{{count}} دقیقه'
+  },
+  aboutXHours: {
+    one: 'حدود 1 ساعت',
+    other: 'حدود {{count}} ساعت'
+  },
+  xHours: {
+    one: '1 ساعت',
+    other: '{{count}} ساعت'
+  },
+  xDays: {
+    one: '1 روز',
+    other: '{{count}} روز'
+  },
+  aboutXMonths: {
+    one: 'حدود 1 ماه',
+    other: 'حدود {{count}} ماه'
+  },
+  xMonths: {
+    one: '1 ماه',
+    other: '{{count}} ماه'
+  },
+  aboutXYears: {
+    one: 'حدود 1 سال',
+    other: 'حدود {{count}} سال'
+  },
+  xYears: {
+    one: '1 سال',
+    other: '{{count}} سال'
+  },
+  overXYears: {
+    one: 'بیشتر از 1 سال',
+    other: 'بیشتر از {{count}} سال'
+  },
+  almostXYears: {
+    one: 'نزدیک 1 سال',
+    other: 'نزدیک {{count}} سال'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'در ' + result;
+    } else {
+      return result + ' قبل';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fa-IR/_lib/formatLong/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fa-IR/_lib/formatLong/index.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE do MMMM y',
+  long: 'do MMMM y',
+  medium: 'd MMM y',
+  short: 'yyyy/MM/dd'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'در' {{time}}",
+  long: "{{date}} 'در' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fa-IR/_lib/formatRelative/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fa-IR/_lib/formatRelative/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee 'گذشته در' p",
+  yesterday: "'دیروز در' p",
+  today: "'امروز در' p",
+  tomorrow: "'فردا در' p",
+  nextWeek: "eeee 'در' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fa-IR/_lib/localize/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fa-IR/_lib/localize/index.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['ق', 'ب'],
+  abbreviated: ['ق.م.', 'ب.م.'],
+  wide: ['قبل از میلاد', 'بعد از میلاد']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['س‌م1', 'س‌م2', 'س‌م3', 'س‌م4'],
+  wide: ['سه‌ماهه 1', 'سه‌ماهه 2', 'سه‌ماهه 3', 'سه‌ماهه 4'] // Note: in English, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+};
+var monthValues = {
+  narrow: ['ژ', 'ف', 'م', 'آ', 'م', 'ج', 'ج', 'آ', 'س', 'ا', 'ن', 'د'],
+  abbreviated: ['ژانـ', 'فور', 'مارس', 'آپر', 'می', 'جون', 'جولـ', 'آگو', 'سپتـ', 'اکتـ', 'نوامـ', 'دسامـ'],
+  wide: ['ژانویه', 'فوریه', 'مارس', 'آپریل', 'می', 'جون', 'جولای', 'آگوست', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر']
+};
+var dayValues = {
+  narrow: ['ی', 'د', 'س', 'چ', 'پ', 'ج', 'ش'],
+  short: ['1ش', '2ش', '3ش', '4ش', '5ش', 'ج', 'ش'],
+  abbreviated: ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه'],
+  wide: ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'ق',
+    pm: 'ب',
+    midnight: 'ن',
+    noon: 'ظ',
+    morning: 'ص',
+    afternoon: 'ب.ظ.',
+    evening: 'ع',
+    night: 'ش'
+  },
+  abbreviated: {
+    am: 'ق.ظ.',
+    pm: 'ب.ظ.',
+    midnight: 'نیمه‌شب',
+    noon: 'ظهر',
+    morning: 'صبح',
+    afternoon: 'بعدازظهر',
+    evening: 'عصر',
+    night: 'شب'
+  },
+  wide: {
+    am: 'قبل‌ازظهر',
+    pm: 'بعدازظهر',
+    midnight: 'نیمه‌شب',
+    noon: 'ظهر',
+    morning: 'صبح',
+    afternoon: 'بعدازظهر',
+    evening: 'عصر',
+    night: 'شب'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'ق',
+    pm: 'ب',
+    midnight: 'ن',
+    noon: 'ظ',
+    morning: 'ص',
+    afternoon: 'ب.ظ.',
+    evening: 'ع',
+    night: 'ش'
+  },
+  abbreviated: {
+    am: 'ق.ظ.',
+    pm: 'ب.ظ.',
+    midnight: 'نیمه‌شب',
+    noon: 'ظهر',
+    morning: 'صبح',
+    afternoon: 'بعدازظهر',
+    evening: 'عصر',
+    night: 'شب'
+  },
+  wide: {
+    am: 'قبل‌ازظهر',
+    pm: 'بعدازظهر',
+    midnight: 'نیمه‌شب',
+    noon: 'ظهر',
+    morning: 'صبح',
+    afternoon: 'بعدازظهر',
+    evening: 'عصر',
+    night: 'شب'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  return String(dirtyNumber);
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fa-IR/_lib/match/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fa-IR/_lib/match/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ق|ب)/i,
+  abbreviated: /^(ق\.?\s?م\.?|ق\.?\s?د\.?\s?م\.?|م\.?\s?|د\.?\s?م\.?)/i,
+  wide: /^(قبل از میلاد|قبل از دوران مشترک|میلادی|دوران مشترک|بعد از میلاد)/i
+};
+var parseEraPatterns = {
+  any: [/^قبل/i, /^بعد/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^س‌م[1234]/i,
+  wide: /^سه‌ماهه [1234]/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[جژفمآاماسند]/i,
+  abbreviated: /^(جنو|ژانـ|ژانویه|فوریه|فور|مارس|آوریل|آپر|مه|می|ژوئن|جون|جول|جولـ|ژوئیه|اوت|آگو|سپتمبر|سپتامبر|اکتبر|اکتوبر|نوامبر|نوامـ|دسامبر|دسامـ|دسم)/i,
+  wide: /^(ژانویه|جنوری|فبروری|فوریه|مارچ|مارس|آپریل|اپریل|ایپریل|آوریل|مه|می|ژوئن|جون|جولای|ژوئیه|آگست|اگست|آگوست|اوت|سپتمبر|سپتامبر|اکتبر|اکتوبر|نوامبر|نومبر|دسامبر|دسمبر)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^(ژ|ج)/i, /^ف/i, /^م/i, /^(آ|ا)/i, /^م/i, /^(ژ|ج)/i, /^(ج|ژ)/i, /^(آ|ا)/i, /^س/i, /^ا/i, /^ن/i, /^د/i],
+  any: [/^ژا/i, /^ف/i, /^ما/i, /^آپ/i, /^(می|مه)/i, /^(ژوئن|جون)/i, /^(ژوئی|جول)/i, /^(اوت|آگ)/i, /^س/i, /^(اوک|اک)/i, /^ن/i, /^د/i]
+};
+var matchDayPatterns = {
+  narrow: /^[شیدسچپج]/i,
+  short: /^(ش|ج|1ش|2ش|3ش|4ش|5ش)/i,
+  abbreviated: /^(یکشنبه|دوشنبه|سه‌شنبه|چهارشنبه|پنج‌شنبه|جمعه|شنبه)/i,
+  wide: /^(یکشنبه|دوشنبه|سه‌شنبه|چهارشنبه|پنج‌شنبه|جمعه|شنبه)/i
+};
+var parseDayPatterns = {
+  narrow: [/^ی/i, /^دو/i, /^س/i, /^چ/i, /^پ/i, /^ج/i, /^ش/i],
+  any: [/^(ی|1ش|یکشنبه)/i, /^(د|2ش|دوشنبه)/i, /^(س|3ش|سه‌شنبه)/i, /^(چ|4ش|چهارشنبه)/i, /^(پ|5ش|پنجشنبه)/i, /^(ج|جمعه)/i, /^(ش|شنبه)/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(ب|ق|ن|ظ|ص|ب.ظ.|ع|ش)/i,
+  abbreviated: /^(ق.ظ.|ب.ظ.|نیمه‌شب|ظهر|صبح|بعدازظهر|عصر|شب)/i,
+  wide: /^(قبل‌ازظهر|نیمه‌شب|ظهر|صبح|بعدازظهر|عصر|شب)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^(ق|ق.ظ.|قبل‌ازظهر)/i,
+    pm: /^(ب|ب.ظ.|بعدازظهر)/i,
+    midnight: /^(‌نیمه‌شب|ن)/i,
+    noon: /^(ظ|ظهر)/i,
+    morning: /(ص|صبح)/i,
+    afternoon: /(ب|ب.ظ.|بعدازظهر)/i,
+    evening: /(ع|عصر)/i,
+    night: /(ش|شب)/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fa-IR/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fa-IR/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/fa-IR/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/fa-IR/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/fa-IR/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/fa-IR/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/fa-IR/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Persian/Farsi locale (Iran).
+ * @language Persian
+ * @iso-639-2 ira
+ * @author Morteza Ziyae [@mort3za]{@link https://github.com/mort3za}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fi/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fi/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+function futureSeconds(text) {
+  return text.replace(/sekuntia?/, 'sekunnin');
+}
+
+function futureMinutes(text) {
+  return text.replace(/minuuttia?/, 'minuutin');
+}
+
+function futureHours(text) {
+  return text.replace(/tuntia?/, 'tunnin');
+}
+
+function futureDays(text) {
+  return text.replace(/päivää?/, 'päivän');
+}
+
+function futureMonths(text) {
+  return text.replace(/(kuukausi|kuukautta)/, 'kuukauden');
+}
+
+function futureYears(text) {
+  return text.replace(/(vuosi|vuotta)/, 'vuoden');
+}
+
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'alle sekunti',
+    other: 'alle {{count}} sekuntia',
+    futureTense: futureSeconds
+  },
+  xSeconds: {
+    one: 'sekunti',
+    other: '{{count}} sekuntia',
+    futureTense: futureSeconds
+  },
+  halfAMinute: {
+    one: 'puoli minuuttia',
+    other: 'puoli minuuttia',
+    futureTense: function (_text) {
+      return 'puolen minuutin';
+    }
+  },
+  lessThanXMinutes: {
+    one: 'alle minuutti',
+    other: 'alle {{count}} minuuttia',
+    futureTense: futureMinutes
+  },
+  xMinutes: {
+    one: 'minuutti',
+    other: '{{count}} minuuttia',
+    futureTense: futureMinutes
+  },
+  aboutXHours: {
+    one: 'noin tunti',
+    other: 'noin {{count}} tuntia',
+    futureTense: futureHours
+  },
+  xHours: {
+    one: 'tunti',
+    other: '{{count}} tuntia',
+    futureTense: futureHours
+  },
+  xDays: {
+    one: 'päivä',
+    other: '{{count}} päivää',
+    futureTense: futureDays
+  },
+  aboutXMonths: {
+    one: 'noin kuukausi',
+    other: 'noin {{count}} kuukautta',
+    futureTense: futureMonths
+  },
+  xMonths: {
+    one: 'kuukausi',
+    other: '{{count}} kuukautta',
+    futureTense: futureMonths
+  },
+  aboutXYears: {
+    one: 'noin vuosi',
+    other: 'noin {{count}} vuotta',
+    futureTense: futureYears
+  },
+  xYears: {
+    one: 'vuosi',
+    other: '{{count}} vuotta',
+    futureTense: futureYears
+  },
+  overXYears: {
+    one: 'yli vuosi',
+    other: 'yli {{count}} vuotta',
+    futureTense: futureYears
+  },
+  almostXYears: {
+    one: 'lähes vuosi',
+    other: 'lähes {{count}} vuotta',
+    futureTense: futureYears
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var distance = formatDistanceLocale[token];
+  var result = count === 1 ? distance.one : distance.other.replace('{{count}}', count);
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return distance.futureTense(result) + ' kuluttua';
+    } else {
+      return result + ' sitten';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fi/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fi/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'eeee d. MMMM y',
+  long: 'd. MMMM y',
+  medium: 'd. MMM y',
+  short: 'd.M.y'
+};
+var timeFormats = {
+  full: 'HH.mm.ss zzzz',
+  long: 'HH.mm.ss z',
+  medium: 'HH.mm.ss',
+  short: 'HH.mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'klo' {{time}}",
+  long: "{{date}} 'klo' {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fi/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fi/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'viime' eeee 'klo' p",
+  yesterday: "'eilen klo' p",
+  today: "'tänään klo' p",
+  tomorrow: "'huomenna klo' p",
+  nextWeek: "'ensi' eeee 'klo' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fi/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fi/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['eaa.', 'jaa.'],
+  abbreviated: ['eaa.', 'jaa.'],
+  wide: ['ennen ajanlaskun alkua', 'jälkeen ajanlaskun alun']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1. kvartaali', '2. kvartaali', '3. kvartaali', '4. kvartaali']
+};
+var monthValues = {
+  narrow: ['T', 'H', 'M', 'H', 'T', 'K', 'H', 'E', 'S', 'L', 'M', 'J'],
+  abbreviated: ['tammi', 'helmi', 'maalis', 'huhti', 'touko', 'kesä', 'heinä', 'elo', 'syys', 'loka', 'marras', 'joulu'],
+  wide: ['tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu']
+};
+var formattingMonthValues = {
+  narrow: monthValues.narrow,
+  abbreviated: monthValues.abbreviated,
+  wide: monthValues.wide.map(function (name) {
+    return name + 'ta';
+  })
+};
+var dayValues = {
+  narrow: ['S', 'M', 'T', 'K', 'T', 'P', 'L'],
+  short: ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
+  abbreviated: ['sunn.', 'maan.', 'tiis.', 'kesk.', 'torst.', 'perj.', 'la'],
+  wide: ['sunnuntai', 'maanantai', 'tiistai', 'keskiviikko', 'torstai', 'perjantai', 'lauantai']
+};
+var formattingDayValues = {
+  narrow: dayValues.narrow,
+  short: dayValues.short,
+  abbreviated: dayValues.abbreviated,
+  wide: dayValues.wide.map(function (name) {
+    return name + 'na';
+  })
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'ap',
+    pm: 'ip',
+    midnight: 'keskiyö',
+    noon: 'keskipäivä',
+    morning: 'ap',
+    afternoon: 'ip',
+    evening: 'illalla',
+    night: 'yöllä'
+  },
+  abbreviated: {
+    am: 'ap',
+    pm: 'ip',
+    midnight: 'keskiyö',
+    noon: 'keskipäivä',
+    morning: 'ap',
+    afternoon: 'ip',
+    evening: 'illalla',
+    night: 'yöllä'
+  },
+  wide: {
+    am: 'ap',
+    pm: 'ip',
+    midnight: 'keskiyöllä',
+    noon: 'keskipäivällä',
+    morning: 'aamupäivällä',
+    afternoon: 'iltapäivällä',
+    evening: 'illalla',
+    night: 'yöllä'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    formattingValues: formattingMonthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    formattingValues: formattingDayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fi/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fi/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(b|a)/i,
+  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+  wide: /^(before christ|before common era|anno domini|common era)/i
+};
+var parseEraPatterns = {
+  any: [/^b/i, /^(a|c)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](th|st|nd|rd)? quarter/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
+  wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[smtwf]/i,
+  short: /^(su|mo|tu|we|th|fr|sa)/i,
+  abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
+  wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+};
+var parseDayPatterns = {
+  narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
+  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mi/i,
+    noon: /^no/i,
+    morning: /morning/i,
+    afternoon: /afternoon/i,
+    evening: /evening/i,
+    night: /night/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fi/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fi/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/fi/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/fi/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/fi/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/fi/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/fi/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Finnish locale.
+ * @language Finnish
+ * @iso-639-2 fin
+ * @author Pyry-Samuli Lahti [@Pyppe]{@link https://github.com/Pyppe}
+ * @author Edo Rivai [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
+ * @author Samu Juvonen [@sjuvonen]{@link https://github.com/sjuvonen}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fr/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fr/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'moins d’une seconde',
+    other: 'moins de {{count}} secondes'
+  },
+  xSeconds: {
+    one: '1 seconde',
+    other: '{{count}} secondes'
+  },
+  halfAMinute: '30 secondes',
+  lessThanXMinutes: {
+    one: 'moins d’une minute',
+    other: 'moins de {{count}} minutes'
+  },
+  xMinutes: {
+    one: '1 minute',
+    other: '{{count}} minutes'
+  },
+  aboutXHours: {
+    one: 'environ 1 heure',
+    other: 'environ {{count}} heures'
+  },
+  xHours: {
+    one: '1 heure',
+    other: '{{count}} heures'
+  },
+  xDays: {
+    one: '1 jour',
+    other: '{{count}} jours'
+  },
+  aboutXMonths: {
+    one: 'environ 1 mois',
+    other: 'environ {{count}} mois'
+  },
+  xMonths: {
+    one: '1 mois',
+    other: '{{count}} mois'
+  },
+  aboutXYears: {
+    one: 'environ 1 an',
+    other: 'environ {{count}} ans'
+  },
+  xYears: {
+    one: '1 an',
+    other: '{{count}} ans'
+  },
+  overXYears: {
+    one: 'plus d’un an',
+    other: 'plus de {{count}} ans'
+  },
+  almostXYears: {
+    one: 'presqu’un an',
+    other: 'presque {{count}} ans'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'dans ' + result;
+    } else {
+      return 'il y a ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fr/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fr/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'à' {{time}}",
+  long: "{{date}} 'à' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fr/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fr/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee 'dernier à' p",
+  yesterday: "'hier à' p",
+  today: "'aujourd’hui à' p",
+  tomorrow: "'demain à' p'",
+  nextWeek: "eeee 'prochain à' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fr/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fr/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['av. J.-C', 'ap. J.-C'],
+  abbreviated: ['av. J.-C', 'ap. J.-C'],
+  wide: ['avant Jésus-Christ', 'après Jésus-Christ']
+};
+var quarterValues = {
+  narrow: ['T1', 'T2', 'T3', 'T4'],
+  abbreviated: ['1er trim.', '2ème trim.', '3ème trim.', '4ème trim.'],
+  wide: ['1er trimestre', '2ème trimestre', '3ème trimestre', '4ème trimestre']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
+  wide: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+};
+var dayValues = {
+  narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+  short: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
+  abbreviated: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
+  wide: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'mat.',
+    afternoon: 'ap.m.',
+    evening: 'soir',
+    night: 'mat.'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'matin',
+    afternoon: 'après-midi',
+    evening: 'soir',
+    night: 'matin'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'du matin',
+    afternoon: 'de l’après-midi',
+    evening: 'du soir',
+    night: 'du matin'
+  }
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var number = Number(dirtyNumber);
+  var options = dirtyOptions || {};
+  var unit = String(options.unit);
+  var suffix;
+
+  if (number === 0) {
+    return number;
+  }
+
+  if (unit === 'year' || unit === 'hour' || unit === 'week') {
+    if (number === 1) {
+      suffix = 'ère';
+    } else {
+      suffix = 'ème';
+    }
+  } else {
+    if (number === 1) {
+      suffix = 'er';
+    } else {
+      suffix = 'ème';
+    }
+  }
+
+  return number + suffix;
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fr/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fr/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(ième|ère|ème|er|e)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(av\.J\.C|ap\.J\.C|ap\.J\.-C)/i,
+  abbreviated: /^(av\.J\.-C|av\.J-C|apr\.J\.-C|apr\.J-C|ap\.J-C)/i,
+  wide: /^(avant Jésus-Christ|après Jésus-Christ)/i
+};
+var parseEraPatterns = {
+  any: [/^av/i, /^ap/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^t[1234]/i,
+  wide: /^[1234](er|ème|e)? trimestre/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(janv|févr|mars|avr|mai|juin|juill|juil|août|sept|oct|nov|déc)\.?/i,
+  wide: /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^av/i, /^ma/i, /^jui/i, /^juil/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[lmjvsd]/i,
+  short: /^(di|lu|ma|me|je|ve|sa)/i,
+  abbreviated: /^(dim|lun|mar|mer|jeu|ven|sam)\.?/i,
+  wide: /^(dimanche|lundi|mardi|mercredi|jeudi|vendredi|samedi)/i
+};
+var parseDayPatterns = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  any: [/^di/i, /^lu/i, /^ma/i, /^me/i, /^je/i, /^ve/i, /^sa/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|minuit|midi|mat\.?|ap\.?m\.?|soir|nuit)/i,
+  any: /^([ap]\.?\s?m\.?|du matin|de l'après[-\s]midi|du soir|de la nuit)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^min/i,
+    noon: /^mid/i,
+    morning: /mat/i,
+    afternoon: /ap/i,
+    evening: /soir/i,
+    night: /nuit/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/fr/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/fr/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/fr/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/fr/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/fr/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/fr/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/fr/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary French locale.
+ * @language French
+ * @iso-639-2 fra
+ * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
+ * @author François B [@fbonzon]{@link https://github.com/fbonzon}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/gl/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/gl/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'menos dun segundo',
+    other: 'menos de {{count}} segundos'
+  },
+  xSeconds: {
+    one: '1 segundo',
+    other: '{{count}} segundos'
+  },
+  halfAMinute: 'medio minuto',
+  lessThanXMinutes: {
+    one: 'menos dun minuto',
+    other: 'menos de {{count}} minutos'
+  },
+  xMinutes: {
+    one: '1 minuto',
+    other: '{{count}} minutos'
+  },
+  aboutXHours: {
+    one: 'arredor de 1 hora',
+    other: 'arredor de {{count}} horas'
+  },
+  xHours: {
+    one: '1 hora',
+    other: '{{count}} horas'
+  },
+  xDays: {
+    one: '1 día',
+    other: '{{count}} días'
+  },
+  aboutXMonths: {
+    one: 'arredor de 1 mes',
+    other: 'arredor de {{count}} meses'
+  },
+  xMonths: {
+    one: '1 mes',
+    other: '{{count}} meses'
+  },
+  aboutXYears: {
+    one: 'arredor de 1 ano',
+    other: 'arredor de {{count}} anos'
+  },
+  xYears: {
+    one: '1 ano',
+    other: '{{count}} anos'
+  },
+  overXYears: {
+    one: 'mais de 1 ano',
+    other: 'mais de {{count}} anos'
+  },
+  almostXYears: {
+    one: 'casi 1 ano',
+    other: 'casi {{count}} anos'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'en ' + result;
+    } else {
+      return 'hai ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/gl/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/gl/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "EEEE, d 'de' MMMM y",
+  long: "d 'de' MMMM y",
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'ás' {{time}}",
+  long: "{{date}} 'ás' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/gl/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/gl/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'o' eeee 'pasado á' LT",
+  yesterday: "'onte á' p",
+  today: "'hoxe á' p",
+  tomorrow: "'mañá á' p",
+  nextWeek: "eeee 'á' p",
+  other: 'P'
+};
+var formatRelativeLocalePlural = {
+  lastWeek: "'o' eeee 'pasado ás' p",
+  yesterday: "'onte ás' p",
+  today: "'hoxe ás' p",
+  tomorrow: "'mañá ás' p",
+  nextWeek: "eeee 'ás' p",
+  other: 'P'
+};
+function formatRelative(token, date, _baseDate, _options) {
+  if (date.getUTCHours() !== 1) {
+    return formatRelativeLocalePlural[token];
+  }
+
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/gl/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/gl/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['AC', 'DC'],
+  abbreviated: ['AC', 'DC'],
+  wide: ['antes de cristo', 'despois de cristo']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues = {
+  narrow: ['e', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: ['xan', 'feb', 'mar', 'abr', 'mai', 'xun', 'xul', 'ago', 'set', 'out', 'nov', 'dec'],
+  wide: ['xaneiro', 'febreiro', 'marzo', 'abril', 'maio', 'xuño', 'xullo', 'agosto', 'setembro', 'outubro', 'novembro', 'decembro']
+};
+var dayValues = {
+  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
+  short: ['do', 'lu', 'ma', 'me', 'xo', 've', 'sa'],
+  abbreviated: ['dom', 'lun', 'mar', 'mer', 'xov', 'ven', 'sab'],
+  wide: ['domingo', 'luns', 'martes', 'mércores', 'xoves', 'venres', 'sábado']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'mañá',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noite'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoite',
+    noon: 'mediodía',
+    morning: 'mañá',
+    afternoon: 'tarde',
+    evening: 'tardiña',
+    night: 'noite'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoite',
+    noon: 'mediodía',
+    morning: 'mañá',
+    afternoon: 'tarde',
+    evening: 'tardiña',
+    night: 'noite'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'da mañá',
+    afternoon: 'da tarde',
+    evening: 'da tardiña',
+    night: 'da noite'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'medianoite',
+    noon: 'mediodía',
+    morning: 'da mañá',
+    afternoon: 'da tarde',
+    evening: 'da tardiña',
+    night: 'da noite'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'medianoite',
+    noon: 'mediodía',
+    morning: 'da mañá',
+    afternoon: 'da tarde',
+    evening: 'da tardiña',
+    night: 'da noite'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + 'º';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/gl/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/gl/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ac|dc|a|d)/i,
+  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
+  wide: /^(antes de cristo|antes da era com[uú]n|despois de cristo|era com[uú]n)/i
+};
+var parseEraPatterns = {
+  any: [/^ac/i, /^dc/i],
+  wide: [/^(antes de cristo|antes da era com[uú]n)/i, /^(despois de cristo|era com[uú]n)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^T[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[xfmasond]/i,
+  abbreviated: /^(xan|feb|mar|abr|mai|xun|xul|ago|set|out|nov|dec)/i,
+  wide: /^(xaneiro|febreiro|marzo|abril|maio|xuño|xullo|agosto|setembro|outubro|novembro|decembro)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^x/i, /^f/i, /^m/i, /^a/i, /^m/i, /^x/i, /^x/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^xan/i, /^feb/i, /^mar/i, /^abr/i, /^mai/i, /^xun/i, /^xul/i, /^ago/i, /^set/i, /^out/i, /^nov/i, /^dec/i]
+};
+var matchDayPatterns = {
+  narrow: /^[dlmxvs]/i,
+  short: /^(do|lu|ma|me|xo|ve|sa)/i,
+  abbreviated: /^(dom|lun|mar|mer|xov|ven|sab)/i,
+  wide: /^(domingo|luns|martes|m[eé]rcores|xoves|venres|s[áa]bado)/i
+};
+var parseDayPatterns = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^x/i, /^v/i, /^s/i],
+  any: [/^do/i, /^lu/i, /^ma/i, /^me/i, /^xo/i, /^ve/i, /^sa/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|mn|md|(da|[aá]s) (mañ[aá]|tarde|noite))/i,
+  any: /^([ap]\.?\s?m\.?|medianoite|mediod[ií]a|(da|[aá]s) (mañ[aá]|tarde|noite))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mn/i,
+    noon: /^md/i,
+    morning: /mañ[aá]/i,
+    afternoon: /tarde/i,
+    evening: /tardiña/i,
+    night: /noite/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/gl/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/gl/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/gl/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/gl/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/gl/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/gl/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/gl/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Galician locale.
+ * @language Galician
+ * @iso-639-2 glg
+ * @author Alberto Doval - Cocodin Technology[@cocodinTech]{@link https://github.com/cocodinTech}
+ * @author Fidel Pita [@fidelpita]{@link https://github.com/fidelpita}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/he/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/he/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'פחות משנייה',
+    two: 'פחות משתי שניות',
+    other: 'פחות מ־{{count}} שניות'
+  },
+  xSeconds: {
+    one: 'שנייה',
+    two: 'שתי שניות',
+    other: '{{count}} שניות'
+  },
+  halfAMinute: 'חצי דקה',
+  lessThanXMinutes: {
+    one: 'פחות מדקה',
+    two: 'פחות משתי דקות',
+    other: 'פחות מ־{{count}} דקות'
+  },
+  xMinutes: {
+    one: 'דקה',
+    two: 'שתי דקות',
+    other: '{{count}} דקות'
+  },
+  aboutXHours: {
+    one: 'בערך שעה',
+    two: 'בערך שעתיים',
+    other: 'בערך {{count}} שעות'
+  },
+  xHours: {
+    one: 'שעה',
+    two: 'שעתיים',
+    other: '{{count}} שעות'
+  },
+  xDays: {
+    one: 'יום',
+    two: 'יומיים',
+    other: '{{count}} ימים'
+  },
+  aboutXMonths: {
+    one: 'בערך חודש',
+    two: 'בערך חודשיים',
+    other: 'בערך {{count}} חודשים'
+  },
+  xMonths: {
+    one: 'חודש',
+    two: 'חודשיים',
+    other: '{{count}} חודשים'
+  },
+  aboutXYears: {
+    one: 'בערך שנה',
+    two: 'בערך שנתיים',
+    other: 'בערך {{count}} שנים'
+  },
+  xYears: {
+    one: 'שנה',
+    two: 'שנתיים',
+    other: '{{count}} שנים'
+  },
+  overXYears: {
+    one: 'יותר משנה',
+    two: 'יותר משנתיים',
+    other: 'יותר מ־{{count}} שנים'
+  },
+  almostXYears: {
+    one: 'כמעט שנה',
+    two: 'כמעט שנתיים',
+    other: 'כמעט {{count}} שנים'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {}; // Return word instead of `in one day` or `one day ago`
+
+  if (token === 'xDays' && options.addSuffix && count <= 2) {
+    var past = {
+      1: 'אתמול',
+      2: 'שלשום'
+    };
+    var future = {
+      1: 'מחר',
+      2: 'מחרתיים'
+    };
+    return options.comparison > 0 ? future[count] : past[count];
+  }
+
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else if (count === 2) {
+    result = formatDistanceLocale[token].two;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'בעוד ' + result;
+    } else {
+      return 'לפני ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/he/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/he/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, d בMMMM y',
+  long: 'd בMMMM y',
+  medium: 'd בMMM y',
+  short: 'd.M.y'
+};
+var timeFormats = {
+  full: 'H:mm:ss zzzz',
+  long: 'H:mm:ss z',
+  medium: 'H:mm:ss',
+  short: 'H:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'בשעה' {{time}}",
+  long: "{{date}} 'בשעה' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/he/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/he/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee 'שעבר בשעה' p",
+  yesterday: "'אתמול בשעה' p",
+  today: "'היום בשעה' p",
+  tomorrow: "'מחר בשעה' p",
+  nextWeek: "eeee 'בשעה' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/he/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/he/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['לפנה״ס', 'לספירה'],
+  abbreviated: ['לפנה״ס', 'לספירה'],
+  wide: ['לפני הספירה', 'לספירה']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['רבעון 1', 'רבעון 2', 'רבעון 3', 'רבעון 4']
+};
+var monthValues = {
+  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  abbreviated: ['ינו׳', 'פבר׳', 'מרץ', 'אפר׳', 'מאי', 'יוני', 'יולי', 'אוג׳', 'ספט׳', 'אוק׳', 'נוב׳', 'דצמ׳'],
+  wide: ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
+};
+var dayValues = {
+  narrow: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
+  short: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
+  abbreviated: ['יום א׳', 'יום ב׳', 'יום ג׳', 'יום ד׳', 'יום ה׳', 'יום ו׳', 'שבת'],
+  wide: ['יום ראשון', 'יום שני', 'יום שלישי', 'יום רביעי', 'יום חמישי', 'יום שישי', 'יום שבת']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'ערב',
+    night: 'לילה'
+  },
+  abbreviated: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'ערב',
+    night: 'לילה'
+  },
+  wide: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'ערב',
+    night: 'לילה'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בבוקר',
+    afternoon: 'בצהריים',
+    evening: 'בערב',
+    night: 'בלילה'
+  },
+  abbreviated: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בבוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'בערב',
+    night: 'בלילה'
+  },
+  wide: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בבוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'בערב',
+    night: 'בלילה'
+  }
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var number = Number(dirtyNumber); // We only show words till 10
+
+  if (number <= 0 || number > 10) return number;
+  var options = dirtyOptions || {};
+  var unit = String(options.unit);
+  var isFemale = ['year', 'hour', 'minute', 'second'].indexOf(unit) >= 0;
+  var male = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שביעי', 'שמיני', 'תשיעי', 'עשירי'];
+  var female = ['ראשונה', 'שנייה', 'שלישית', 'רביעית', 'חמישית', 'שישית', 'שביעית', 'שמינית', 'תשיעית', 'עשירית'];
+  var index = number - 1;
+  return isFemale ? female[index] : male[index];
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/he/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/he/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+|(ראשון|שני|שלישי|רביעי|חמישי|שישי|שביעי|שמיני|תשיעי|עשירי|ראשונה|שנייה|שלישית|רביעית|חמישית|שישית|שביעית|שמינית|תשיעית|עשירית))/i;
+var parseOrdinalNumberPattern = /^(\d+|רא|שנ|של|רב|ח|שי|שב|שמ|ת|ע)/i;
+var matchEraPatterns = {
+  narrow: /^ל(ספירה|פנה״ס)/i,
+  abbreviated: /^ל(ספירה|פנה״ס)/i,
+  wide: /^ל(פני ה)?ספירה/i
+};
+var parseEraPatterns = {
+  any: [/^לפ/i, /^לס/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^רבעון [1234]/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^\d+/i,
+  abbreviated: /^(ינו|פבר|מרץ|אפר|מאי|יוני|יולי|אוג|ספט|אוק|נוב|דצמ)׳?/i,
+  wide: /^(ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^1$/i, /^2/i, /^3/i, /^4/i, /^5/i, /^6/i, /^7/i, /^8/i, /^9/i, /^10/i, /^11/i, /^12/i],
+  any: [/^ינ/i, /^פ/i, /^מר/i, /^אפ/i, /^מא/i, /^יונ/i, /^יול/i, /^אוג/i, /^ס/i, /^אוק/i, /^נ/i, /^ד/i]
+};
+var matchDayPatterns = {
+  narrow: /^[אבגדהוש]׳/i,
+  short: /^[אבגדהוש]׳/i,
+  abbreviated: /^(שבת|יום (א|ב|ג|ד|ה|ו)׳)/i,
+  wide: /^יום (ראשון|שני|שלישי|רביעי|חמישי|שישי|שבת)/i
+};
+var parseDayPatterns = {
+  abbreviated: [/א׳$/i, /ב׳$/i, /ג׳$/i, /ד׳$/i, /ה׳$/i, /ו׳$/i, /^ש/i],
+  wide: [/ן$/i, /ני$/i, /לישי$/i, /עי$/i, /מישי$/i, /שישי$/i, /ת$/i],
+  any: [/^א/i, /^ב/i, /^ג/i, /^ד/i, /^ה/i, /^ו/i, /^ש/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(אחר ה|ב)?(חצות|צהריים|בוקר|ערב|לילה|אחה״צ|לפנה״צ)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^לפ/i,
+    pm: /^אחה/i,
+    midnight: /^ח/i,
+    noon: /^צ/i,
+    morning: /בוקר/i,
+    afternoon: /בצ|אחר/i,
+    evening: /ערב/i,
+    night: /לילה/i
+  }
+};
+var ordinalName = ['רא', 'שנ', 'של', 'רב', 'ח', 'שי', 'שב', 'שמ', 'ת', 'ע'];
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      var number = parseInt(value, 10);
+      return isNaN(number) ? ordinalName.indexOf(value) + 1 : number;
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/he/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/he/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/he/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/he/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/he/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/he/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/he/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Hebrew locale.
+ * @language Hebrew
+ * @iso-639-2 heb
+ * @author Nir Lahad [@nirlah]{@link https://github.com/nirlah}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/hu/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/hu/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var translations = {
+  about: 'körülbelül',
+  over: 'több mint',
+  almost: 'majdnem',
+  lessthan: 'kevesebb mint'
+};
+
+function translate(number, addSuffix, key, comparison) {
+  var num = number;
+
+  switch (key) {
+    case 'xseconds':
+      if (comparison === -1 && addSuffix) return num + ' másodperccel ezelőtt';
+      if (comparison === -1 && !addSuffix) return num + ' másodperce';
+      if (comparison === 1) return num + ' másodperc múlva';
+      return num + ' másodperc';
+
+    case 'halfaminute':
+      if (comparison === -1 && addSuffix) return 'fél perccel ezelőtt';
+      if (comparison === -1 && !addSuffix) return 'fél perce';
+      if (comparison === 1) return 'fél perc múlva';
+      return 'fél perc';
+
+    case 'xminutes':
+      if (comparison === -1 && addSuffix) return num + ' perccel ezelőtt';
+      if (comparison === -1 && !addSuffix) return num + ' perce';
+      if (comparison === 1) return num + ' perc múlva';
+      return num + ' perc';
+
+    case 'xhours':
+      if (comparison === -1 && addSuffix) return num + ' órával ezelőtt';
+      if (comparison === -1 && !addSuffix) return num + ' órája';
+      if (comparison === 1) return num + ' óra múlva';
+      return num + ' óra';
+
+    case 'xdays':
+      if (comparison === -1 && addSuffix) return num + ' nappal ezelőtt';
+      if (comparison === -1 && !addSuffix) return num + ' napja';
+      if (comparison === 1) return num + ' nap múlva';
+      return num + ' nap';
+
+    case 'xmonths':
+      if (comparison === -1 && addSuffix) return num + ' hónappal ezelőtt';
+      if (comparison === -1 && !addSuffix) return num + ' hónapja';
+      if (comparison === 1) return num + ' hónap múlva';
+      return num + ' hónap';
+
+    case 'xyears':
+      if (comparison === -1 && addSuffix) return num + ' évvel ezelőtt';
+      if (comparison === -1 && !addSuffix) return num + ' éve';
+      if (comparison === 1) return num + ' év múlva';
+      return num + ' év';
+  }
+
+  return '';
+}
+
+function formatDistance(token, count, options) {
+  options = options || {};
+  var adverb = token.match(/about|over|almost|lessthan/i);
+  var unit = token.replace(adverb, '');
+  var result;
+  result = translate(count, options.addSuffix, unit.toLowerCase(), options.comparison);
+
+  if (adverb) {
+    result = translations[adverb[0].toLowerCase()] + ' ' + result;
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/hu/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/hu/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'y. MMMM d., EEEE',
+  long: 'y. MMMM d.',
+  medium: 'y. MMM d.',
+  short: 'y. MM. dd.'
+};
+var timeFormats = {
+  full: 'H:mm:ss zzzz',
+  long: 'H:mm:ss z',
+  medium: 'H:mm:ss',
+  short: 'H:mm'
+};
+var dateTimeFormats = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/hu/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/hu/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var accusativeWeekdays = ['vasárnap', 'hétfőn', 'kedden', 'szerdán', 'csütörtökön', 'pénteken', 'szombaton'];
+
+function week(isFuture) {
+  return function (date, _baseDate, _options) {
+    var day = date.getUTCDay();
+    return (isFuture ? '' : "'múlt' ") + "'" + accusativeWeekdays[day] + "'" + " p'-kor'";
+  };
+}
+
+var formatRelativeLocale = {
+  lastWeek: week(false),
+  yesterday: "'tegnap' p'-kor'",
+  today: "'ma' p'-kor'",
+  tomorrow: "'holnap' p'-kor'",
+  nextWeek: week(true),
+  other: 'P'
+};
+function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/hu/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/hu/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['ie.', 'isz.'],
+  abbreviated: ['i. e.', 'i. sz.'],
+  wide: ['Krisztus előtt', 'időszámításunk szerint']
+};
+var quarterValues = {
+  narrow: ['1.', '2.', '3.', '4.'],
+  abbreviated: ['1. n.év', '2. n.év', '3. n.év', '4. n.év'],
+  wide: ['1. negyedév', '2. negyedév', '3. negyedév', '4. negyedév']
+};
+var formattingQuarterValues = {
+  narrow: ['I.', 'II.', 'III.', 'IV.'],
+  abbreviated: ['I. n.év', 'II. n.év', 'III. n.év', 'IV. n.év'],
+  wide: ['I. negyedév', 'II. negyedév', 'III. negyedév', 'IV. negyedév']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'Á', 'M', 'J', 'J', 'A', 'Sz', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'febr.', 'márc.', 'ápr.', 'máj.', 'jún.', 'júl.', 'aug.', 'szept.', 'okt.', 'nov.', 'dec.'],
+  wide: ['január', 'február', 'március', 'április', 'május', 'június', 'július', 'augusztus', 'szeptember', 'október', 'november', 'december']
+};
+var dayValues = {
+  narrow: ['V', 'H', 'K', 'Sz', 'Cs', 'P', 'Sz'],
+  short: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
+  abbreviated: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
+  wide: ['vasárnap', 'hétfő', 'kedd', 'szerda', 'csütörtök', 'péntek', 'szombat']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'de.',
+    pm: 'du.',
+    midnight: 'éjfél',
+    noon: 'dél',
+    morning: 'reggel',
+    afternoon: 'du.',
+    evening: 'este',
+    night: 'éjjel'
+  },
+  abbreviated: {
+    am: 'de.',
+    pm: 'du.',
+    midnight: 'éjfél',
+    noon: 'dél',
+    morning: 'reggel',
+    afternoon: 'du.',
+    evening: 'este',
+    night: 'éjjel'
+  },
+  wide: {
+    am: 'de.',
+    pm: 'du.',
+    midnight: 'éjfél',
+    noon: 'dél',
+    morning: 'reggel',
+    afternoon: 'délután',
+    evening: 'este',
+    night: 'éjjel'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingQuarterValues,
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/hu/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/hu/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)\.?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ie\.|isz\.)/i,
+  abbreviated: /^(i\.\s?e\.?|b?\s?c\s?e|i\.\s?sz\.?)/i,
+  wide: /^(Krisztus előtt|időszámításunk előtt|időszámításunk szerint|i\. sz\.)/i
+};
+var parseEraPatterns = {
+  narrow: [/ie/i, /isz/i],
+  abbreviated: [/^(i\.?\s?e\.?|b\s?ce)/i, /^(i\.?\s?sz\.?|c\s?e)/i],
+  any: [/előtt/i, /(szerint|i. sz.)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]\.?/i,
+  abbreviated: /^[1234]?\.?\s?n\.év/i,
+  wide: /^([1234]|I|II|III|IV)?\.?\s?negyedév/i
+};
+var parseQuarterPatterns = {
+  any: [/1|I$/i, /2|II$/i, /3|III/i, /4|IV/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmaásond]|sz/i,
+  abbreviated: /^(jan\.?|febr\.?|márc\.?|ápr\.?|máj\.?|jún\.?|júl\.?|aug\.?|szept\.?|okt\.?|nov\.?|dec\.?)/i,
+  wide: /^(január|február|március|április|május|június|július|augusztus|szeptember|október|november|december)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a|á/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s|sz/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^már/i, /^áp/i, /^máj/i, /^jún/i, /^júl/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^([vhkpc]|sz|cs|sz)/i,
+  short: /^([vhkp]|sze|cs|szo)/i,
+  abbreviated: /^([vhkp]|sze|cs|szo)/i,
+  wide: /^(vasárnap|hétfő|kedd|szerda|csütörtök|péntek|szombat)/i
+};
+var parseDayPatterns = {
+  narrow: [/^v/i, /^h/i, /^k/i, /^sz/i, /^c/i, /^p/i, /^sz/i],
+  any: [/^v/i, /^h/i, /^k/i, /^sze/i, /^c/i, /^p/i, /^szo/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^((de|du)\.?|éjfél|délután|dél|reggel|este|éjjel)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^de\.?/i,
+    pm: /^du\.?/i,
+    midnight: /^éjf/i,
+    noon: /^dé/i,
+    morning: /reg/i,
+    afternoon: /^délu\.?/i,
+    evening: /es/i,
+    night: /éjj/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/hu/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/hu/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/hu/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/hu/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/hu/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/hu/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/hu/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ *
+ * @summary Hungarian locale.
+ * @language Hungarian
+ *
+ * @iso-639-2 hun
+ *
+ * @author Pavlo Shpak [@pshpak]{@link https://github.com/pshpak}
+ * @author Eduardo Pardo [@eduardopsll]{@link https://github.com/eduardopsll}
+ * @author Zoltan Szepesi [@twodcube]{@link https://github.com/twodcube}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/id/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/id/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'kurang dari 1 detik',
+    other: 'kurang dari {{count}} detik'
+  },
+  xSeconds: {
+    one: '1 detik',
+    other: '{{count}} detik'
+  },
+  halfAMinute: 'setengah menit',
+  lessThanXMinutes: {
+    one: 'kurang dari 1 menit',
+    other: 'kurang dari {{count}} menit'
+  },
+  xMinutes: {
+    one: '1 menit',
+    other: '{{count}} menit'
+  },
+  aboutXHours: {
+    one: 'sekitar 1 jam',
+    other: 'sekitar {{count}} jam'
+  },
+  xHours: {
+    one: '1 jam',
+    other: '{{count}} jam'
+  },
+  xDays: {
+    one: '1 hari',
+    other: '{{count}} hari'
+  },
+  aboutXMonths: {
+    one: 'sekitar 1 bulan',
+    other: 'sekitar {{count}} bulan'
+  },
+  xMonths: {
+    one: '1 bulan',
+    other: '{{count}} bulan'
+  },
+  aboutXYears: {
+    one: 'sekitar 1 tahun',
+    other: 'sekitar {{count}} tahun'
+  },
+  xYears: {
+    one: '1 tahun',
+    other: '{{count}} tahun'
+  },
+  overXYears: {
+    one: 'lebih dari 1 tahun',
+    other: 'lebih dari {{count}} tahun'
+  },
+  almostXYears: {
+    one: 'hampir 1 tahun',
+    other: 'hampir {{count}} tahun'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'dalam waktu ' + result;
+    } else {
+      return result + ' yang lalu';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/id/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/id/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, d MMMM yyyy',
+  long: 'd MMMM yyyy',
+  medium: 'd MMM yyyy',
+  short: 'd/M/yyyy'
+};
+var timeFormats = {
+  full: 'HH.mm.ss',
+  long: 'HH.mm.ss',
+  medium: 'HH.mm',
+  short: 'HH.mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'pukul' {{time}}",
+  long: "{{date}} 'pukul' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/id/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/id/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee 'lalu pukul' p",
+  yesterday: "'Kemarin pukul' p",
+  today: "'Hari ini pukul' p",
+  tomorrow: "'Besok pukul' p",
+  nextWeek: "eeee 'pukul' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/id/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/id/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+ // All data for localization are taken from this page
+// https://www.unicode.org/cldr/charts/32/summary/id.html
+
+var eraValues = {
+  narrow: ['SM', 'M'],
+  abbreviated: ['SM', 'M'],
+  wide: ['Sebelum Masehi', 'Masehi']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['Kuartal ke-1', 'Kuartal ke-2', 'Kuartal ke-3', 'Kuartal ke-4'] // Note: in Indonesian, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'],
+  wide: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+};
+var dayValues = {
+  narrow: ['M', 'S', 'S', 'R', 'K', 'J', 'S'],
+  short: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'],
+  abbreviated: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'],
+  wide: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'tengah malam',
+    noon: 'tengah hari',
+    morning: 'pagi',
+    afternoon: 'siang',
+    evening: 'sore',
+    night: 'malam'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'tengah malam',
+    noon: 'tengah hari',
+    morning: 'pagi',
+    afternoon: 'siang',
+    evening: 'sore',
+    night: 'malam'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'tengah malam',
+    noon: 'tengah hari',
+    morning: 'pagi',
+    afternoon: 'siang',
+    evening: 'sore',
+    night: 'malam'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'tengah malam',
+    noon: 'tengah hari',
+    morning: 'pagi',
+    afternoon: 'siang',
+    evening: 'sore',
+    night: 'malam'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'tengah malam',
+    noon: 'tengah hari',
+    morning: 'pagi',
+    afternoon: 'siang',
+    evening: 'sore',
+    night: 'malam'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'tengah malam',
+    noon: 'tengah hari',
+    morning: 'pagi',
+    afternoon: 'siang',
+    evening: 'sore',
+    night: 'malam'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  var number = Number(dirtyNumber); // Can't use "pertama", "kedua" because can't be parsed
+
+  switch (number) {
+    default:
+      return 'ke-' + number;
+  }
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/id/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/id/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^ke-(\d+)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(sm|m)/i,
+  abbreviated: /^(s\.?\s?m\.?|s\.?\s?e\.?\s?u\.?|m\.?|e\.?\s?u\.?)/i,
+  wide: /^(sebelum masehi|sebelum era umum|masehi|era umum)/i
+};
+var parseEraPatterns = {
+  any: [/^s/i, /^(m|e)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^K-?\s[1234]/i,
+  wide: /^Kuartal ke-?\s?[1234]/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|mei|jun|jul|agt|sep|okt|nov|des)/i,
+  wide: /^(januari|februari|maret|april|mei|juni|juli|agustus|september|oktober|november|desember)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^ma/i, /^ap/i, /^me/i, /^jun/i, /^jul/i, /^ag/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[srkjm]/i,
+  short: /^(min|sen|sel|rab|kam|jum|sab)/i,
+  abbreviated: /^(min|sen|sel|rab|kam|jum|sab)/i,
+  wide: /^(minggu|senin|selasa|rabu|kamis|jumat|sabtu)/i
+};
+var parseDayPatterns = {
+  narrow: [/^m/i, /^s/i, /^s/i, /^r/i, /^k/i, /^j/i, /^s/i],
+  any: [/^m/i, /^sen/i, /^sel/i, /^r/i, /^k/i, /^j/i, /^sa/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|tengah m|tengah h|(di(\swaktu)?) (pagi|siang|sore|malam))/i,
+  any: /^([ap]\.?\s?m\.?|tengah malam|tengah hari|(di(\swaktu)?) (pagi|siang|sore|malam))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^pm/i,
+    midnight: /^tengah m/i,
+    noon: /^tengah h/i,
+    morning: /pagi/i,
+    afternoon: /siang/i,
+    evening: /sore/i,
+    night: /malam/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/id/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/id/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/id/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/id/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/id/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/id/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/id/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Indonesian locale.
+ * @language Indonesian
+ * @iso-639-2 ind
+ * @author Rahmat Budiharso [@rbudiharso]{@link https://github.com/rbudiharso}
+ * @author Benget Nata [@bentinata]{@link https://github.com/bentinata}
+ * @author Budi Irawan [@deerawan]{@link https://github.com/deerawan}
+ * @author Try Ajitiono [@imballinst]{@link https://github.com/imballinst}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/index.js ***!
+  \***************************************************/
+/*! exports provided: af, arDZ, arSA, be, bn, cs, cy, da, de, el, enCA, enGB, enUS, eo, es, et, faIR, fi, fr, gl, he, hu, id, is, it, ja, ka, ko, lt, lv, nb, nl, nn, pl, pt, ptBR, ro, ru, sk, sv, th, tr, ug, uk, vi, zhCN, zhTW */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _af_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./af/index.js */ "./node_modules/date-fns/esm/locale/af/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "af", function() { return _af_index_js__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _ar_DZ_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ar-DZ/index.js */ "./node_modules/date-fns/esm/locale/ar-DZ/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "arDZ", function() { return _ar_DZ_index_js__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _ar_SA_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ar-SA/index.js */ "./node_modules/date-fns/esm/locale/ar-SA/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "arSA", function() { return _ar_SA_index_js__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _be_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./be/index.js */ "./node_modules/date-fns/esm/locale/be/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "be", function() { return _be_index_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _bn_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bn/index.js */ "./node_modules/date-fns/esm/locale/bn/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "bn", function() { return _bn_index_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _cs_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cs/index.js */ "./node_modules/date-fns/esm/locale/cs/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cs", function() { return _cs_index_js__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _cy_index_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./cy/index.js */ "./node_modules/date-fns/esm/locale/cy/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cy", function() { return _cy_index_js__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _da_index_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./da/index.js */ "./node_modules/date-fns/esm/locale/da/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "da", function() { return _da_index_js__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _de_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./de/index.js */ "./node_modules/date-fns/esm/locale/de/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "de", function() { return _de_index_js__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _el_index_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./el/index.js */ "./node_modules/date-fns/esm/locale/el/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "el", function() { return _el_index_js__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+/* harmony import */ var _en_CA_index_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./en-CA/index.js */ "./node_modules/date-fns/esm/locale/en-CA/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "enCA", function() { return _en_CA_index_js__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+
+/* harmony import */ var _en_GB_index_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./en-GB/index.js */ "./node_modules/date-fns/esm/locale/en-GB/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "enGB", function() { return _en_GB_index_js__WEBPACK_IMPORTED_MODULE_11__["default"]; });
+
+/* harmony import */ var _en_US_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./en-US/index.js */ "./node_modules/date-fns/esm/locale/en-US/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "enUS", function() { return _en_US_index_js__WEBPACK_IMPORTED_MODULE_12__["default"]; });
+
+/* harmony import */ var _eo_index_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./eo/index.js */ "./node_modules/date-fns/esm/locale/eo/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "eo", function() { return _eo_index_js__WEBPACK_IMPORTED_MODULE_13__["default"]; });
+
+/* harmony import */ var _es_index_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./es/index.js */ "./node_modules/date-fns/esm/locale/es/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "es", function() { return _es_index_js__WEBPACK_IMPORTED_MODULE_14__["default"]; });
+
+/* harmony import */ var _et_index_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./et/index.js */ "./node_modules/date-fns/esm/locale/et/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "et", function() { return _et_index_js__WEBPACK_IMPORTED_MODULE_15__["default"]; });
+
+/* harmony import */ var _fa_IR_index_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./fa-IR/index.js */ "./node_modules/date-fns/esm/locale/fa-IR/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "faIR", function() { return _fa_IR_index_js__WEBPACK_IMPORTED_MODULE_16__["default"]; });
+
+/* harmony import */ var _fi_index_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./fi/index.js */ "./node_modules/date-fns/esm/locale/fi/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fi", function() { return _fi_index_js__WEBPACK_IMPORTED_MODULE_17__["default"]; });
+
+/* harmony import */ var _fr_index_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./fr/index.js */ "./node_modules/date-fns/esm/locale/fr/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fr", function() { return _fr_index_js__WEBPACK_IMPORTED_MODULE_18__["default"]; });
+
+/* harmony import */ var _gl_index_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./gl/index.js */ "./node_modules/date-fns/esm/locale/gl/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gl", function() { return _gl_index_js__WEBPACK_IMPORTED_MODULE_19__["default"]; });
+
+/* harmony import */ var _he_index_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./he/index.js */ "./node_modules/date-fns/esm/locale/he/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "he", function() { return _he_index_js__WEBPACK_IMPORTED_MODULE_20__["default"]; });
+
+/* harmony import */ var _hu_index_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./hu/index.js */ "./node_modules/date-fns/esm/locale/hu/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hu", function() { return _hu_index_js__WEBPACK_IMPORTED_MODULE_21__["default"]; });
+
+/* harmony import */ var _id_index_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./id/index.js */ "./node_modules/date-fns/esm/locale/id/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "id", function() { return _id_index_js__WEBPACK_IMPORTED_MODULE_22__["default"]; });
+
+/* harmony import */ var _is_index_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./is/index.js */ "./node_modules/date-fns/esm/locale/is/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "is", function() { return _is_index_js__WEBPACK_IMPORTED_MODULE_23__["default"]; });
+
+/* harmony import */ var _it_index_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./it/index.js */ "./node_modules/date-fns/esm/locale/it/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "it", function() { return _it_index_js__WEBPACK_IMPORTED_MODULE_24__["default"]; });
+
+/* harmony import */ var _ja_index_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./ja/index.js */ "./node_modules/date-fns/esm/locale/ja/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ja", function() { return _ja_index_js__WEBPACK_IMPORTED_MODULE_25__["default"]; });
+
+/* harmony import */ var _ka_index_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./ka/index.js */ "./node_modules/date-fns/esm/locale/ka/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ka", function() { return _ka_index_js__WEBPACK_IMPORTED_MODULE_26__["default"]; });
+
+/* harmony import */ var _ko_index_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./ko/index.js */ "./node_modules/date-fns/esm/locale/ko/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ko", function() { return _ko_index_js__WEBPACK_IMPORTED_MODULE_27__["default"]; });
+
+/* harmony import */ var _lt_index_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./lt/index.js */ "./node_modules/date-fns/esm/locale/lt/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "lt", function() { return _lt_index_js__WEBPACK_IMPORTED_MODULE_28__["default"]; });
+
+/* harmony import */ var _lv_index_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./lv/index.js */ "./node_modules/date-fns/esm/locale/lv/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "lv", function() { return _lv_index_js__WEBPACK_IMPORTED_MODULE_29__["default"]; });
+
+/* harmony import */ var _nb_index_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./nb/index.js */ "./node_modules/date-fns/esm/locale/nb/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "nb", function() { return _nb_index_js__WEBPACK_IMPORTED_MODULE_30__["default"]; });
+
+/* harmony import */ var _nl_index_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./nl/index.js */ "./node_modules/date-fns/esm/locale/nl/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "nl", function() { return _nl_index_js__WEBPACK_IMPORTED_MODULE_31__["default"]; });
+
+/* harmony import */ var _nn_index_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./nn/index.js */ "./node_modules/date-fns/esm/locale/nn/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "nn", function() { return _nn_index_js__WEBPACK_IMPORTED_MODULE_32__["default"]; });
+
+/* harmony import */ var _pl_index_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pl/index.js */ "./node_modules/date-fns/esm/locale/pl/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pl", function() { return _pl_index_js__WEBPACK_IMPORTED_MODULE_33__["default"]; });
+
+/* harmony import */ var _pt_index_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pt/index.js */ "./node_modules/date-fns/esm/locale/pt/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pt", function() { return _pt_index_js__WEBPACK_IMPORTED_MODULE_34__["default"]; });
+
+/* harmony import */ var _pt_BR_index_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./pt-BR/index.js */ "./node_modules/date-fns/esm/locale/pt-BR/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ptBR", function() { return _pt_BR_index_js__WEBPACK_IMPORTED_MODULE_35__["default"]; });
+
+/* harmony import */ var _ro_index_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./ro/index.js */ "./node_modules/date-fns/esm/locale/ro/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ro", function() { return _ro_index_js__WEBPACK_IMPORTED_MODULE_36__["default"]; });
+
+/* harmony import */ var _ru_index_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./ru/index.js */ "./node_modules/date-fns/esm/locale/ru/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ru", function() { return _ru_index_js__WEBPACK_IMPORTED_MODULE_37__["default"]; });
+
+/* harmony import */ var _sk_index_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./sk/index.js */ "./node_modules/date-fns/esm/locale/sk/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sk", function() { return _sk_index_js__WEBPACK_IMPORTED_MODULE_38__["default"]; });
+
+/* harmony import */ var _sv_index_js__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./sv/index.js */ "./node_modules/date-fns/esm/locale/sv/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sv", function() { return _sv_index_js__WEBPACK_IMPORTED_MODULE_39__["default"]; });
+
+/* harmony import */ var _th_index_js__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./th/index.js */ "./node_modules/date-fns/esm/locale/th/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "th", function() { return _th_index_js__WEBPACK_IMPORTED_MODULE_40__["default"]; });
+
+/* harmony import */ var _tr_index_js__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./tr/index.js */ "./node_modules/date-fns/esm/locale/tr/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "tr", function() { return _tr_index_js__WEBPACK_IMPORTED_MODULE_41__["default"]; });
+
+/* harmony import */ var _ug_index_js__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./ug/index.js */ "./node_modules/date-fns/esm/locale/ug/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ug", function() { return _ug_index_js__WEBPACK_IMPORTED_MODULE_42__["default"]; });
+
+/* harmony import */ var _uk_index_js__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./uk/index.js */ "./node_modules/date-fns/esm/locale/uk/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "uk", function() { return _uk_index_js__WEBPACK_IMPORTED_MODULE_43__["default"]; });
+
+/* harmony import */ var _vi_index_js__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./vi/index.js */ "./node_modules/date-fns/esm/locale/vi/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "vi", function() { return _vi_index_js__WEBPACK_IMPORTED_MODULE_44__["default"]; });
+
+/* harmony import */ var _zh_CN_index_js__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./zh-CN/index.js */ "./node_modules/date-fns/esm/locale/zh-CN/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zhCN", function() { return _zh_CN_index_js__WEBPACK_IMPORTED_MODULE_45__["default"]; });
+
+/* harmony import */ var _zh_TW_index_js__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./zh-TW/index.js */ "./node_modules/date-fns/esm/locale/zh-TW/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zhTW", function() { return _zh_TW_index_js__WEBPACK_IMPORTED_MODULE_46__["default"]; });
+
+// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/is/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/is/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'minna en 1 sekúnda',
+    other: 'minna en {{count}} sekúndur'
+  },
+  xSeconds: {
+    one: '1 sekúnda',
+    other: '{{count}} sekúndur'
+  },
+  halfAMinute: 'hálf mínúta',
+  lessThanXMinutes: {
+    one: 'minna en 1 mínúta',
+    other: 'minna en {{count}} mínútur'
+  },
+  xMinutes: {
+    one: '1 mínúta',
+    other: '{{count}} mínútur'
+  },
+  aboutXHours: {
+    one: 'u.þ.b. 1 klukkustund',
+    other: 'u.þ.b. {{count}} klukkustundir'
+  },
+  xHours: {
+    one: '1 klukkustund',
+    other: '{{count}} klukkustundir'
+  },
+  xDays: {
+    one: '1 dagur',
+    other: '{{count}} dagar'
+  },
+  aboutXMonths: {
+    one: 'u.þ.b. 1 mánuður',
+    other: 'u.þ.b. {{count}} mánuðir'
+  },
+  xMonths: {
+    one: '1 mánuður',
+    other: '{{count}} mánuðir'
+  },
+  aboutXYears: {
+    one: 'u.þ.b. 1 ár',
+    other: 'u.þ.b. {{count}} ár'
+  },
+  xYears: {
+    one: '1 ár',
+    other: '{{count}} ár'
+  },
+  overXYears: {
+    one: 'meira en 1 ár',
+    other: 'meira en {{count}} ár'
+  },
+  almostXYears: {
+    one: 'næstum 1 ár',
+    other: 'næstum {{count}} ár'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'í ' + result;
+    } else {
+      return result + ' síðan';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/is/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/is/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, do MMMM y',
+  long: 'do MMMM y',
+  medium: 'do MMM y',
+  short: 'd.MM.y'
+};
+var timeFormats = {
+  full: "'kl'. HH:mm:ss zzzz",
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'kl.' {{time}}",
+  long: "{{date}} 'kl.' {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/is/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/is/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'síðasta' dddd 'kl.' p",
+  yesterday: "'í gær kl.' p",
+  today: "'í dag kl.' p",
+  tomorrow: "'á morgun kl.' p",
+  nextWeek: "dddd 'kl.' p",
+  other: 'L'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/is/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/is/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['f.Kr.', 'e.Kr.'],
+  abbreviated: ['f.Kr.', 'e.Kr.'],
+  wide: ['fyrir Krist', 'eftir Krist']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1F', '2F', '3F', '4F'],
+  wide: ['1. fjórðungur', '2. fjórðungur', '3. fjórðungur', '4. fjórðungur']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'Á', 'S', 'Ó', 'N', 'D'],
+  abbreviated: ['jan.', 'feb.', 'mars', 'apríl', 'maí', 'júní', 'júlí', 'ágúst', 'sept.', 'okt.', 'nóv.', 'des.'],
+  wide: ['janúar', 'febrúar', 'mars', 'apríl', 'maí', 'júní', 'júlí', 'ágúst', 'september', 'október', 'nóvember', 'desember']
+};
+var dayValues = {
+  narrow: ['S', 'M', 'Þ', 'M', 'F', 'F', 'L'],
+  short: ['Su', 'Má', 'Þr', 'Mi', 'Fi', 'Fö', 'La'],
+  abbreviated: ['sun.', 'mán.', 'þri.', 'mið.', 'fim.', 'fös.', 'lau'],
+  wide: ['sunnudagur', 'mánudagur', 'þriðjudagur', 'miðvikudagur', 'fimmtudagur', 'föstudagur', 'laugardagur']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'f',
+    pm: 'e',
+    midnight: 'miðnætti',
+    noon: 'hádegi',
+    morning: 'morgunn',
+    afternoon: 'síðdegi',
+    evening: 'kvöld',
+    night: 'nótt'
+  },
+  abbreviated: {
+    am: 'f.h.',
+    pm: 'e.h.',
+    midnight: 'miðnætti',
+    noon: 'hádegi',
+    morning: 'morgunn',
+    afternoon: 'síðdegi',
+    evening: 'kvöld',
+    night: 'nótt'
+  },
+  wide: {
+    am: 'fyrir hádegi',
+    pm: 'eftir hádegi',
+    midnight: 'miðnætti',
+    noon: 'hádegi',
+    morning: 'morgunn',
+    afternoon: 'síðdegi',
+    evening: 'kvöld',
+    night: 'nótt'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'f',
+    pm: 'e',
+    midnight: 'á miðnætti',
+    noon: 'á hádegi',
+    morning: 'að morgni',
+    afternoon: 'síðdegis',
+    evening: 'um kvöld',
+    night: 'um nótt'
+  },
+  abbreviated: {
+    am: 'f.h.',
+    pm: 'e.h.',
+    midnight: 'á miðnætti',
+    noon: 'á hádegi',
+    morning: 'að morgni',
+    afternoon: 'síðdegis',
+    evening: 'um kvöld',
+    night: 'um nótt'
+  },
+  wide: {
+    am: 'fyrir hádegi',
+    pm: 'eftir hádegi',
+    midnight: 'á miðnætti',
+    noon: 'á hádegi',
+    morning: 'að morgni',
+    afternoon: 'síðdegis',
+    evening: 'um kvöld',
+    night: 'um nótt'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/is/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/is/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(f\.Kr\.|e\.Kr\.)/i,
+  abbreviated: /^(f\.Kr\.|e\.Kr\.)/i,
+  wide: /^(fyrir Krist|eftir Krist)/i
+};
+var parseEraPatterns = {
+  any: [/^(f\.Kr\.|e\.Kr\.)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234] fjórðungur/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmásónd]/i,
+  abbreviated: /^(jan\.|feb\.|mars\.|apríl\.|maí|júní|júlí|águst|sep\.|oct\.|nov\.|dec\.)/i,
+  wide: /^(januar|februar|mars|apríl|maí|júní|júlí|águst|september|október|nóvember|desember)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^á/i, /^s/i, /^ó/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^maí/i, /^jún/i, /^júl/i, /^áu/i, /^s/i, /^ó/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[smtwf]/i,
+  short: /^(su|má|þr|mi|fi|fö|la)/i,
+  abbreviated: /^(sun|mán|þri|mið|fim|fös|lau)\.?/i,
+  wide: /^(sunnudagur|mánudagur|þriðjudagur|miðvikudagur|fimmtudagur|föstudagur|laugardagur)/i
+};
+var parseDayPatterns = {
+  narrow: [/^s/i, /^m/i, /^þ/i, /^m/i, /^f/i, /^f/i, /^l/i],
+  any: [/^su/i, /^má/i, /^þr/i, /^mi/i, /^fi/i, /^fö/i, /^la/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(f|e|síðdegis|(á|að|um) (morgni|kvöld|nótt|miðnætti))/i,
+  any: /^(fyrir hádegi|eftir hádegi|[ef]\.?h\.?|síðdegis|morgunn|(á|að|um) (morgni|kvöld|nótt|miðnætti))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^f/i,
+    pm: /^e/i,
+    midnight: /^mi/i,
+    noon: /^há/i,
+    morning: /morgunn/i,
+    afternoon: /síðdegi/i,
+    evening: /kvöld/i,
+    night: /nótt/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/is/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/is/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/is/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/is/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/is/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/is/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/is/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Icelandic locale.
+ * @language Icelandic
+ * @iso-639-2 isl
+ * @author Derek Blank [@derekblank]{@link https://github.com/derekblank}
+ * @author Arnór Ýmir [@lamayg]{@link https://github.com/lamayg}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/it/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/it/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'meno di un secondo',
+    other: 'meno di {{count}} secondi'
+  },
+  xSeconds: {
+    one: 'un secondo',
+    other: '{{count}} secondi'
+  },
+  halfAMinute: 'alcuni secondi',
+  lessThanXMinutes: {
+    one: 'meno di un minuto',
+    other: 'meno di {{count}} minuti'
+  },
+  xMinutes: {
+    one: 'un minuto',
+    other: '{{count}} minuti'
+  },
+  aboutXHours: {
+    one: 'circa un\'ora',
+    other: 'circa {{count}} ore'
+  },
+  xHours: {
+    one: 'un\'ora',
+    other: '{{count}} ore'
+  },
+  xDays: {
+    one: 'un giorno',
+    other: '{{count}} giorni'
+  },
+  aboutXMonths: {
+    one: 'circa un mese',
+    other: 'circa {{count}} mesi'
+  },
+  xMonths: {
+    one: 'un mese',
+    other: '{{count}} mesi'
+  },
+  aboutXYears: {
+    one: 'circa un anno',
+    other: 'circa {{count}} anni'
+  },
+  xYears: {
+    one: 'un anno',
+    other: '{{count}} anni'
+  },
+  overXYears: {
+    one: 'più di un anno',
+    other: 'più di {{count}} anni'
+  },
+  almostXYears: {
+    one: 'quasi un anno',
+    other: 'quasi {{count}} anni'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'tra ' + result;
+    } else {
+      return result + ' fa';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/it/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/it/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/it/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/it/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee 'scorso alle' p",
+  yesterday: "'ieri alle' p",
+  today: "'oggi alle' p",
+  tomorrow: "'domani alle' p",
+  nextWeek: "eeee 'alle' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/it/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/it/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['aC', 'dC'],
+  abbreviated: ['a.C.', 'd.C.'],
+  wide: ['avanti Cristo', 'dopo Cristo']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues = {
+  narrow: ['G', 'F', 'M', 'A', 'M', 'G', 'L', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'],
+  wide: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
+};
+var dayValues = {
+  narrow: ['D', 'L', 'M', 'M', 'G', 'V', 'S'],
+  short: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
+  abbreviated: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
+  wide: ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'm.',
+    pm: 'p.',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'mattina',
+    afternoon: 'pomeriggio',
+    evening: 'sera',
+    night: 'notte'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'm.',
+    pm: 'p.',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mezzanotte',
+    noon: 'mezzogiorno',
+    morning: 'di mattina',
+    afternoon: 'del pomeriggio',
+    evening: 'di sera',
+    night: 'di notte'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + 'º';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/it/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/it/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(º)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(aC|dC)/i,
+  abbreviated: /^(a\.?\s?C\.?|a\.?\s?e\.?\s?v\.?|d\.?\s?C\.?|e\.?\s?v\.?)/i,
+  wide: /^(avanti Cristo|avanti Era Volgare|dopo Cristo|Era Volgare)/i
+};
+var parseEraPatterns = {
+  any: [/^a/i, /^(d|e)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^t[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[gfmalsond]/i,
+  abbreviated: /^(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)/i,
+  wide: /^(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^g/i, /^f/i, /^m/i, /^a/i, /^m/i, /^g/i, /^l/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ge/i, /^f/i, /^mar/i, /^ap/i, /^mag/i, /^gi/i, /^l/i, /^ag/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[dlmgvs]/i,
+  short: /^(do|lu|ma|me|gi|ve|sa)/i,
+  abbreviated: /^(dom|lun|mar|mer|gio|ven|sab)/i,
+  wide: /^(domenica|luned[i|ì]|marted[i|ì]|mercoled[i|ì]|gioved[i|ì]|venerd[i|ì]|sabato)/i
+};
+var parseDayPatterns = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^g/i, /^v/i, /^s/i],
+  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^g/i, /^v/i, /^s/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|m\.|p|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i,
+  any: /^([ap]\.?\s?m\.?|mezzanotte|mezzogiorno|(di|del) (mattina|pomeriggio|sera|notte))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mezza/i,
+    noon: /^mezzo/i,
+    morning: /mattina/i,
+    afternoon: /pomeriggio/i,
+    evening: /sera/i,
+    night: /notte/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/it/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/it/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/it/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/it/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/it/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/it/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/it/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Italian locale.
+ * @language Italian
+ * @iso-639-2 ita
+ * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
+ * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
+ * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ja/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ja/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: '1秒未満',
+    other: '{{count}}秒未満',
+    oneWithSuffix: '約1秒',
+    otherWithSuffix: '約{{count}}秒'
+  },
+  xSeconds: {
+    one: '1秒',
+    other: '{{count}}秒'
+  },
+  halfAMinute: '30秒',
+  lessThanXMinutes: {
+    one: '1分未満',
+    other: '{{count}}分未満',
+    oneWithSuffix: '約1分',
+    otherWithSuffix: '約{{count}}分'
+  },
+  xMinutes: {
+    one: '1分',
+    other: '{{count}}分'
+  },
+  aboutXHours: {
+    one: '約1時間',
+    other: '約{{count}}時間'
+  },
+  xHours: {
+    one: '1時間',
+    other: '{{count}}時間'
+  },
+  xDays: {
+    one: '1日',
+    other: '{{count}}日'
+  },
+  aboutXMonths: {
+    one: '約1か月',
+    other: '約{{count}}か月'
+  },
+  xMonths: {
+    one: '1か月',
+    other: '{{count}}か月'
+  },
+  aboutXYears: {
+    one: '約1年',
+    other: '約{{count}}年'
+  },
+  xYears: {
+    one: '1年',
+    other: '{{count}}年'
+  },
+  overXYears: {
+    one: '1年以上',
+    other: '{{count}}年以上'
+  },
+  almostXYears: {
+    one: '1年近く',
+    other: '{{count}}年近く'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    if (options.addSuffix && formatDistanceLocale[token].oneWithSuffix) {
+      result = formatDistanceLocale[token].oneWithSuffix;
+    } else {
+      result = formatDistanceLocale[token].one;
+    }
+  } else {
+    if (options.addSuffix && formatDistanceLocale[token].otherWithSuffix) {
+      result = formatDistanceLocale[token].otherWithSuffix.replace('{{count}}', count);
+    } else {
+      result = formatDistanceLocale[token].other.replace('{{count}}', count);
+    }
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return result + '後';
+    } else {
+      return result + '前';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ja/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ja/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'y年M月d日EEEE',
+  long: 'y年M月d日',
+  medium: 'y/MM/dd',
+  short: 'y/MM/dd'
+};
+var timeFormats = {
+  full: 'H時mm分ss秒 zzzz',
+  long: 'H:mm:ss z',
+  medium: 'H:mm:ss',
+  short: 'H:mm'
+};
+var dateTimeFormats = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ja/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ja/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: '先週のeeeeのp',
+  yesterday: '昨日のp',
+  today: '今日のp',
+  tomorrow: '明日のp',
+  nextWeek: '翌週のeeeeのp',
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ja/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ja/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['BC', 'AC'],
+  abbreviated: ['紀元前', '西暦'],
+  wide: ['紀元前', '西暦']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['第1四半期', '第2四半期', '第3四半期', '第4四半期']
+};
+var monthValues = {
+  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  abbreviated: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+  wide: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+};
+var dayValues = {
+  narrow: ['日', '月', '火', '水', '木', '金', '土'],
+  short: ['日', '月', '火', '水', '木', '金', '土'],
+  abbreviated: ['日', '月', '火', '水', '木', '金', '土'],
+  wide: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: '午前',
+    pm: '午後',
+    midnight: '深夜',
+    noon: '正午',
+    morning: '朝',
+    afternoon: '午後',
+    evening: '夜',
+    night: '深夜'
+  },
+  abbreviated: {
+    am: '午前',
+    pm: '午後',
+    midnight: '深夜',
+    noon: '正午',
+    morning: '朝',
+    afternoon: '午後',
+    evening: '夜',
+    night: '深夜'
+  },
+  wide: {
+    am: '午前',
+    pm: '午後',
+    midnight: '深夜',
+    noon: '正午',
+    morning: '朝',
+    afternoon: '午後',
+    evening: '夜',
+    night: '深夜'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: '午前',
+    pm: '午後',
+    midnight: '深夜',
+    noon: '正午',
+    morning: '朝',
+    afternoon: '午後',
+    evening: '夜',
+    night: '深夜'
+  },
+  abbreviated: {
+    am: '午前',
+    pm: '午後',
+    midnight: '深夜',
+    noon: '正午',
+    morning: '朝',
+    afternoon: '午後',
+    evening: '夜',
+    night: '深夜'
+  },
+  wide: {
+    am: '午前',
+    pm: '午後',
+    midnight: '深夜',
+    noon: '正午',
+    morning: '朝',
+    afternoon: '午後',
+    evening: '夜',
+    night: '深夜'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number;
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ja/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ja/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^第?\d+/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(B\.?C\.?|A\.?D\.?)/i,
+  abbreviated: /^(紀元[前後]|西暦)/i,
+  wide: /^(紀元[前後]|西暦)/i
+};
+var parseEraPatterns = {
+  narrow: [/^B/i, /^A/i],
+  any: [/^(紀元前)/i, /^(西暦|紀元後)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^Q[1234]/i,
+  wide: /^第[1234一二三四１２３４]四半期/i
+};
+var parseQuarterPatterns = {
+  any: [/(1|一|１)/i, /(2|二|２)/i, /(3|三|３)/i, /(4|四|４)/i]
+};
+var matchMonthPatterns = {
+  narrow: /^([123456789]|1[012])/,
+  abbreviated: /^([123456789]|1[012])月/i,
+  wide: /^([123456789]|1[012])月/i
+};
+var parseMonthPatterns = {
+  any: [/^1/, /^2/, /^3/, /^4/, /^5/, /^6/, /^7/, /^8/, /^9/, /^10/, /^11/, /^12/]
+};
+var matchDayPatterns = {
+  narrow: /^[日月火水木金土]/,
+  short: /^[日月火水木金土]/,
+  abbreviated: /^[日月火水木金土]/,
+  wide: /^[日月火水木金土]曜日/
+};
+var parseDayPatterns = {
+  any: [/^日/, /^月/, /^火/, /^水/, /^木/, /^金/, /^土/]
+};
+var matchDayPeriodPatterns = {
+  any: /^(AM|PM|午前|午後|正午|深夜|真夜中|夜|朝)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^(A|午前)/i,
+    pm: /^(P|午後)/i,
+    midnight: /^深夜|真夜中/i,
+    noon: /^正午/i,
+    morning: /^朝/i,
+    afternoon: /^午後/i,
+    evening: /^夜/i,
+    night: /^深夜/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ja/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ja/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/ja/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/ja/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/ja/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/ja/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/ja/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Japanese locale.
+ * @language Japanese
+ * @iso-639-2 jpn
+ * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
+ * @author Yamagishi Kazutoshi [@ykzts]{@link https://github.com/ykzts}
+ * @author Luca Ban [@mesqueeb]{@link https://github.com/mesqueeb}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale); // throw new Error('ja locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ka/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ka/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    past: '{{count}} წამზე ნაკლები ხნის წინ',
+    present: '{{count}} წამზე ნაკლები',
+    future: '{{count}} წამზე ნაკლებში'
+  },
+  xSeconds: {
+    past: '{{count}} წამის წინ',
+    present: '{{count}} წამი',
+    future: '{{count}} წამში'
+  },
+  halfAMinute: {
+    past: 'ნახევარი წუთის წინ',
+    present: 'ნახევარი წუთი',
+    future: 'ნახევარი წუთში'
+  },
+  lessThanXMinutes: {
+    past: '{{count}} წუთზე ნაკლები ხნის წინ',
+    present: '{{count}} წუთზე ნაკლები',
+    future: '{{count}} წუთზე ნაკლებში'
+  },
+  xMinutes: {
+    past: '{{count}} წუთის წინ',
+    present: '{{count}} წუთი',
+    future: '{{count}} წუთში'
+  },
+  aboutXHours: {
+    past: 'დაახლოებით {{count}} საათის წინ',
+    present: 'დაახლოებით {{count}} საათი',
+    future: 'დაახლოებით {{count}} საათში'
+  },
+  xHours: {
+    past: '{{count}} საათის წინ',
+    present: '{{count}} საათი',
+    future: '{{count}} საათში'
+  },
+  xDays: {
+    past: '{{count}} დღის წინ',
+    present: '{{count}} დღე',
+    future: '{{count}} დღეში'
+  },
+  aboutXMonths: {
+    past: 'დაახლოებით {{count}} თვის წინ',
+    present: 'დაახლოებით {{count}} თვე',
+    future: 'დაახლოებით {{count}} თვეში'
+  },
+  xMonths: {
+    past: '{{count}} თვის წინ',
+    present: '{{count}} თვე',
+    future: '{{count}} თვეში'
+  },
+  aboutXYears: {
+    past: 'დაახლოებით {{count}} წლის წინ',
+    present: 'დაახლოებით {{count}} წელი',
+    future: 'დაახლოებით {{count}} წელში'
+  },
+  xYears: {
+    past: '{{count}} წლის წინ',
+    present: '{{count}} წელი',
+    future: '{{count}} წელში'
+  },
+  overXYears: {
+    past: '{{count}} წელზე მეტი ხნის წინ',
+    present: '{{count}} წელზე მეტი',
+    future: '{{count}} წელზე მეტი ხნის შემდეგ'
+  },
+  almostXYears: {
+    past: 'თითქმის {{count}} წლის წინ',
+    present: 'თითქმის {{count}} წელი',
+    future: 'თითქმის {{count}} წელში'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (options.addSuffix && options.comparison > 0) {
+    result = formatDistanceLocale[token].future.replace('{{count}}', count);
+  } else if (options.addSuffix && options.comparison <= 0) {
+    result = formatDistanceLocale[token].past.replace('{{count}}', count);
+  } else {
+    result = formatDistanceLocale[token].present.replace('{{count}}', count);
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ka/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ka/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, do MMMM, y',
+  long: 'do, MMMM, y',
+  medium: 'd, MMM, y',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: "{{date}} {{time}}'-ზე'",
+  long: "{{date}} {{time}}'-ზე'",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ka/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ka/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'წინა' eeee LT'-ზე'",
+  yesterday: "'გუშინ' LT'-ზე'",
+  today: "'დღეს' LT'-ზე'",
+  tomorrow: "'ხვალ' LT'-ზე'",
+  nextWeek: "'შემდეგი' eeee LT'-ზე'",
+  other: 'L'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ka/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ka/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['ჩ.წ-მდე', 'ჩ.წ'],
+  abbreviated: ['ჩვ.წ-მდე', 'ჩვ.წ'],
+  wide: ['ჩვენს წელთაღრიცხვამდე', 'ჩვენი წელთაღრიცხვით']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1-ლი კვ', '2-ე კვ', '3-ე კვ', '4-ე კვ'],
+  wide: ['1-ლი კვარტალი', '2-ე კვარტალი', '3-ე კვარტალი', '4-ე კვარტალი'] // Note: in English, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+};
+var monthValues = {
+  narrow: ['ია', 'თე', 'მა', 'აპ', 'მს', 'ვნ', 'ვლ', 'აგ', 'სე', 'ოქ', 'ნო', 'დე'],
+  abbreviated: ['იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'],
+  wide: ['იანვარი', 'თებერვალი', 'მარტი', 'აპრილი', 'მაისი', 'ივნისი', 'ივლისი', 'აგვისტო', 'სექტემბერი', 'ოქტომბერი', 'ნოემბერი', 'დეკემბერი']
+};
+var dayValues = {
+  narrow: ['კვ', 'ორ', 'სა', 'ოთ', 'ხუ', 'პა', 'შა'],
+  short: ['კვი', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ'],
+  abbreviated: ['კვი', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ'],
+  wide: ['კვირა', 'ორშაბათი', 'სამშაბათი', 'ოთხშაბათი', 'ხუთშაბათი', 'პარასკევი', 'შაბათი']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'შუაღამე',
+    noon: 'შუადღე',
+    morning: 'დილა',
+    afternoon: 'საღამო',
+    evening: 'საღამო',
+    night: 'ღამე'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'შუაღამე',
+    noon: 'შუადღე',
+    morning: 'დილა',
+    afternoon: 'საღამო',
+    evening: 'საღამო',
+    night: 'ღამე'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'შუაღამე',
+    noon: 'შუადღე',
+    morning: 'დილა',
+    afternoon: 'საღამო',
+    evening: 'საღამო',
+    night: 'ღამე'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'შუაღამით',
+    noon: 'შუადღისას',
+    morning: 'დილით',
+    afternoon: 'ნაშუადღევს',
+    evening: 'საღამოს',
+    night: 'ღამით'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'შუაღამით',
+    noon: 'შუადღისას',
+    morning: 'დილით',
+    afternoon: 'ნაშუადღევს',
+    evening: 'საღამოს',
+    night: 'ღამით'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'შუაღამით',
+    noon: 'შუადღისას',
+    morning: 'დილით',
+    afternoon: 'ნაშუადღევს',
+    evening: 'საღამოს',
+    night: 'ღამით'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  var number = Number(dirtyNumber); // If ordinal numbers depend on context, for example,
+  // if they are different for different grammatical genders,
+  // use `options.unit`:
+  //
+  //   var options = dirtyOptions || {}
+  //   var unit = String(options.unit)
+  //
+  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
+  // 'day', 'hour', 'minute', 'second'
+
+  if (number === 1) {
+    return number + '-ლი';
+  }
+
+  return number + '-ე';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ka/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ka/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(-ლი|-ე)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ჩვ?\.წ)/i,
+  abbreviated: /^(ჩვ?\.წ)/i,
+  wide: /^(ჩვენს წელთაღრიცხვამდე|ქრისტეშობამდე|ჩვენი წელთაღრიცხვით|ქრისტეშობიდან)/i
+};
+var parseEraPatterns = {
+  any: [/^(ჩვენს წელთაღრიცხვამდე|ქრისტეშობამდე)/i, /^(ჩვენი წელთაღრიცხვით|ქრისტეშობიდან)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234]-(ლი|ე)? კვ/i,
+  wide: /^[1234]-(ლი|ე)? კვარტალი/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  any: /^(ია|თე|მა|აპ|მს|ვნ|ვლ|აგ|სე|ოქ|ნო|დე)/i
+};
+var parseMonthPatterns = {
+  any: [/^ია/i, /^თ/i, /^მარ/i, /^აპ/i, /^მაი/i, /^ი?ვნ/i, /^ი?ვლ/i, /^აგ/i, /^ს/i, /^ო/i, /^ნ/i, /^დ/i]
+};
+var matchDayPatterns = {
+  narrow: /^(კვ|ორ|სა|ოთ|ხუ|პა|შა)/i,
+  short: /^(კვი|ორშ|სამ|ოთხ|ხუთ|პარ|შაბ)/i,
+  long: /^(კვირა|ორშაბათი|სამშაბათი|ოთხშაბათი|ხუთშაბათი|პარასკევი|შაბათი)/i
+};
+var parseDayPatterns = {
+  any: [/^კვ/i, /^ორ/i, /^სა/i, /^ოთ/i, /^ხუ/i, /^პა/i, /^შა/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^([ap]\.?\s?m\.?|შუაღ|დილ)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^შუაღ/i,
+    noon: /^შუადღ/i,
+    morning: /^დილ/i,
+    afternoon: /ნაშუადღევს/i,
+    evening: /საღამო/i,
+    night: /ღამ/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ka/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ka/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/ka/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/ka/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/ka/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/ka/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/ka/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Georgian locale.
+ * @language Georgian
+ * @iso-639-2 geo
+ * @author Lado Lomidze [@Landish]{@link https://github.com/Landish}
+ * @author Nick Shvelidze [@shvelo]{@link https://github.com/shvelo}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ko/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ko/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: '1초 미만',
+    other: '{{count}}초 미만'
+  },
+  xSeconds: {
+    one: '1초',
+    other: '{{count}}초'
+  },
+  halfAMinute: '30초',
+  lessThanXMinutes: {
+    one: '1분 미만',
+    other: '{{count}}분 미만'
+  },
+  xMinutes: {
+    one: '1분',
+    other: '{{count}}분'
+  },
+  aboutXHours: {
+    one: '약 1시간',
+    other: '약 {{count}}시간'
+  },
+  xHours: {
+    one: '1시간',
+    other: '{{count}}시간'
+  },
+  xDays: {
+    one: '1일',
+    other: '{{count}}일'
+  },
+  aboutXMonths: {
+    one: '약 1개월',
+    other: '약 {{count}}개월'
+  },
+  xMonths: {
+    one: '1개월',
+    other: '{{count}}개월'
+  },
+  aboutXYears: {
+    one: '약 1년',
+    other: '약 {{count}}년'
+  },
+  xYears: {
+    one: '1년',
+    other: '{{count}}년'
+  },
+  overXYears: {
+    one: '1년 이상',
+    other: '{{count}}년 이상'
+  },
+  almostXYears: {
+    one: '거의 1년',
+    other: '거의 {{count}}년'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return result + ' 후';
+    } else {
+      return result + ' 전';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ko/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ko/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'y년 M월 d일 EEEE',
+  long: 'y년 M월 d일',
+  medium: 'y.MM.dd',
+  short: 'y.MM.dd'
+};
+var timeFormats = {
+  full: 'a H시 mm분 ss초 zzzz',
+  long: 'a H:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ko/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ko/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'지난' eeee p",
+  yesterday: "'어제' p",
+  today: "'오늘' p",
+  tomorrow: "'내일' p",
+  nextWeek: "'다음' eeee p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ko/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ko/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['BC', 'AD'],
+  abbreviated: ['BC', 'AD'],
+  wide: ['기원전', '서기']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1분기', '2분기', '3분기', '4분기']
+};
+var monthValues = {
+  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  abbreviated: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+  wide: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+};
+var dayValues = {
+  narrow: ['일', '월', '화', '수', '목', '금', '토'],
+  short: ['일', '월', '화', '수', '목', '금', '토'],
+  abbreviated: ['일', '월', '화', '수', '목', '금', '토'],
+  wide: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: '오전',
+    pm: '오후',
+    midnight: '자정',
+    noon: '정오',
+    morning: '아침',
+    afternoon: '오후',
+    evening: '저녁',
+    night: '밤'
+  },
+  abbreviated: {
+    am: '오전',
+    pm: '오후',
+    midnight: '자정',
+    noon: '정오',
+    morning: '아침',
+    afternoon: '오후',
+    evening: '저녁',
+    night: '밤'
+  },
+  wide: {
+    am: '오전',
+    pm: '오후',
+    midnight: '자정',
+    noon: '정오',
+    morning: '아침',
+    afternoon: '오후',
+    evening: '저녁',
+    night: '밤'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: '오전',
+    pm: '오후',
+    midnight: '자정',
+    noon: '정오',
+    morning: '아침',
+    afternoon: '오후',
+    evening: '저녁',
+    night: '밤'
+  },
+  abbreviated: {
+    am: '오전',
+    pm: '오후',
+    midnight: '자정',
+    noon: '정오',
+    morning: '아침',
+    afternoon: '오후',
+    evening: '저녁',
+    night: '밤'
+  },
+  wide: {
+    am: '오전',
+    pm: '오후',
+    midnight: '자정',
+    noon: '정오',
+    morning: '아침',
+    afternoon: '오후',
+    evening: '저녁',
+    night: '밤'
+  }
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var number = Number(dirtyNumber);
+  return dirtyOptions && (dirtyOptions.unit === 'minute' || dirtyOptions.unit === 'second') ? number.toString() : number + '번째';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ko/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ko/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(번째)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+  wide: /^(기원전|서기)/i
+};
+var parseEraPatterns = {
+  any: [/^(bc|기원전)/i, /^(ad|서기)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234]사?분기/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^(1[012]|[123456789])/,
+  abbreviated: /^(1[012]|[123456789])월/i,
+  wide: /^(1[012]|[123456789])월/i
+};
+var parseMonthPatterns = {
+  any: [/^1월?$/, /^2/, /^3/, /^4/, /^5/, /^6/, /^7/, /^8/, /^9/, /^10/, /^11/, /^12/]
+};
+var matchDayPatterns = {
+  narrow: /^[일월화수목금토]/,
+  short: /^[일월화수목금토]/,
+  abbreviated: /^[일월화수목금토]/,
+  wide: /^[일월화수목금토]요일/
+};
+var parseDayPatterns = {
+  any: [/^일/, /^월/, /^화/, /^수/, /^목/, /^금/, /^토/]
+};
+var matchDayPeriodPatterns = {
+  any: /^(am|pm|오전|오후|자정|정오|아침|저녁|밤)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^(am|오전)/i,
+    pm: /^(pm|오후)/i,
+    midnight: /^자정/i,
+    noon: /^정오/i,
+    morning: /^아침/i,
+    afternoon: /^오후/i,
+    evening: /^저녁/i,
+    night: /^밤/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ko/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ko/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/ko/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/ko/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/ko/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/ko/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/ko/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Korean locale.
+ * @language Korean
+ * @iso-639-2 kor
+ * @author Hong Chulju [@angdev]{@link https://github.com/angdev}
+ * @author Lee Seoyoen [@iamssen]{@link https://github.com/iamssen}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lt/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lt/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: translateSeconds,
+    other: translate
+  },
+  xSeconds: {
+    one: translateSeconds,
+    other: translate
+  },
+  halfAMinute: 'pusė minutės',
+  lessThanXMinutes: {
+    one: translateSingular,
+    other: translate
+  },
+  xMinutes: {
+    one: translateSingular,
+    other: translate
+  },
+  aboutXHours: {
+    one: translateSingular,
+    other: translate
+  },
+  xHours: {
+    one: translateSingular,
+    other: translate
+  },
+  xDays: {
+    one: translateSingular,
+    other: translate
+  },
+  aboutXMonths: {
+    one: translateSingular,
+    other: translate
+  },
+  xMonths: {
+    one: translateSingular,
+    other: translate
+  },
+  aboutXYears: {
+    one: translateSingular,
+    other: translate
+  },
+  xYears: {
+    one: translateSingular,
+    other: translate
+  },
+  overXYears: {
+    one: translateSingular,
+    other: translate
+  },
+  almostXYears: {
+    one: translateSingular,
+    other: translate
+  }
+};
+var translations = {
+  'xseconds_other': 'sekundė_sekundžių_sekundes',
+  'xminutes_one': 'minutė_minutės_minutę',
+  'xminutes_other': 'minutės_minučių_minutes',
+  'xhours_one': 'valanda_valandos_valandą',
+  'xhours_other': 'valandos_valandų_valandas',
+  'xdays_one': 'diena_dienos_dieną',
+  'xdays_other': 'dienos_dienų_dienas',
+  'xmonths_one': 'mėnuo_mėnesio_mėnesį',
+  'xmonths_other': 'mėnesiai_mėnesių_mėnesius',
+  'xyears_one': 'metai_metų_metus',
+  'xyears_other': 'metai_metų_metus',
+  'about': 'apie',
+  'over': 'daugiau nei',
+  'almost': 'beveik',
+  'lessthan': 'mažiau nei'
+};
+
+function translateSeconds(number, addSuffix, key, isFuture) {
+  if (!addSuffix) {
+    return 'kelios sekundės';
+  } else {
+    return isFuture ? 'kelių sekundžių' : 'kelias sekundes';
+  }
+}
+
+function translateSingular(number, addSuffix, key, isFuture) {
+  return !addSuffix ? forms(key)[0] : isFuture ? forms(key)[1] : forms(key)[2];
+}
+
+function special(number) {
+  return number % 10 === 0 || number > 10 && number < 20;
+}
+
+function forms(key) {
+  return translations[key].split('_');
+}
+
+function translate(number, addSuffix, key, isFuture) {
+  var result = number + ' ';
+
+  if (number === 1) {
+    return result + translateSingular(number, addSuffix, key[0], isFuture);
+  } else if (!addSuffix) {
+    return result + (special(number) ? forms(key)[1] : forms(key)[0]);
+  } else {
+    if (isFuture) {
+      return result + forms(key)[1];
+    } else {
+      return result + (special(number) ? forms(key)[1] : forms(key)[2]);
+    }
+  }
+}
+
+function formatDistance(token, count, options) {
+  options = options || {};
+  var adverb = token.match(/about|over|almost|lessthan/i);
+  var unit = token.replace(adverb, '');
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one(count, options.addSuffix, unit.toLowerCase() + '_one');
+  } else {
+    result = formatDistanceLocale[token].other(count, options.addSuffix, unit.toLowerCase() + '_other');
+  }
+
+  if (adverb) {
+    result = translations[adverb[0].toLowerCase()] + ' ' + result;
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'po ' + result;
+    } else {
+      return 'prieš ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lt/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lt/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "y 'm'. MMMM d 'd'., EEEE",
+  long: "y 'm'. MMMM d 'd'.",
+  medium: 'y-MM-dd',
+  short: 'y-MM-dd'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lt/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lt/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'Praėjusį' eeee p",
+  yesterday: "'Vakar' p",
+  today: "'Šiandien' p",
+  tomorrow: "'Rytoj' p",
+  nextWeek: 'eeee p',
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lt/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lt/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['pr. Kr.', 'po Kr.'],
+  abbreviated: ['pr. Kr.', 'po Kr.'],
+  wide: ['prieš Kristų', 'po Kristaus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['I ketv.', 'II ketv.', 'III ketv.', 'IV ketv.'],
+  wide: ['I ketvirtis', 'II ketvirtis', 'III ketvirtis', 'IV ketvirtis']
+};
+var formattingQuarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['I k.', 'II k.', 'III k.', 'IV k.'],
+  wide: ['I ketvirtis', 'II ketvirtis', 'III ketvirtis', 'IV ketvirtis']
+};
+var monthValues = {
+  narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
+  abbreviated: ['saus.', 'vas.', 'kov.', 'bal.', 'geg.', 'birž.', 'liep.', 'rugp.', 'rugs.', 'spal.', 'lapkr.', 'gruod.'],
+  wide: ['sausis', 'vasaris', 'kovas', 'balandis', 'gegužė', 'birželis', 'liepa', 'rugpjūtis', 'rugsėjis', 'spalis', 'lapkritis', 'gruodis']
+};
+var formattingMonthValues = {
+  narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
+  abbreviated: ['saus.', 'vas.', 'kov.', 'bal.', 'geg.', 'birž.', 'liep.', 'rugp.', 'rugs.', 'spal.', 'lapkr.', 'gruod.'],
+  wide: ['sausio', 'vasario', 'kovo', 'balandžio', 'gegužės', 'birželio', 'liepos', 'rugpjūčio', 'rugsėjo', 'spalio', 'lapkričio', 'gruodžio']
+};
+var dayValues = {
+  narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
+  short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
+  abbreviated: ['sk', 'pr', 'an', 'tr', 'kt', 'pn', 'št'],
+  wide: ['sekmadienis', 'pirmadienis', 'antradienis', 'trečiadienis', 'ketvirtadienis', 'penktadienis', 'šeštadienis']
+};
+var formattingDayValues = {
+  narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
+  short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
+  abbreviated: ['sk', 'pr', 'an', 'tr', 'kt', 'pn', 'št'],
+  wide: ['sekmadienį', 'pirmadienį', 'antradienį', 'trečiadienį', 'ketvirtadienį', 'penktadienį', 'šeštadienį']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'pr. p.',
+    pm: 'pop.',
+    midnight: 'vidurnaktis',
+    noon: 'vidurdienis',
+    morning: 'rytas',
+    afternoon: 'diena',
+    evening: 'vakaras',
+    night: 'naktis'
+  },
+  abbreviated: {
+    am: 'priešpiet',
+    pm: 'popiet',
+    midnight: 'vidurnaktis',
+    noon: 'vidurdienis',
+    morning: 'rytas',
+    afternoon: 'diena',
+    evening: 'vakaras',
+    night: 'naktis'
+  },
+  wide: {
+    am: 'priešpiet',
+    pm: 'popiet',
+    midnight: 'vidurnaktis',
+    noon: 'vidurdienis',
+    morning: 'rytas',
+    afternoon: 'diena',
+    evening: 'vakaras',
+    night: 'naktis'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'pr. p.',
+    pm: 'pop.',
+    midnight: 'vidurnaktis',
+    noon: 'perpiet',
+    morning: 'rytas',
+    afternoon: 'popietė',
+    evening: 'vakaras',
+    night: 'naktis'
+  },
+  abbreviated: {
+    am: 'priešpiet',
+    pm: 'popiet',
+    midnight: 'vidurnaktis',
+    noon: 'perpiet',
+    morning: 'rytas',
+    afternoon: 'popietė',
+    evening: 'vakaras',
+    night: 'naktis'
+  },
+  wide: {
+    am: 'priešpiet',
+    pm: 'popiet',
+    midnight: 'vidurnaktis',
+    noon: 'perpiet',
+    morning: 'rytas',
+    afternoon: 'popietė',
+    evening: 'vakaras',
+    night: 'naktis'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  var number = Number(dirtyNumber);
+  return number + '-oji';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingQuarterValues,
+    defaultFormattingWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lt/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lt/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(-oji)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^p(r|o)\.?\s?(kr\.?|me)/i,
+  abbreviated: /^(pr\.\s?(kr\.|m\.\s?e\.)|po\s?kr\.|mūsų eroje)/i,
+  wide: /^(prieš Kristų|prieš mūsų erą|po Kristaus|mūsų eroje)/i
+};
+var parseEraPatterns = {
+  wide: [/prieš/i, /(po|mūsų)/i],
+  any: [/^pr/i, /^(po|m)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^([1234])/i,
+  abbreviated: /^(I|II|III|IV)\s?ketv?\.?/i,
+  wide: /^(I|II|III|IV)\s?ketvirtis/i
+};
+var parseQuarterPatterns = {
+  narrow: [/1/i, /2/i, /3/i, /4/i],
+  any: [/I$/i, /II$/i, /III/i, /IV/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[svkbglr]/i,
+  abbreviated: /^(saus\.|vas\.|kov\.|bal\.|geg\.|birž\.|liep\.|rugp\.|rugs\.|spal\.|lapkr\.|gruod\.)/i,
+  wide: /^(sausi(s|o)|vasari(s|o)|kov(a|o)s|balandž?i(s|o)|gegužės?|birželi(s|o)|liep(a|os)|rugpjū(t|č)i(s|o)|rugsėj(is|o)|spali(s|o)|lapkri(t|č)i(s|o)|gruodž?i(s|o))/i
+};
+var parseMonthPatterns = {
+  narrow: [/^s/i, /^v/i, /^k/i, /^b/i, /^g/i, /^b/i, /^l/i, /^r/i, /^r/i, /^s/i, /^l/i, /^g/i],
+  any: [/^saus/i, /^vas/i, /^kov/i, /^bal/i, /^geg/i, /^birž/i, /^liep/i, /^rugp/i, /^rugs/i, /^spal/i, /^lapkr/i, /^gruod/i]
+};
+var matchDayPatterns = {
+  narrow: /^[spatkš]/i,
+  short: /^(sk|pr|an|tr|kt|pn|št)/i,
+  abbreviated: /^(sk|pr|an|tr|kt|pn|št)/i,
+  wide: /^(sekmadien(is|į)|pirmadien(is|į)|antradien(is|į)|trečiadien(is|į)|ketvirtadien(is|į)|penktadien(is|į)|šeštadien(is|į))/i
+};
+var parseDayPatterns = {
+  narrow: [/^s/i, /^p/i, /^a/i, /^t/i, /^k/i, /^p/i, /^š/i],
+  wide: [/^se/i, /^pi/i, /^an/i, /^tr/i, /^ke/i, /^pe/i, /^še/i],
+  any: [/^sk/i, /^pr/i, /^an/i, /^tr/i, /^kt/i, /^pn/i, /^št/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(pr.\s?p.|pop.|vidurnaktis|(vidurdienis|perpiet)|rytas|(diena|popietė)|vakaras|naktis)/i,
+  any: /^(priešpiet|popiet$|vidurnaktis|(vidurdienis|perpiet)|rytas|(diena|popietė)|vakaras|naktis)/i
+};
+var parseDayPeriodPatterns = {
+  narrow: {
+    am: /^pr/i,
+    pm: /^pop./i,
+    midnight: /^vidurnaktis/i,
+    noon: /^(vidurdienis|perp)/i,
+    morning: /rytas/i,
+    afternoon: /(die|popietė)/i,
+    evening: /vakaras/i,
+    night: /naktis/i
+  },
+  any: {
+    am: /^pr/i,
+    pm: /^popiet$/i,
+    midnight: /^vidurnaktis/i,
+    noon: /^(vidurdienis|perp)/i,
+    morning: /rytas/i,
+    afternoon: /(die|popietė)/i,
+    evening: /vakaras/i,
+    night: /naktis/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lt/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lt/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/lt/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/lt/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/lt/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/lt/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/lt/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ *
+ * @summary Lithuanian locale.
+ * @language Lithuanian
+ *
+ * @iso-639-2 lit
+ *
+ * @author Pavlo Shpak [@pshpak]{@link https://github.com/pshpak}
+ * @author Eduardo Pardo [@eduardopsll]{@link https://github.com/eduardopsll}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lv/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lv/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+function buildLocalizeTokenFn(schema) {
+  return function (count, options) {
+    if (count === 1) {
+      if (options.addSuffix) {
+        return schema.one[0].replace('{{time}}', schema.one[2]);
+      } else {
+        return schema.one[0].replace('{{time}}', schema.one[1]);
+      }
+    } else {
+      var rem = count % 10 === 1 && count % 100 !== 11;
+
+      if (options.addSuffix) {
+        return schema.other[0].replace('{{time}}', rem ? schema.other[3] : schema.other[4]).replace('{{count}}', count);
+      } else {
+        return schema.other[0].replace('{{time}}', rem ? schema.other[1] : schema.other[2]).replace('{{count}}', count);
+      }
+    }
+  };
+}
+
+var formatDistanceLocale = {
+  lessThanXSeconds: buildLocalizeTokenFn({
+    one: ['mazāk par {{time}}', 'sekundi', 'sekundi'],
+    other: ['mazāk nekā {{count}} {{time}}', 'sekunde', 'sekundes', 'sekundes', 'sekundēm']
+  }),
+  xSeconds: buildLocalizeTokenFn({
+    one: ['1 {{time}}', 'sekunde', 'sekundes'],
+    other: ['{{count}} {{time}}', 'sekunde', 'sekundes', 'sekundes', 'sekundēm']
+  }),
+  halfAMinute: function (count, options) {
+    if (options.addSuffix) {
+      return 'pusminūtes';
+    } else {
+      return 'pusminūte';
+    }
+  },
+  lessThanXMinutes: buildLocalizeTokenFn({
+    one: ['mazāk par {{time}}', 'minūti', 'minūti'],
+    other: ['mazāk nekā {{count}} {{time}}', 'minūte', 'minūtes', 'minūtes', 'minūtēm']
+  }),
+  xMinutes: buildLocalizeTokenFn({
+    one: ['1 {{time}}', 'minūte', 'minūtes'],
+    other: ['{{count}} {{time}}', 'minūte', 'minūtes', 'minūtes', 'minūtēm']
+  }),
+  aboutXHours: buildLocalizeTokenFn({
+    one: ['apmēram 1 {{time}}', 'stunda', 'stundas'],
+    other: ['apmēram {{count}} {{time}}', 'stunda', 'stundas', 'stundas', 'stundām']
+  }),
+  xHours: buildLocalizeTokenFn({
+    one: ['1 {{time}}', 'stunda', 'stundas'],
+    other: ['{{count}} {{time}}', 'stunda', 'stundas', 'stundas', 'stundām']
+  }),
+  xDays: buildLocalizeTokenFn({
+    one: ['1 {{time}}', 'diena', 'dienas'],
+    other: ['{{count}} {{time}}', 'diena', 'dienas', 'dienas', 'dienām']
+  }),
+  aboutXMonths: buildLocalizeTokenFn({
+    one: ['apmēram 1 {{time}}', 'mēnesis', 'mēneša'],
+    other: ['apmēram {{count}} {{time}}', 'mēnesis', 'mēneši', 'mēneša', 'mēnešiem']
+  }),
+  xMonths: buildLocalizeTokenFn({
+    one: ['1 {{time}}', 'mēnesis', 'mēneša'],
+    other: ['{{count}} {{time}}', 'mēnesis', 'mēneši', 'mēneša', 'mēnešiem']
+  }),
+  aboutXYears: buildLocalizeTokenFn({
+    one: ['apmēram 1 {{time}}', 'gads', 'gada'],
+    other: ['apmēram {{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem']
+  }),
+  xYears: buildLocalizeTokenFn({
+    one: ['1 {{time}}', 'gads', 'gada'],
+    other: ['{{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem']
+  }),
+  overXYears: buildLocalizeTokenFn({
+    one: ['ilgāk par 1 {{time}}', 'gadu', 'gadu'],
+    other: ['vairāk nekā {{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem']
+  }),
+  almostXYears: buildLocalizeTokenFn({
+    one: ['gandrīz 1 {{time}}', 'gads', 'gada'],
+    other: ['vairāk nekā {{count}} {{time}}', 'gads', 'gadi', 'gada', 'gadiem']
+  })
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result = formatDistanceLocale[token](count, options);
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'pēc ' + result;
+    } else {
+      return 'pirms ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lv/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lv/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "y. 'gada' M. MMMM., EEEE",
+  long: "y. 'gada' M. MMMM",
+  medium: 'dd.MM.y.',
+  short: 'dd.MM.y.'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'plkst.' {{time}}",
+  long: "{{date}} 'plkst.' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lv/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lv/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+/* harmony import */ var _lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../_lib/isSameUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/isSameUTCWeek/index.js");
+
+var weekdays = ['svētdienā', 'pirmdienā', 'otrdienā', 'trešdienā', 'ceturtdienā', 'piektdienā', 'sestdienā'];
+var formatRelativeLocale = {
+  lastWeek: function (date, baseDate, options) {
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return "eeee 'plkst.' p";
+    }
+
+    var weekday = weekdays[date.getUTCDay()];
+    return "'Pagājušā " + weekday + " plkst.' p";
+  },
+  yesterday: "'Vakar plkst.' p",
+  today: "'Šodien plkst.' p",
+  tomorrow: "'Rīt plkst.' p",
+  nextWeek: function (date, baseDate, options) {
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return "eeee 'plkst.' p";
+    }
+
+    var weekday = weekdays[date.getUTCDay()];
+    return "'Nākamajā " + weekday + " plkst.' p";
+  },
+  other: 'P'
+};
+function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lv/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lv/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['p.m.ē', 'm.ē'],
+  abbreviated: ['p. m. ē.', 'm. ē.'],
+  wide: ['pirms mūsu ēras', 'mūsu ērā']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1. cet.', '2. cet.', '3. cet.', '4. cet.'],
+  wide: ['pirmais ceturksnis', 'otrais ceturksnis', 'trešais ceturksnis', 'ceturtais ceturksnis']
+};
+var formattingQuarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1. cet.', '2. cet.', '3. cet.', '4. cet.'],
+  wide: ['pirmajā ceturksnī', 'otrajā ceturksnī', 'trešajā ceturksnī', 'ceturtajā ceturksnī']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['janv.', 'febr.', 'marts', 'apr.', 'maijs', 'jūn.', 'jūl.', 'aug.', 'sept.', 'okt.', 'nov.', 'dec.'],
+  wide: ['janvāris', 'februāris', 'marts', 'aprīlis', 'maijs', 'jūnijs', 'jūlijs', 'augusts', 'septembris', 'oktobris', 'novembris', 'decembris']
+};
+var formattingMonthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['janv.', 'febr.', 'martā', 'apr.', 'maijs', 'jūn.', 'jūl.', 'aug.', 'sept.', 'okt.', 'nov.', 'dec.'],
+  wide: ['janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī']
+};
+var dayValues = {
+  narrow: ['S', 'P', 'O', 'T', 'C', 'P', 'S'],
+  short: ['Sv', 'P', 'O', 'T', 'C', 'Pk', 'S'],
+  abbreviated: ['svētd.', 'pirmd.', 'otrd.', 'trešd.', 'ceturtd.', 'piektd.', 'sestd.'],
+  wide: ['svētdiena', 'pirmdiena', 'otrdiena', 'trešdiena', 'ceturtdiena', 'piektdiena', 'sestdiena']
+};
+var formattingDayValues = {
+  narrow: ['S', 'P', 'O', 'T', 'C', 'P', 'S'],
+  short: ['Sv', 'P', 'O', 'T', 'C', 'Pk', 'S'],
+  abbreviated: ['svētd.', 'pirmd.', 'otrd.', 'trešd.', 'ceturtd.', 'piektd.', 'sestd.'],
+  wide: ['svētdienā', 'pirmdienā', 'otrdienā', 'trešdienā', 'ceturtdienā', 'piektdienā', 'sestdienā']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'am',
+    pm: 'pm',
+    midnight: 'pusn.',
+    noon: 'pusd.',
+    morning: 'rīts',
+    afternoon: 'diena',
+    evening: 'vakars',
+    night: 'nakts'
+  },
+  abbreviated: {
+    am: 'am',
+    pm: 'pm',
+    midnight: 'pusn.',
+    noon: 'pusd.',
+    morning: 'rīts',
+    afternoon: 'pēcpusd.',
+    evening: 'vakars',
+    night: 'nakts'
+  },
+  wide: {
+    am: 'am',
+    pm: 'pm',
+    midnight: 'pusnakts',
+    noon: 'pusdienlaiks',
+    morning: 'rīts',
+    afternoon: 'pēcpusdiena',
+    evening: 'vakars',
+    night: 'nakts'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'am',
+    pm: 'pm',
+    midnight: 'pusn.',
+    noon: 'pusd.',
+    morning: 'rītā',
+    afternoon: 'dienā',
+    evening: 'vakarā',
+    night: 'naktī'
+  },
+  abbreviated: {
+    am: 'am',
+    pm: 'pm',
+    midnight: 'pusn.',
+    noon: 'pusd.',
+    morning: 'rītā',
+    afternoon: 'pēcpusd.',
+    evening: 'vakarā',
+    night: 'naktī'
+  },
+  wide: {
+    am: 'am',
+    pm: 'pm',
+    midnight: 'pusnaktī',
+    noon: 'pusdienlaikā',
+    morning: 'rītā',
+    afternoon: 'pēcpusdienā',
+    evening: 'vakarā',
+    night: 'naktī'
+  }
+};
+
+function ordinalNumber(number, _options) {
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingQuarterValues,
+    defaultFormattingWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lv/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lv/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)\./i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(p\.m\.ē|m\.ē)/i,
+  abbreviated: /^(p\. m\. ē\.|m\. ē\.)/i,
+  wide: /^(pirms mūsu ēras|mūsu ērā)/i
+};
+var parseEraPatterns = {
+  any: [/^p/i, /^m/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234](\. cet\.)/i,
+  wide: /^(pirma(is|jā)|otra(is|jā)|treša(is|jā)|ceturta(is|jā)) ceturksn(is|ī)/i
+};
+var parseQuarterPatterns = {
+  narrow: [/^1/i, /^2/i, /^3/i, /^4/i],
+  abbreviated: [/^1/i, /^2/i, /^3/i, /^4/i],
+  wide: [/^p/i, /^o/i, /^t/i, /^c/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(janv\.|febr\.|marts|apr\.|maijs|jūn\.|jūl\.|aug\.|sept\.|okt\.|nov\.|dec\.)/i,
+  wide: /^(janvār(is|ī)|februār(is|ī)|mart[sā]|aprīl(is|ī)|maij[sā]|jūnij[sā]|jūlij[sā]|august[sā]|septembr(is|ī)|oktobr(is|ī)|novembr(is|ī)|decembr(is|ī))/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^mai/i, /^jūn/i, /^jūl/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[spotc]/i,
+  short: /^(sv|pi|o|t|c|pk|s)/i,
+  abbreviated: /^(svētd\.|pirmd\.|otrd.\|trešd\.|ceturtd\.|piektd\.|sestd\.)/i,
+  wide: /^(svētdien(a|ā)|pirmdien(a|ā)|otrdien(a|ā)|trešdien(a|ā)|ceturtdien(a|ā)|piektdien(a|ā)|sestdien(a|ā))/i
+};
+var parseDayPatterns = {
+  narrow: [/^s/i, /^p/i, /^o/i, /^t/i, /^c/i, /^p/i, /^s/i],
+  any: [/^sv/i, /^pi/i, /^o/i, /^t/i, /^c/i, /^p/i, /^se/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(am|pm|pusn\.|pusd\.|rīt(s|ā)|dien(a|ā)|vakar(s|ā)|nakt(s|ī))/,
+  abbreviated: /^(am|pm|pusn\.|pusd\.|rīt(s|ā)|pēcpusd\.|vakar(s|ā)|nakt(s|ī))/,
+  wide: /^(am|pm|pusnakt(s|ī)|pusdienlaik(s|ā)|rīt(s|ā)|pēcpusdien(a|ā)|vakar(s|ā)|nakt(s|ī))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^am/i,
+    pm: /^pm/i,
+    midnight: /^pusn/i,
+    noon: /^pusd/i,
+    morning: /^r/i,
+    afternoon: /^(d|pēc)/i,
+    evening: /^v/i,
+    night: /^n/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/lv/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/lv/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/lv/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/lv/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/lv/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/lv/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/lv/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Latvian locale (Latvia).
+ * @language Latvian
+ * @iso-639-2 lav
+ * @author Rūdolfs Puķītis [@prudolfs]{@link https://github.com/prudolfs}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nb/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nb/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    singular: 'mindre enn ett sekund',
+    plural: 'mindre enn {{count}} sekunder'
+  },
+  xSeconds: {
+    singular: 'ett sekund',
+    plural: '{{count}} sekunder'
+  },
+  halfAMinute: 'et halvt minutt',
+  lessThanXMinutes: {
+    singular: 'mindre enn ett minutt',
+    plural: 'mindre enn {{count}} minutter'
+  },
+  xMinutes: {
+    singular: 'ett minutt',
+    plural: '{{count}} minutter'
+  },
+  aboutXHours: {
+    singular: 'omtrent en time',
+    plural: 'omtrent {{count}} timer'
+  },
+  xHours: {
+    singular: 'en time',
+    plural: '{{count}} timer'
+  },
+  xDays: {
+    singular: 'en dag',
+    plural: '{{count}} dager'
+  },
+  aboutXMonths: {
+    singular: 'omtrent en måned',
+    plural: 'omtrent {{count}} måneder'
+  },
+  xMonths: {
+    singular: 'en måned',
+    plural: '{{count}} måneder'
+  },
+  aboutXYears: {
+    singular: 'omtrent ett år',
+    plural: 'omtrent {{count}} år'
+  },
+  xYears: {
+    singular: 'ett år',
+    plural: '{{count}} år'
+  },
+  overXYears: {
+    singular: 'over ett år',
+    plural: 'over {{count}} år'
+  },
+  almostXYears: {
+    singular: 'nesten ett år',
+    plural: 'nesten {{count}} år'
+  }
+};
+var wordMapping = ['null', 'en', 'to', 'tre', 'fire', 'fem', 'seks', 'sju', 'åtte', 'ni', 'ti', 'elleve', 'tolv'];
+function formatDistance(token, count, options) {
+  options = options || {
+    onlyNumeric: false
+  };
+  var translation = formatDistanceLocale[token];
+  var result;
+
+  if (typeof translation === 'string') {
+    result = translation;
+  } else if (count === 0 || count > 1) {
+    if (options.onlyNumeric) {
+      result = translation.plural.replace('{{count}}', count);
+    } else {
+      result = translation.plural.replace('{{count}}', count < 13 ? wordMapping[count] : count);
+    }
+  } else {
+    result = translation.singular;
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'om ' + result;
+    } else {
+      return result + ' siden';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nb/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nb/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE d. MMMM y',
+  long: 'd. MMMM y',
+  medium: 'd. MMM y',
+  short: 'dd.MM.y'
+};
+var timeFormats = {
+  full: "'kl'. HH:mm:ss zzzz",
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'kl.' {{time}}",
+  long: "{{date}} 'kl.' {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nb/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nb/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'forrige' eeee 'kl.' p",
+  yesterday: "'i går kl.' p",
+  today: "'i dag kl.' p",
+  tomorrow: "'i morgen kl.' p",
+  nextWeek: "EEEE 'kl.' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nb/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nb/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['f.Kr.', 'e.Kr.'],
+  abbreviated: ['f.Kr.', 'e.Kr.'],
+  wide: ['før Kristus', 'etter Kristus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'feb.', 'mars', 'apr.', 'mai', 'juni', 'juli', 'aug.', 'sep.', 'okt.', 'nov.', 'des.'],
+  wide: ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember']
+};
+var dayValues = {
+  narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'],
+  short: ['sø', 'ma', 'ti', 'on', 'to', 'fr', 'lø'],
+  abbreviated: ['søn', 'man', 'tir', 'ons', 'tor', 'fre', 'lør'],
+  wide: ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'på morg.',
+    afternoon: 'på etterm.',
+    evening: 'på kvelden',
+    night: 'på natten'
+  },
+  abbreviated: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'på morg.',
+    afternoon: 'på etterm.',
+    evening: 'på kvelden',
+    night: 'på natten'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'på morgenen',
+    afternoon: 'på ettermiddagen',
+    evening: 'på kvelden',
+    night: 'på natten'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nb/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nb/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)\.?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(f\.? ?Kr\.?|fvt\.?|e\.? ?Kr\.?|evt\.?)/i,
+  abbreviated: /^(f\.? ?Kr\.?|fvt\.?|e\.? ?Kr\.?|evt\.?)/i,
+  wide: /^(før Kristus|før vår tid|etter Kristus|vår tid)/i
+};
+var parseEraPatterns = {
+  any: [/^f/i, /^e/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](\.)? kvartal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|mai|jun|jul|aug|sep|okt|nov|des)\.?/i,
+  wide: /^(januar|februar|mars|april|mai|juni|juli|august|september|oktober|november|desember)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^aug/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[smtofl]/i,
+  short: /^(sø|ma|ti|on|to|fr|lø)/i,
+  abbreviated: /^(søn|man|tir|ons|tor|fre|lør)/i,
+  wide: /^(søndag|mandag|tirsdag|onsdag|torsdag|fredag|lørdag)/i
+};
+var parseDayPatterns = {
+  any: [/^s/i, /^m/i, /^ti/i, /^o/i, /^to/i, /^f/i, /^l/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(midnatt|middag|(på) (morgenen|ettermiddagen|kvelden|natten)|[ap])/i,
+  any: /^([ap]\.?\s?m\.?|midnatt|middag|(på) (morgenen|ettermiddagen|kvelden|natten))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a(\.?\s?m\.?)?$/i,
+    pm: /^p(\.?\s?m\.?)?$/i,
+    midnight: /^midn/i,
+    noon: /^midd/i,
+    morning: /morgen/i,
+    afternoon: /ettermiddag/i,
+    evening: /kveld/i,
+    night: /natt/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nb/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nb/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/nb/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/nb/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/nb/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/nb/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/nb/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Norwegian Bokmål locale.
+ * @language Norwegian Bokmål
+ * @iso-639-2 nob
+ * @author Hans-Kristian Koren [@Hanse]{@link https://github.com/Hanse}
+ * @author Mikolaj Grzyb [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
+ * @author Dag Stuan [@dagstuan]{@link https://github.com/dagstuan}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nl/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nl/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'minder dan een seconde',
+    other: 'minder dan {{count}} seconden'
+  },
+  xSeconds: {
+    one: '1 seconde',
+    other: '{{count}} seconden'
+  },
+  halfAMinute: 'een halve minuut',
+  lessThanXMinutes: {
+    one: 'minder dan een minuut',
+    other: 'minder dan {{count}} minuten'
+  },
+  xMinutes: {
+    one: 'een minuut',
+    other: '{{count}} minuten'
+  },
+  aboutXHours: {
+    one: 'ongeveer 1 uur',
+    other: 'ongeveer {{count}} uur'
+  },
+  xHours: {
+    one: '1 uur',
+    other: '{{count}} uur'
+  },
+  xDays: {
+    one: '1 dag',
+    other: '{{count}} dagen'
+  },
+  aboutXMonths: {
+    one: 'ongeveer 1 maand',
+    other: 'ongeveer {{count}} maanden'
+  },
+  xMonths: {
+    one: '1 maand',
+    other: '{{count}} maanden'
+  },
+  aboutXYears: {
+    one: 'ongeveer 1 jaar',
+    other: 'ongeveer {{count}} jaar'
+  },
+  xYears: {
+    one: '1 jaar',
+    other: '{{count}} jaar'
+  },
+  overXYears: {
+    one: 'meer dan 1 jaar',
+    other: 'meer dan {{count}} jaar'
+  },
+  almostXYears: {
+    one: 'bijna 1 jaar',
+    other: 'bijna {{count}} jaar'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'over ' + result;
+    } else {
+      return result + ' geleden';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nl/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nl/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd-MM-y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'om' {{time}}",
+  long: "{{date}} 'om' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nl/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nl/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'afgelopen' eeee 'om' p",
+  yesterday: "'gisteren om' p",
+  today: "'vandaag om' p",
+  tomorrow: "'morgen om' p",
+  nextWeek: "eeee 'om' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nl/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nl/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['v.C.', 'n.C.'],
+  abbreviated: ['v.Chr.', 'n.Chr.'],
+  wide: ['voor Christus', 'na Christus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'feb.', 'mrt.', 'apr.', 'mei.', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
+  wide: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+};
+var dayValues = {
+  narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
+  short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+  wide: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: '\'s ochtends',
+    afternoon: '\'s middags',
+    evening: '\'s avonds',
+    night: '\'s nachts'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: '\'s ochtends',
+    afternoon: '\'s middags',
+    evening: '\'s avonds',
+    night: '\'s nachts'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: '\'s ochtends',
+    afternoon: '\'s middags',
+    evening: '\'s avonds',
+    night: '\'s nachts'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + 'e';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nl/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nl/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)e?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^([vn]\.? ?C\.?)/,
+  abbreviated: /^([vn]\. ?Chr\.?)/,
+  wide: /^((voor|na) Christus)/
+};
+var parseEraPatterns = {
+  any: [/^v/, /^n/]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^K[1234]/i,
+  wide: /^[1234]e kwartaal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mrt|apr|mei|jun|jul|aug|sep|okt|nov|dec)\.?/i,
+  wide: /^(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^jan/i, /^feb/i, /^mrt/i, /^apr/i, /^mei/i, /^jun/i, /^jul/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i]
+};
+var matchDayPatterns = {
+  narrow: /^[zmdwv]/i,
+  short: /^(zo|ma|di|wo|do|vr|za)/i,
+  abbreviated: /^(zon|maa|din|woe|don|vri|zat)/i,
+  wide: /^(zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag)/i
+};
+var parseDayPatterns = {
+  narrow: [/^z/i, /^m/i, /^d/i, /^w/i, /^d/i, /^v/i, /^z/i],
+  any: [/^zo/i, /^ma/i, /^di/i, /^wo/i, /^do/i, /^vr/i, /^za/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(am|pm|middernacht|het middaguur|'s (ochtends|middags|avonds|nachts))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^am/i,
+    pm: /^pm/i,
+    midnight: /^middernacht/i,
+    noon: /^het middaguur/i,
+    morning: /ochtend/i,
+    afternoon: /middag/i,
+    evening: /avond/i,
+    night: /nacht/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nl/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nl/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/nl/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/nl/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/nl/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/nl/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/nl/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Dutch locale.
+ * @language Dutch
+ * @iso-639-2 nld
+ * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
+ * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
+ * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
+ * @author Edo Rivai [@edorivai]{@link https://github.com/edorivai}
+ * @author Niels Keurentjes [@curry684]{@link https://github.com/curry684}
+ * @author Stefan Vermaas [@stefanvermaas]{@link https://github.com/stefanvermaas}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nn/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nn/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    singular: 'mindre enn eitt sekund',
+    plural: 'mindre enn {{count}} sekund'
+  },
+  xSeconds: {
+    singular: 'eitt sekund',
+    plural: '{{count}} sekund'
+  },
+  halfAMinute: 'eit halvt minutt',
+  lessThanXMinutes: {
+    singular: 'mindre enn eitt minutt',
+    plural: 'mindre enn {{count}} minutt'
+  },
+  xMinutes: {
+    singular: 'eitt minutt',
+    plural: '{{count}} minutt'
+  },
+  aboutXHours: {
+    singular: 'omtrent ein time',
+    plural: 'omtrent {{count}} timar'
+  },
+  xHours: {
+    singular: 'ein time',
+    plural: '{{count}} timar'
+  },
+  xDays: {
+    singular: 'ein dag',
+    plural: '{{count}} dagar'
+  },
+  aboutXMonths: {
+    singular: 'omtrent ein månad',
+    plural: 'omtrent {{count}} månader'
+  },
+  xMonths: {
+    singular: 'ein månad',
+    plural: '{{count}} månader'
+  },
+  aboutXYears: {
+    singular: 'omtrent eitt år',
+    plural: 'omtrent {{count}} år'
+  },
+  xYears: {
+    singular: 'eitt år',
+    plural: '{{count}} år'
+  },
+  overXYears: {
+    singular: 'over eitt år',
+    plural: 'over {{count}} år'
+  },
+  almostXYears: {
+    singular: 'nesten eitt år',
+    plural: 'nesten {{count}} år'
+  }
+};
+var wordMapping = ['null', 'ein', 'to', 'tre', 'fire', 'fem', 'seks', 'sju', 'åtte', 'ni', 'ti', 'elleve', 'tolv'];
+function formatDistance(token, count, options) {
+  options = options || {
+    onlyNumeric: false
+  };
+  var translation = formatDistanceLocale[token];
+  var result;
+
+  if (typeof translation === 'string') {
+    result = translation;
+  } else if (count === 0 || count > 1) {
+    if (options.onlyNumeric) {
+      result = translation.plural.replace('{{count}}', count);
+    } else {
+      result = translation.plural.replace('{{count}}', count < 13 ? wordMapping[count] : count);
+    }
+  } else {
+    result = translation.singular;
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'om ' + result;
+    } else {
+      return result + ' sidan';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nn/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nn/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE d. MMMM y',
+  long: 'd. MMMM y',
+  medium: 'd. MMM y',
+  short: 'dd.MM.y'
+};
+var timeFormats = {
+  full: "'kl'. HH:mm:ss zzzz",
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'kl.' {{time}}",
+  long: "{{date}} 'kl.' {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nn/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nn/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'førre' eeee 'kl.' p",
+  yesterday: "'i går kl.' p",
+  today: "'i dag kl.' p",
+  tomorrow: "'i morgon kl.' p",
+  nextWeek: "EEEE 'kl.' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nn/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nn/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['f.Kr.', 'e.Kr.'],
+  abbreviated: ['f.Kr.', 'e.Kr.'],
+  wide: ['før Kristus', 'etter Kristus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'feb.', 'mars', 'apr.', 'mai', 'juni', 'juli', 'aug.', 'sep.', 'okt.', 'nov.', 'des.'],
+  wide: ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember']
+};
+var dayValues = {
+  narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'],
+  short: ['su', 'må', 'ty', 'on', 'to', 'fr', 'lau'],
+  abbreviated: ['sun', 'mån', 'tys', 'ons', 'tor', 'fre', 'laur'],
+  wide: ['sundag', 'måndag', 'tysdag', 'onsdag', 'torsdag', 'fredag', 'laurdag']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'på morg.',
+    afternoon: 'på etterm.',
+    evening: 'på kvelden',
+    night: 'på natta'
+  },
+  abbreviated: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'på morg.',
+    afternoon: 'på etterm.',
+    evening: 'på kvelden',
+    night: 'på natta'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'på morgonen',
+    afternoon: 'på ettermiddagen',
+    evening: 'på kvelden',
+    night: 'på natta'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nn/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nn/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)\.?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(f\.? ?Kr\.?|fvt\.?|e\.? ?Kr\.?|evt\.?)/i,
+  abbreviated: /^(f\.? ?Kr\.?|fvt\.?|e\.? ?Kr\.?|evt\.?)/i,
+  wide: /^(før Kristus|før vår tid|etter Kristus|vår tid)/i
+};
+var parseEraPatterns = {
+  any: [/^f/i, /^e/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](\.)? kvartal/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|mai|jun|jul|aug|sep|okt|nov|des)\.?/i,
+  wide: /^(januar|februar|mars|april|mai|juni|juli|august|september|oktober|november|desember)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^aug/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[smtofl]/i,
+  short: /^(su|må|ty|on|to|fr|la)/i,
+  abbreviated: /^(sun|mån|tys|ons|tor|fre|laur)/i,
+  wide: /^(sundag|måndag|tysdag|onsdag|torsdag|fredag|laurdag)/i
+};
+var parseDayPatterns = {
+  any: [/^s/i, /^m/i, /^ty/i, /^o/i, /^to/i, /^f/i, /^l/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(midnatt|middag|(på) (morgonen|ettermiddagen|kvelden|natta)|[ap])/i,
+  any: /^([ap]\.?\s?m\.?|midnatt|middag|(på) (morgonen|ettermiddagen|kvelden|natta))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a(\.?\s?m\.?)?$/i,
+    pm: /^p(\.?\s?m\.?)?$/i,
+    midnight: /^midn/i,
+    noon: /^midd/i,
+    morning: /morgon/i,
+    afternoon: /ettermiddag/i,
+    evening: /kveld/i,
+    night: /natt/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/nn/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/nn/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/nn/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/nn/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/nn/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/nn/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/nn/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Norwegian Nynorsk locale.
+ * @language Norwegian Nynorsk
+ * @iso-639-2 nno
+ * @author Mats Byrkjeland [@draperunner]{@link https://github.com/draperunner}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pl/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pl/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+function declensionGroup(scheme, count) {
+  if (count === 1) {
+    return scheme.one;
+  }
+
+  var rem100 = count % 100; // ends with 11-20
+
+  if (rem100 <= 20 && rem100 > 10) {
+    return scheme.other;
+  }
+
+  var rem10 = rem100 % 10; // ends with 2, 3, 4
+
+  if (rem10 >= 2 && rem10 <= 4) {
+    return scheme.twoFour;
+  }
+
+  return scheme.other;
+}
+
+function declension(scheme, count, time) {
+  time = time || 'regular';
+  var group = declensionGroup(scheme, count);
+  var finalText = group[time] || group;
+  return finalText.replace('{{count}}', count);
+}
+
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: {
+      regular: 'mniej niż sekunda',
+      past: 'mniej niż sekundę',
+      future: 'mniej niż sekundę'
+    },
+    twoFour: 'mniej niż {{count}} sekundy',
+    other: 'mniej niż {{count}} sekund'
+  },
+  xSeconds: {
+    one: {
+      regular: 'sekunda',
+      past: 'sekundę',
+      future: 'sekundę'
+    },
+    twoFour: '{{count}} sekundy',
+    other: '{{count}} sekund'
+  },
+  halfAMinute: {
+    one: 'pół minuty',
+    twoFour: 'pół minuty',
+    other: 'pół minuty'
+  },
+  lessThanXMinutes: {
+    one: {
+      regular: 'mniej niż minuta',
+      past: 'mniej niż minutę',
+      future: 'mniej niż minutę'
+    },
+    twoFour: 'mniej niż {{count}} minuty',
+    other: 'mniej niż {{count}} minut'
+  },
+  xMinutes: {
+    one: {
+      regular: 'minuta',
+      past: 'minutę',
+      future: 'minutę'
+    },
+    twoFour: '{{count}} minuty',
+    other: '{{count}} minut'
+  },
+  aboutXHours: {
+    one: {
+      regular: 'około godzina',
+      past: 'około godziny',
+      future: 'około godzinę'
+    },
+    twoFour: 'około {{count}} godziny',
+    other: 'około {{count}} godzin'
+  },
+  xHours: {
+    one: {
+      regular: 'godzina',
+      past: 'godzinę',
+      future: 'godzinę'
+    },
+    twoFour: '{{count}} godziny',
+    other: '{{count}} godzin'
+  },
+  xDays: {
+    one: {
+      regular: 'dzień',
+      past: 'dzień',
+      future: '1 dzień'
+    },
+    twoFour: '{{count}} dni',
+    other: '{{count}} dni'
+  },
+  aboutXMonths: {
+    one: 'około miesiąc',
+    twoFour: 'około {{count}} miesiące',
+    other: 'około {{count}} miesięcy'
+  },
+  xMonths: {
+    one: 'miesiąc',
+    twoFour: '{{count}} miesiące',
+    other: '{{count}} miesięcy'
+  },
+  aboutXYears: {
+    one: 'około rok',
+    twoFour: 'około {{count}} lata',
+    other: 'około {{count}} lat'
+  },
+  xYears: {
+    one: 'rok',
+    twoFour: '{{count}} lata',
+    other: '{{count}} lat'
+  },
+  overXYears: {
+    one: 'ponad rok',
+    twoFour: 'ponad {{count}} lata',
+    other: 'ponad {{count}} lat'
+  },
+  almostXYears: {
+    one: 'prawie rok',
+    twoFour: 'prawie {{count}} lata',
+    other: 'prawie {{count}} lat'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var scheme = formatDistanceLocale[token];
+
+  if (!options.addSuffix) {
+    return declension(scheme, count);
+  }
+
+  if (options.comparison > 0) {
+    return 'za ' + declension(scheme, count, 'future');
+  } else {
+    return declension(scheme, count, 'past') + ' temu';
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pl/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pl/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, do MMMM y',
+  long: 'do MMMM y',
+  medium: 'do MMM y',
+  short: 'dd.MM.y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pl/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pl/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+/* harmony import */ var _lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../_lib/isSameUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/isSameUTCWeek/index.js");
+
+var adjectivesLastWeek = {
+  masculine: 'ostatni',
+  feminine: 'ostatnia'
+};
+var adjectivesThisWeek = {
+  masculine: 'ten',
+  feminine: 'ta'
+};
+var adjectivesNextWeek = {
+  masculine: 'następny',
+  feminine: 'następna'
+};
+var dayGrammaticalGender = {
+  0: 'feminine',
+  1: 'masculine',
+  2: 'masculine',
+  3: 'feminine',
+  4: 'masculine',
+  5: 'masculine',
+  6: 'feminine'
+};
+
+function getAdjectives(token, date, baseDate, options) {
+  if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+    return adjectivesThisWeek;
+  } else if (token === 'lastWeek') {
+    return adjectivesLastWeek;
+  } else if (token === 'nextWeek') {
+    return adjectivesNextWeek;
+  } else {
+    throw new Error("Cannot determine adjectives for token ".concat(token));
+  }
+}
+
+function getAdjective(token, date, baseDate, options) {
+  var day = date.getUTCDay();
+  var adjectives = getAdjectives(token, date, baseDate, options);
+  var grammaticalGender = dayGrammaticalGender[day];
+  return adjectives[grammaticalGender];
+}
+
+function dayAndTimeWithAdjective(token, date, baseDate, options) {
+  var adjective = getAdjective(token, date, baseDate, options);
+  return "'".concat(adjective, "' eeee 'o' p");
+}
+
+var formatRelativeLocale = {
+  lastWeek: dayAndTimeWithAdjective,
+  yesterday: "'wczoraj o' p",
+  today: "'dzisiaj o' p",
+  tomorrow: "'jutro o' p",
+  nextWeek: dayAndTimeWithAdjective,
+  other: 'P'
+};
+function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(token, date, baseDate, options);
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pl/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pl/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return String(number);
+}
+
+var eraValues = {
+  narrow: ['p.n.e.', 'n.e.'],
+  abbreviated: ['p.n.e.', 'n.e.'],
+  wide: ['przed naszą erą', 'naszej ery']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['I kw.', 'II kw.', 'III kw.', 'IV kw.'],
+  wide: ['I kwartał', 'II kwartał', 'III kwartał', 'IV kwartał']
+};
+var monthValues = {
+  narrow: ['S', 'L', 'M', 'K', 'M', 'C', 'L', 'S', 'W', 'P', 'L', 'G'],
+  abbreviated: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'],
+  wide: ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień']
+};
+var monthFormattingValues = {
+  narrow: ['s', 'l', 'm', 'k', 'm', 'c', 'l', 's', 'w', 'p', 'l', 'g'],
+  abbreviated: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'],
+  wide: ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia']
+};
+var dayValues = {
+  narrow: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'],
+  short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'],
+  abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'],
+  wide: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota']
+};
+var dayFormattingValues = {
+  narrow: ['n', 'p', 'w', 'ś', 'c', 'p', 's'],
+  short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'],
+  abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'],
+  wide: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'półn.',
+    noon: 'poł',
+    morning: 'rano',
+    afternoon: 'popoł.',
+    evening: 'wiecz.',
+    night: 'noc'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'północ',
+    noon: 'południe',
+    morning: 'rano',
+    afternoon: 'popołudnie',
+    evening: 'wieczór',
+    night: 'noc'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'północ',
+    noon: 'południe',
+    morning: 'rano',
+    afternoon: 'popołudnie',
+    evening: 'wieczór',
+    night: 'noc'
+  }
+};
+var dayPeriodFormattingValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'o półn.',
+    noon: 'w poł.',
+    morning: 'rano',
+    afternoon: 'po poł.',
+    evening: 'wiecz.',
+    night: 'w nocy'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'o północy',
+    noon: 'w południe',
+    morning: 'rano',
+    afternoon: 'po południu',
+    evening: 'wieczorem',
+    night: 'w nocy'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'o północy',
+    noon: 'w południe',
+    morning: 'rano',
+    afternoon: 'po południu',
+    evening: 'wieczorem',
+    night: 'w nocy'
+  }
+};
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: monthFormattingValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide',
+    formattingValues: dayFormattingValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: dayPeriodFormattingValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pl/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pl/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(p\.?\s*n\.?\s*e\.?\s*|n\.?\s*e\.?\s*)/i,
+  abbreviated: /^(p\.?\s*n\.?\s*e\.?\s*|n\.?\s*e\.?\s*)/i,
+  wide: /^(przed\s*nasz(ą|a)\s*er(ą|a)|naszej\s*ery)/i
+};
+var parseEraPatterns = {
+  any: [/^p/i, /^n/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^(I|II|III|IV)\s*kw\.?/i,
+  wide: /^(I|II|III|IV)\s*kwarta(ł|l)/i
+};
+var parseQuarterPatterns = {
+  narrow: [/1/i, /2/i, /3/i, /4/i],
+  any: [/^I kw/i, /^II kw/i, /^III kw/i, /^IV kw/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[slmkcwpg]/i,
+  abbreviated: /^(sty|lut|mar|kwi|maj|cze|lip|sie|wrz|pa(ź|z)|lis|gru)/i,
+  wide: /^(stycze(ń|n)|stycznia|luty|lutego|marzec|marca|kwiecie(ń|n)|kwietnia|maj|maja|czerwiec|czerwca|lipiec|lipca|sierpie(ń|n)|sierpnia|wrzesie(ń|n)|wrze(ś|s)nia|pa(ź|z)dziernik|pa(ź|z)dziernika|listopad|listopada|grudzie(ń|n)|grudnia)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^s/i, /^l/i, /^m/i, /^k/i, /^m/i, /^c/i, /^l/i, /^s/i, /^w/i, /^p/i, /^l/i, /^g/i],
+  any: [/^st/i, /^lu/i, /^mar/i, /^k/i, /^maj/i, /^c/i, /^lip/i, /^si/i, /^w/i, /^p/i, /^lis/i, /^g/i]
+};
+var matchDayPatterns = {
+  narrow: /^[npwścs]/i,
+  short: /^(nie|pon|wto|(ś|s)ro|czw|pi(ą|a)|sob)/i,
+  abbreviated: /^(niedz|pon|wt|(ś|s)r|czw|pt|sob)\.?/i,
+  wide: /^(niedziela|poniedzia(ł|l)ek|wtorek|(ś|s)roda|czwartek|pi(ą|a)tek|sobota)/i
+};
+var parseDayPatterns = {
+  narrow: [/^n/i, /^p/i, /^w/i, /^ś/i, /^c/i, /^p/i, /^s/i],
+  abbreviated: [/^n/i, /^po/i, /^w/i, /^(ś|s)r/i, /^c/i, /^pt/i, /^so/i],
+  any: [/^n/i, /^po/i, /^w/i, /^(ś|s)r/i, /^c/i, /^pi/i, /^so/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(^a$|^p$|pó(ł|l)n\.?|o\s*pó(ł|l)n\.?|po(ł|l)\.?|w\s*po(ł|l)\.?|po\s*po(ł|l)\.?|rano|wiecz\.?|noc|w\s*nocy)/i,
+  any: /^(am|pm|pó(ł|l)noc|o\s*pó(ł|l)nocy|po(ł|l)udnie|w\s*po(ł|l)udnie|popo(ł|l)udnie|po\s*po(ł|l)udniu|rano|wieczór|wieczorem|noc|w\s*nocy)/i
+};
+var parseDayPeriodPatterns = {
+  narrow: {
+    am: /^a$/i,
+    pm: /^p$/i,
+    midnight: /pó(ł|l)n/i,
+    noon: /po(ł|l)/i,
+    morning: /rano/i,
+    afternoon: /po\s*po(ł|l)/i,
+    evening: /wiecz/i,
+    night: /noc/i
+  },
+  any: {
+    am: /^am/i,
+    pm: /^pm/i,
+    midnight: /pó(ł|l)n/i,
+    noon: /po(ł|l)/i,
+    morning: /rano/i,
+    afternoon: /po\s*po(ł|l)/i,
+    evening: /wiecz/i,
+    night: /noc/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pl/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pl/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/pl/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/pl/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/pl/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/pl/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/pl/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Polish locale.
+ * @language Polish
+ * @iso-639-2 pol
+ * @author Mateusz Derks [@ertrzyiks]{@link https://github.com/ertrzyiks}
+ * @author Just RAG [@justrag]{@link https://github.com/justrag}
+ * @author Mikolaj Grzyb [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
+ * @author Mateusz Tokarski [@mutisz]{@link https://github.com/mutisz}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt-BR/_lib/formatDistance/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt-BR/_lib/formatDistance/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'menos de um segundo',
+    other: 'menos de {{count}} segundos'
+  },
+  xSeconds: {
+    one: '1 segundo',
+    other: '{{count}} segundos'
+  },
+  halfAMinute: 'meio minuto',
+  lessThanXMinutes: {
+    one: 'menos de um minuto',
+    other: 'menos de {{count}} minutos'
+  },
+  xMinutes: {
+    one: '1 minuto',
+    other: '{{count}} minutos'
+  },
+  aboutXHours: {
+    one: 'cerca de 1 hora',
+    other: 'cerca de {{count}} horas'
+  },
+  xHours: {
+    one: '1 hora',
+    other: '{{count}} horas'
+  },
+  xDays: {
+    one: '1 dia',
+    other: '{{count}} dias'
+  },
+  aboutXMonths: {
+    one: 'cerca de 1 mês',
+    other: 'cerca de {{count}} meses'
+  },
+  xMonths: {
+    one: '1 mês',
+    other: '{{count}} meses'
+  },
+  aboutXYears: {
+    one: 'cerca de 1 ano',
+    other: 'cerca de {{count}} anos'
+  },
+  xYears: {
+    one: '1 ano',
+    other: '{{count}} anos'
+  },
+  overXYears: {
+    one: 'mais de 1 ano',
+    other: 'mais de {{count}} anos'
+  },
+  almostXYears: {
+    one: 'quase 1 ano',
+    other: 'quase {{count}} anos'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'em ' + result;
+    } else {
+      return 'há ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt-BR/_lib/formatLong/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt-BR/_lib/formatLong/index.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "EEEE, d 'de' MMMM 'de' y",
+  long: "d 'de' MMMM 'de' y",
+  medium: 'd MMM y',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'às' {{time}}",
+  long: "{{date}} 'às' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt-BR/_lib/formatRelative/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt-BR/_lib/formatRelative/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: function (date, _baseDate, _options) {
+    var weekday = date.getUTCDay();
+    var last = weekday === 0 || weekday === 6 ? 'último' : 'última';
+    return "'" + last + "' eeee 'às' p";
+  },
+  yesterday: "'ontem às' p",
+  today: "'hoje às' p",
+  tomorrow: "'amanhã às' p",
+  nextWeek: "eeee 'às' p",
+  other: 'P'
+};
+function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt-BR/_lib/localize/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt-BR/_lib/localize/index.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['AC', 'DC'],
+  abbreviated: ['AC', 'DC'],
+  wide: ['antes de cristo', 'depois de cristo']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues = {
+  narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+  wide: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+};
+var dayValues = {
+  narrow: ['do', '2ª', '3ª', '4ª', '5ª', '6ª', 'sá'],
+  short: ['do', '2ª', '3ª', '4ª', '5ª', '6ª', 'sá'],
+  abbreviated: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
+  wide: ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'manhã',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noite'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'manhã',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noite'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'manhã',
+    afternoon: 'tarde',
+    evening: 'tarde',
+    night: 'noite'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'da manhã',
+    afternoon: 'da tarde',
+    evening: 'da tarde',
+    night: 'da noite'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'da manhã',
+    afternoon: 'da tarde',
+    evening: 'da tarde',
+    night: 'da noite'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'da manhã',
+    afternoon: 'da tarde',
+    evening: 'da tarde',
+    night: 'da noite'
+  }
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var number = Number(dirtyNumber);
+  var options = dirtyOptions || {};
+  var unit = String(options.unit);
+
+  if (unit === 'week' || unit === 'isoWeek') {
+    return number + 'ª';
+  }
+
+  return number + 'º';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt-BR/_lib/match/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt-BR/_lib/match/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)[ºªo]?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ac|dc|a|d)/i,
+  abbreviated: /^(a\.?\s?c\.?|d\.?\s?c\.?)/i,
+  wide: /^(antes de cristo|depois de cristo)/i
+};
+var parseEraPatterns = {
+  any: [/^ac/i, /^dc/i],
+  wide: [/^antes de cristo/i, /^depois de cristo/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^T[1234]/i,
+  wide: /^[1234](º)? trimestre/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmajsond]/i,
+  abbreviated: /^(jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez)/i,
+  wide: /^(janeiro|fevereiro|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^fev/i, /^mar/i, /^abr/i, /^mai/i, /^jun/i, /^jul/i, /^ago/i, /^set/i, /^out/i, /^nov/i, /^dez/i]
+};
+var matchDayPatterns = {
+  narrow: /^(dom|[23456]ª?|s[aá]b)/i,
+  short: /^(dom|[23456]ª?|s[aá]b)/i,
+  abbreviated: /^(dom|seg|ter|qua|qui|sex|s[aá]b)/i,
+  wide: /^(domingo|(segunda|ter[cç]a|quarta|quinta|sexta)([- ]feira)?|s[aá]bado)/i
+};
+var parseDayPatterns = {
+  short: [/^d/i, /^2/i, /^3/i, /^4/i, /^5/i, /^6/i, /^s[aá]/i],
+  narrow: [/^d/i, /^2/i, /^3/i, /^4/i, /^5/i, /^6/i, /^s[aá]/i],
+  any: [/^d/i, /^seg/i, /^t/i, /^qua/i, /^qui/i, /^sex/i, /^s[aá]b/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|mn|md|(da) (manhã|tarde|noite))/i,
+  any: /^([ap]\.?\s?m\.?|meia[-\s]noite|meio[-\s]dia|(da) (manhã|tarde|noite))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mn|^meia[-\s]noite/i,
+    noon: /^md|^meio[-\s]dia/i,
+    morning: /manhã/i,
+    afternoon: /tarde/i,
+    evening: /tarde/i,
+    night: /noite/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt-BR/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt-BR/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/pt-BR/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/pt-BR/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/pt-BR/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/pt-BR/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/pt-BR/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Portuguese locale (Brazil).
+ * @language Portuguese
+ * @iso-639-2 por
+ * @author Lucas Duailibe [@duailibe]{@link https://github.com/duailibe}
+ * @author Yago Carballo [@yagocarballo]{@link https://github.com/YagoCarballo}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'menos de um segundo',
+    other: 'menos de {{count}} segundos'
+  },
+  xSeconds: {
+    one: '1 segundo',
+    other: '{{count}} segundos'
+  },
+  halfAMinute: 'meio minuto',
+  lessThanXMinutes: {
+    one: 'menos de um minuto',
+    other: 'menos de {{count}} minutos'
+  },
+  xMinutes: {
+    one: '1 minuto',
+    other: '{{count}} minutos'
+  },
+  aboutXHours: {
+    one: 'aproximadamente 1 hora',
+    other: 'aproximadamente {{count}} horas'
+  },
+  xHours: {
+    one: '1 hora',
+    other: '{{count}} horas'
+  },
+  xDays: {
+    one: '1 dia',
+    other: '{{count}} dias'
+  },
+  aboutXMonths: {
+    one: 'aproximadamente 1 mês',
+    other: 'aproximadamente {{count}} meses'
+  },
+  xMonths: {
+    one: '1 mês',
+    other: '{{count}} meses'
+  },
+  aboutXYears: {
+    one: 'aproximadamente 1 ano',
+    other: 'aproximadamente {{count}} anos'
+  },
+  xYears: {
+    one: '1 ano',
+    other: '{{count}} anos'
+  },
+  overXYears: {
+    one: 'mais de 1 ano',
+    other: 'mais de {{count}} anos'
+  },
+  almostXYears: {
+    one: 'quase 1 ano',
+    other: 'quase {{count}} anos'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'daqui a ' + result;
+    } else {
+      return 'há ' + result;
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "EEEE, d 'de' MMMM 'de' y",
+  long: "d 'de' MMMM 'de' y",
+  medium: "d 'de' MMM 'de' y",
+  short: 'dd/MM/y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'às' {{time}}",
+  long: "{{date}} 'às' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'na última' eeee 'às' p",
+  yesterday: "'ontem às' p",
+  today: "'hoje às' p",
+  tomorrow: "'amanhã às' p",
+  nextWeek: "eeee 'às' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number + 'º';
+}
+
+var eraValues = {
+  narrow: ['aC', 'dC'],
+  abbreviated: ['a.C.', 'd.C.'],
+  wide: ['antes de Cristo', 'depois de Cristo']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+};
+var monthValues = {
+  narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+  wide: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+};
+var dayValues = {
+  narrow: ['d', 's', 't', 'q', 'q', 's', 's'],
+  short: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
+  abbreviated: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
+  wide: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'manhã',
+    afternoon: 'tarde',
+    evening: 'noite',
+    night: 'madrugada'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'manhã',
+    afternoon: 'tarde',
+    evening: 'noite',
+    night: 'madrugada'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'manhã',
+    afternoon: 'tarde',
+    evening: 'noite',
+    night: 'madrugada'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'da manhã',
+    afternoon: 'da tarde',
+    evening: 'da noite',
+    night: 'da madrugada'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'da manhã',
+    afternoon: 'da tarde',
+    evening: 'da noite',
+    night: 'da madrugada'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'meia-noite',
+    noon: 'meio-dia',
+    morning: 'da manhã',
+    afternoon: 'da tarde',
+    evening: 'da noite',
+    night: 'da madrugada'
+  }
+};
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(º|ª)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ac|dc|a|d)/i,
+  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
+  wide: /^(antes de cristo|antes da era comum|depois de cristo|era comum)/i
+};
+var parseEraPatterns = {
+  any: [/^ac/i, /^dc/i],
+  wide: [/^(antes de cristo|antes da era comum)/i, /^(depois de cristo|era comum)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^T[1234]/i,
+  wide: /^[1234](º|ª)? trimestre/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez)/i,
+  wide: /^(janeiro|fevereiro|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ab/i, /^may/i, /^jun/i, /^jul/i, /^ag/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[dstq]/i,
+  short: /^(dom|seg|ter|qua|qui|sex|s[áa]b)/i,
+  abbreviated: /^(dom|seg|ter|qua|qui|sex|s[áa]b)/i,
+  wide: /^(domingo|segunda-?\s?feira|terça-?\s?feira|quarta-?\s?feira|quinta-?\s?feira|sexta-?\s?feira|s[áa]bado)/i
+};
+var parseDayPatterns = {
+  narrow: [/^d/i, /^s/i, /^t/i, /^q/i, /^q/i, /^s/i, /^s/i],
+  any: [/^d/i, /^seg/i, /^t/i, /^qua/i, /^qui/i, /^sex/i, /^s[áa]/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|meia-?\s?noite|meio-?\s?dia|(da) (manh[ãa]|tarde|noite|madrugada))/i,
+  any: /^([ap]\.?\s?m\.?|meia-?\s?noite|meio-?\s?dia|(da) (manh[ãa]|tarde|noite|madrugada))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^meia/i,
+    noon: /^meio/i,
+    morning: /manh[ãa]/i,
+    afternoon: /tarde/i,
+    evening: /noite/i,
+    night: /madrugada/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/pt/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/pt/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/pt/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/pt/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/pt/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/pt/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/pt/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Portuguese locale.
+ * @language Portuguese
+ * @iso-639-2 por
+ * @author Dário Freire [@dfreire]{@link https://github.com/dfreire}
+ * @author Adrián de la Rosa [@adrm]{@link https://github.com/adrm}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ro/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ro/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'mai puțin de o secundă',
+    other: 'mai puțin de {{count}} secunde'
+  },
+  xSeconds: {
+    one: '1 secundă',
+    other: '{{count}} secunde'
+  },
+  halfAMinute: 'jumătate de minut',
+  lessThanXMinutes: {
+    one: 'mai puțin de un minut',
+    other: 'mai puțin de {{count}} minute'
+  },
+  xMinutes: {
+    one: '1 minut',
+    other: '{{count}} minute'
+  },
+  aboutXHours: {
+    one: 'circa 1 oră',
+    other: 'circa {{count}} ore'
+  },
+  xHours: {
+    one: '1 oră',
+    other: '{{count}} ore'
+  },
+  xDays: {
+    one: '1 zi',
+    other: '{{count}} zile'
+  },
+  aboutXMonths: {
+    one: 'circa 1 lună',
+    other: 'circa {{count}} luni'
+  },
+  xMonths: {
+    one: '1 lună',
+    other: '{{count}} luni'
+  },
+  aboutXYears: {
+    one: 'circa 1 an',
+    other: 'circa {{count}} ani'
+  },
+  xYears: {
+    one: '1 an',
+    other: '{{count}} ani'
+  },
+  overXYears: {
+    one: 'peste 1 an',
+    other: 'peste {{count}} ani'
+  },
+  almostXYears: {
+    one: 'aproape 1 an',
+    other: 'aproape {{count}} ani'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'în ' + result;
+    } else {
+      return result + ' în urmă';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ro/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ro/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, d MMMM yyyy',
+  long: 'd MMMM yyyy',
+  medium: 'd MMM yyyy',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'la' {{time}}",
+  long: "{{date}} 'la' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ro/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ro/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee 'trecută la' p",
+  yesterday: "'ieri la' p",
+  today: "'astăzi la' p",
+  tomorrow: "'mâine la' p",
+  nextWeek: "eeee 'viitoare la' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ro/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ro/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['Î', 'D'],
+  abbreviated: ['Î.d.C.', 'D.C.'],
+  wide: ['Înainte de Cristos', 'După Cristos']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['primul trimestru', 'al doilea trimestru', 'al treilea trimestru', 'al patrulea trimestru']
+};
+var monthValues = {
+  narrow: ['I', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['ian', 'feb', 'mar', 'apr', 'mai', 'iun', 'iul', 'aug', 'sep', 'oct', 'noi', 'dec'],
+  wide: ['ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie']
+};
+var dayValues = {
+  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
+  short: ['du', 'lu', 'ma', 'mi', 'jo', 'vi', 'sâ'],
+  abbreviated: ['dum', 'lun', 'mar', 'mie', 'joi', 'vin', 'sâm'],
+  wide: ['duminică', 'luni', 'marți', 'miercuri', 'joi', 'vineri', 'sâmbătă']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'ami',
+    morning: 'dim',
+    afternoon: 'da',
+    evening: 's',
+    night: 'n'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'miezul nopții',
+    noon: 'amiază',
+    morning: 'dimineață',
+    afternoon: 'după-amiază',
+    evening: 'seară',
+    night: 'noapte'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'miezul nopții',
+    noon: 'amiază',
+    morning: 'dimineață',
+    afternoon: 'după-amiază',
+    evening: 'seară',
+    night: 'noapte'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'amiază',
+    morning: 'dimineață',
+    afternoon: 'după-amiază',
+    evening: 'seară',
+    night: 'noapte'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'miezul nopții',
+    noon: 'amiază',
+    morning: 'dimineață',
+    afternoon: 'după-amiază',
+    evening: 'seară',
+    night: 'noapte'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'miezul nopții',
+    noon: 'amiază',
+    morning: 'dimineață',
+    afternoon: 'după-amiază',
+    evening: 'seară',
+    night: 'noapte'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return String(number);
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ro/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ro/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(Î|D)/i,
+  abbreviated: /^(Î\.?\s?d\.?\s?C\.?|Î\.?\s?e\.?\s?n\.?|D\.?\s?C\.?|e\.?\s?n\.?)/i,
+  wide: /^(Înainte de Cristos|Înaintea erei noastre|După Cristos|Era noastră)/i
+};
+var parseEraPatterns = {
+  any: [/^ÎC/i, /^DC/i],
+  wide: [/^(Înainte de Cristos|Înaintea erei noastre)/i, /^(După Cristos|Era noastră)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^T[1234]/i,
+  wide: /^trimestrul [1234]/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[ifmaasond]/i,
+  abbreviated: /^(ian|feb|mar|apr|mai|iun|iul|aug|sep|oct|noi|dec)/i,
+  wide: /^(ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^i/i, /^f/i, /^m/i, /^a/i, /^m/i, /^i/i, /^i/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ia/i, /^f/i, /^mar/i, /^ap/i, /^mai/i, /^iun/i, /^iul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[dlmjvs]/i,
+  short: /^(d|l|ma|mi|j|v|s)/i,
+  abbreviated: /^(dum|lun|mar|mie|jo|vi|sâ)/i,
+  wide: /^(duminica|luni|marţi|miercuri|joi|vineri|sâmbătă)/i
+};
+var parseDayPatterns = {
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  any: [/^d/i, /^l/i, /^ma/i, /^mi/i, /^j/i, /^v/i, /^s/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|mn|a|(dimineaţa|după-amiaza|seara|noaptea))/i,
+  any: /^([ap]\.?\s?m\.?|miezul nopții|amiaza|(dimineaţa|după-amiaza|seara|noaptea))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mn/i,
+    noon: /amiaza/i,
+    morning: /dimineaţa/i,
+    afternoon: /după-amiaza/i,
+    evening: /seara/i,
+    night: /noaptea/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ro/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ro/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/ro/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/ro/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/ro/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/ro/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/ro/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Romanian locale.
+ * @language Romanian
+ * @iso-639-2 ron
+ * @author Sergiu Munteanu [@jsergiu]{@link https://github.com/jsergiu}
+ * @author Adrian Ocneanu [@aocneanu]{@link https://github.com/aocneanu}
+ * @author Mihai Ocneanu [@gandesc]{@link https://github.com/gandesc}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ru/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ru/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+function declension(scheme, count) {
+  // scheme for count=1 exists
+  if (scheme.one !== undefined && count === 1) {
+    return scheme.one;
+  }
+
+  var rem10 = count % 10;
+  var rem100 = count % 100; // 1, 21, 31, ...
+
+  if (rem10 === 1 && rem100 !== 11) {
+    return scheme.singularNominative.replace('{{count}}', count); // 2, 3, 4, 22, 23, 24, 32 ...
+  } else if (rem10 >= 2 && rem10 <= 4 && (rem100 < 10 || rem100 > 20)) {
+    return scheme.singularGenitive.replace('{{count}}', count); // 5, 6, 7, 8, 9, 10, 11, ...
+  } else {
+    return scheme.pluralGenitive.replace('{{count}}', count);
+  }
+}
+
+function buildLocalizeTokenFn(scheme) {
+  return function (count, options) {
+    if (options.addSuffix) {
+      if (options.comparison > 0) {
+        if (scheme.future) {
+          return declension(scheme.future, count);
+        } else {
+          return 'через ' + declension(scheme.regular, count);
+        }
+      } else {
+        if (scheme.past) {
+          return declension(scheme.past, count);
+        } else {
+          return declension(scheme.regular, count) + ' назад';
+        }
+      }
+    } else {
+      return declension(scheme.regular, count);
+    }
+  };
+}
+
+var formatDistanceLocale = {
+  lessThanXSeconds: buildLocalizeTokenFn({
+    regular: {
+      one: 'меньше секунды',
+      singularNominative: 'меньше {{count}} секунды',
+      singularGenitive: 'меньше {{count}} секунд',
+      pluralGenitive: 'меньше {{count}} секунд'
+    },
+    future: {
+      one: 'меньше, чем через секунду',
+      singularNominative: 'меньше, чем через {{count}} секунду',
+      singularGenitive: 'меньше, чем через {{count}} секунды',
+      pluralGenitive: 'меньше, чем через {{count}} секунд'
+    }
+  }),
+  xSeconds: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} секунда',
+      singularGenitive: '{{count}} секунды',
+      pluralGenitive: '{{count}} секунд'
+    },
+    past: {
+      singularNominative: '{{count}} секунду назад',
+      singularGenitive: '{{count}} секунды назад',
+      pluralGenitive: '{{count}} секунд назад'
+    },
+    future: {
+      singularNominative: 'через {{count}} секунду',
+      singularGenitive: 'через {{count}} секунды',
+      pluralGenitive: 'через {{count}} секунд'
+    }
+  }),
+  halfAMinute: function (_, options) {
+    if (options.addSuffix) {
+      if (options.comparison > 0) {
+        return 'через полминуты';
+      } else {
+        return 'полминуты назад';
+      }
+    }
+
+    return 'полминуты';
+  },
+  lessThanXMinutes: buildLocalizeTokenFn({
+    regular: {
+      one: 'меньше минуты',
+      singularNominative: 'меньше {{count}} минуты',
+      singularGenitive: 'меньше {{count}} минут',
+      pluralGenitive: 'меньше {{count}} минут'
+    },
+    future: {
+      one: 'меньше, чем через минуту',
+      singularNominative: 'меньше, чем через {{count}} минуту',
+      singularGenitive: 'меньше, чем через {{count}} минуты',
+      pluralGenitive: 'меньше, чем через {{count}} минут'
+    }
+  }),
+  xMinutes: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} минута',
+      singularGenitive: '{{count}} минуты',
+      pluralGenitive: '{{count}} минут'
+    },
+    past: {
+      singularNominative: '{{count}} минуту назад',
+      singularGenitive: '{{count}} минуты назад',
+      pluralGenitive: '{{count}} минут назад'
+    },
+    future: {
+      singularNominative: 'через {{count}} минуту',
+      singularGenitive: 'через {{count}} минуты',
+      pluralGenitive: 'через {{count}} минут'
+    }
+  }),
+  aboutXHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'около {{count}} часа',
+      singularGenitive: 'около {{count}} часов',
+      pluralGenitive: 'около {{count}} часов'
+    },
+    future: {
+      singularNominative: 'приблизительно через {{count}} час',
+      singularGenitive: 'приблизительно через {{count}} часа',
+      pluralGenitive: 'приблизительно через {{count}} часов'
+    }
+  }),
+  xHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} час',
+      singularGenitive: '{{count}} часа',
+      pluralGenitive: '{{count}} часов'
+    }
+  }),
+  xDays: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} день',
+      singularGenitive: '{{count}} дня',
+      pluralGenitive: '{{count}} дней'
+    }
+  }),
+  aboutXMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'около {{count}} месяца',
+      singularGenitive: 'около {{count}} месяцев',
+      pluralGenitive: 'около {{count}} месяцев'
+    },
+    future: {
+      singularNominative: 'приблизительно через {{count}} месяц',
+      singularGenitive: 'приблизительно через {{count}} месяца',
+      pluralGenitive: 'приблизительно через {{count}} месяцев'
+    }
+  }),
+  xMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} месяц',
+      singularGenitive: '{{count}} месяца',
+      pluralGenitive: '{{count}} месяцев'
+    }
+  }),
+  aboutXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'около {{count}} года',
+      singularGenitive: 'около {{count}} лет',
+      pluralGenitive: 'около {{count}} лет'
+    },
+    future: {
+      singularNominative: 'приблизительно через {{count}} год',
+      singularGenitive: 'приблизительно через {{count}} года',
+      pluralGenitive: 'приблизительно через {{count}} лет'
+    }
+  }),
+  xYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} год',
+      singularGenitive: '{{count}} года',
+      pluralGenitive: '{{count}} лет'
+    }
+  }),
+  overXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'больше {{count}} года',
+      singularGenitive: 'больше {{count}} лет',
+      pluralGenitive: 'больше {{count}} лет'
+    },
+    future: {
+      singularNominative: 'больше, чем через {{count}} год',
+      singularGenitive: 'больше, чем через {{count}} года',
+      pluralGenitive: 'больше, чем через {{count}} лет'
+    }
+  }),
+  almostXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'почти {{count}} год',
+      singularGenitive: 'почти {{count}} года',
+      pluralGenitive: 'почти {{count}} лет'
+    },
+    future: {
+      singularNominative: 'почти через {{count}} год',
+      singularGenitive: 'почти через {{count}} года',
+      pluralGenitive: 'почти через {{count}} лет'
+    }
+  })
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  return formatDistanceLocale[token](count, options);
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ru/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ru/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "EEEE, do MMMM y 'г.'",
+  long: "do MMMM y 'г.'",
+  medium: "d MMM y 'г.'",
+  short: 'dd.MM.y'
+};
+var timeFormats = {
+  full: 'H:mm:ss zzzz',
+  long: 'H:mm:ss z',
+  medium: 'H:mm:ss',
+  short: 'H:mm'
+};
+var dateTimeFormats = {
+  any: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ru/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ru/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+/* harmony import */ var _lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../_lib/isSameUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/isSameUTCWeek/index.js");
+
+var accusativeWeekdays = ['воскресенье', 'понедельник', 'вторник', 'среду', 'четверг', 'пятницу', 'субботу'];
+
+function lastWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  switch (day) {
+    case 0:
+      return "'в прошлое " + weekday + " в' p";
+
+    case 1:
+    case 2:
+    case 4:
+      return "'в прошлый " + weekday + " в' p";
+
+    case 3:
+    case 5:
+    case 6:
+      return "'в прошлую " + weekday + " в' p";
+  }
+}
+
+function thisWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  if (day === 2
+  /* Tue */
+  ) {
+      return "'во " + weekday + " в' p";
+    } else {
+    return "'в " + weekday + " в' p";
+  }
+}
+
+function nextWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  switch (day) {
+    case 0:
+      return "'в следующее " + weekday + " в' p";
+
+    case 1:
+    case 2:
+    case 4:
+      return "'в следующий " + weekday + " в' p";
+
+    case 3:
+    case 5:
+    case 6:
+      return "'в следующую " + weekday + " в' p";
+  }
+}
+
+var formatRelativeLocale = {
+  lastWeek: function (date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return lastWeek(day);
+    }
+  },
+  yesterday: "'вчера в' p",
+  today: "'сегодня в' p",
+  tomorrow: "'завтра в' p",
+  nextWeek: function (date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return nextWeek(day);
+    }
+  },
+  other: 'P'
+};
+function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ru/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ru/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['до н.э.', 'н.э.'],
+  abbreviated: ['до н. э.', 'н. э.'],
+  wide: ['до нашей эры', 'нашей эры']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1-й кв.', '2-й кв.', '3-й кв.', '4-й кв.'],
+  wide: ['1-й квартал', '2-й квартал', '3-й квартал', '4-й квартал']
+};
+var monthValues = {
+  narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+  abbreviated: ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
+  wide: ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
+};
+var formattingMonthValues = {
+  narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+  abbreviated: ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июн.', 'июл.', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
+  wide: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+};
+var dayValues = {
+  narrow: ['В', 'П', 'В', 'С', 'Ч', 'П', 'С'],
+  short: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+  abbreviated: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'суб'],
+  wide: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полн.',
+    noon: 'полд.',
+    morning: 'утро',
+    afternoon: 'день',
+    evening: 'веч.',
+    night: 'ночь'
+  },
+  abbreviated: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полн.',
+    noon: 'полд.',
+    morning: 'утро',
+    afternoon: 'день',
+    evening: 'веч.',
+    night: 'ночь'
+  },
+  wide: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полночь',
+    noon: 'полдень',
+    morning: 'утро',
+    afternoon: 'день',
+    evening: 'вечер',
+    night: 'ночь'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полн.',
+    noon: 'полд.',
+    morning: 'утра',
+    afternoon: 'дня',
+    evening: 'веч.',
+    night: 'ночи'
+  },
+  abbreviated: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полн.',
+    noon: 'полд.',
+    morning: 'утра',
+    afternoon: 'дня',
+    evening: 'веч.',
+    night: 'ночи'
+  },
+  wide: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полночь',
+    noon: 'полдень',
+    morning: 'утра',
+    afternoon: 'дня',
+    evening: 'вечера',
+    night: 'ночи'
+  }
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var options = dirtyOptions || {};
+  var unit = String(options.unit);
+  var suffix;
+
+  if (unit === 'date') {
+    suffix = '-е';
+  } else if (unit === 'week' || unit === 'minute' || unit === 'second') {
+    suffix = '-я';
+  } else {
+    suffix = '-й';
+  }
+
+  return dirtyNumber + suffix;
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'any',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ru/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ru/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(-?(е|я|й|ое|ье|ая|ья|ый|ой|ий|ый))?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^((до )?н\.?\s?э\.?)/i,
+  abbreviated: /^((до )?н\.?\s?э\.?)/i,
+  wide: /^(до нашей эры|нашей эры|наша эра)/i
+};
+var parseEraPatterns = {
+  any: [/^д/i, /^н/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234](-?[ыои]?й?)? кв.?/i,
+  wide: /^[1234](-?[ыои]?й?)? квартал/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[яфмаисонд]/i,
+  abbreviated: /^(янв|фев|март?|апр|ма[йя]|июн[ья]?|июл[ья]?|авг|сент?|окт|нояб?|дек)/i,
+  wide: /^(январ[ья]|феврал[ья]|марта?|апрел[ья]|ма[йя]|июн[ья]|июл[ья]|августа?|сентябр[ья]|октябр[ья]|октябр[ья]|ноябр[ья]|декабр[ья])/i
+};
+var parseMonthPatterns = {
+  narrow: [/^я/i, /^ф/i, /^м/i, /^а/i, /^м/i, /^и/i, /^и/i, /^а/i, /^с/i, /^о/i, /^н/i, /^я/i],
+  any: [/^я/i, /^ф/i, /^мар/i, /^ап/i, /^ма[йя]/i, /^июн/i, /^июл/i, /^ав/i, /^с/i, /^о/i, /^н/i, /^д/i]
+};
+var matchDayPatterns = {
+  narrow: /^[впсч]/i,
+  short: /^(вс|во|пн|по|вт|ср|чт|че|пт|пя|сб|су)\.?/i,
+  abbreviated: /^(вск|вос|пнд|пон|втр|вто|срд|сре|чтв|чет|птн|пят|суб).?/i,
+  wide: /^(воскресень[ея]|понедельника?|вторника?|сред[аы]|четверга?|пятниц[аы]|суббот[аы])/i
+};
+var parseDayPatterns = {
+  narrow: [/^в/i, /^п/i, /^в/i, /^с/i, /^ч/i, /^п/i, /^с/i],
+  any: [/^в[ос]/i, /^п[он]/i, /^в/i, /^ср/i, /^ч/i, /^п[ят]/i, /^с[уб]/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^([дп]п|полн\.?|полд\.?|утр[оа]|день|дня|веч\.?|ноч[ьи])/i,
+  abbreviated: /^([дп]п|полн\.?|полд\.?|утр[оа]|день|дня|веч\.?|ноч[ьи])/i,
+  wide: /^([дп]п|полночь|полдень|утр[оа]|день|дня|вечера?|ноч[ьи])/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^дп/i,
+    pm: /^пп/i,
+    midnight: /^полн/i,
+    noon: /^полд/i,
+    morning: /^у/i,
+    afternoon: /^д[ен]/i,
+    evening: /^в/i,
+    night: /^н/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ru/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ru/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/ru/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/ru/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/ru/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/ru/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/ru/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Russian locale.
+ * @language Russian
+ * @iso-639-2 rus
+ * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
+ * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sk/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sk/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+// NOTE: should prolly be improved
+// https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1308
+function declensionGroup(scheme, count) {
+  if (count === 1) {
+    return scheme.one;
+  }
+
+  if (count >= 2 && count <= 4) {
+    return scheme.twoFour;
+  } // if count === null || count === 0 || count >= 5
+
+
+  return scheme.other;
+}
+
+function declension(scheme, count, time) {
+  var group = declensionGroup(scheme, count);
+  var finalText = group[time] || group;
+  return finalText.replace('{{count}}', count);
+}
+
+function extractPreposition(token) {
+  var result = ['lessThan', 'about', 'over', 'almost'].filter(function (preposition) {
+    return !!token.match(new RegExp('^' + preposition));
+  });
+  return result[0];
+}
+
+function prefixPreposition(preposition) {
+  var translation = '';
+
+  if (preposition === 'almost') {
+    translation = 'takmer';
+  }
+
+  if (preposition === 'about') {
+    translation = 'približne';
+  }
+
+  return translation.length > 0 ? translation + ' ' : '';
+}
+
+function suffixPreposition(preposition) {
+  var translation = '';
+
+  if (preposition === 'lessThan') {
+    translation = 'menej než';
+  }
+
+  if (preposition === 'over') {
+    translation = 'viac než';
+  }
+
+  return translation.length > 0 ? translation + ' ' : '';
+}
+
+function lowercaseFirstLetter(string) {
+  return string.charAt(0).toLowerCase() + string.slice(1);
+}
+
+var formatDistanceLocale = {
+  xSeconds: {
+    one: {
+      regular: 'sekunda',
+      past: 'sekundou',
+      future: 'sekundu'
+    },
+    twoFour: {
+      regular: '{{count}} sekundy',
+      past: '{{count}} sekundami',
+      future: '{{count}} sekundy'
+    },
+    other: {
+      regular: '{{count}} sekúnd',
+      past: '{{count}} sekundami',
+      future: '{{count}} sekúnd'
+    }
+  },
+  halfAMinute: {
+    other: {
+      regular: 'pol minúty',
+      past: 'pol minútou',
+      future: 'pol minúty'
+    }
+  },
+  xMinutes: {
+    one: {
+      regular: 'minúta',
+      past: 'minútou',
+      future: 'minútu'
+    },
+    twoFour: {
+      regular: '{{count}} minúty',
+      past: '{{count}} minútami',
+      future: '{{count}} minúty'
+    },
+    other: {
+      regular: '{{count}} minút',
+      past: '{{count}} minútami',
+      future: '{{count}} minút'
+    }
+  },
+  xHours: {
+    one: {
+      regular: 'hodina',
+      past: 'hodinou',
+      future: 'hodinu'
+    },
+    twoFour: {
+      regular: '{{count}} hodiny',
+      past: '{{count}} hodinami',
+      future: '{{count}} hodiny'
+    },
+    other: {
+      regular: '{{count}} hodín',
+      past: '{{count}} hodinami',
+      future: '{{count}} hodín'
+    }
+  },
+  xDays: {
+    one: {
+      regular: 'deň',
+      past: 'dňom',
+      future: 'deň'
+    },
+    twoFour: {
+      regular: '{{count}} dni',
+      past: '{{count}} dňami',
+      future: '{{count}} dni'
+    },
+    other: {
+      regular: '{{count}} dní',
+      past: '{{count}} dňami',
+      future: '{{count}} dní'
+    }
+  },
+  xMonths: {
+    one: {
+      regular: 'mesiac',
+      past: 'mesiacom',
+      future: 'mesiac'
+    },
+    twoFour: {
+      regular: '{{count}} mesiace',
+      past: '{{count}} mesiacmi',
+      future: '{{count}} mesiace'
+    },
+    other: {
+      regular: '{{count}} mesiacov',
+      past: '{{count}} mesiacmi',
+      future: '{{count}} mesiacov'
+    }
+  },
+  xYears: {
+    one: {
+      regular: 'rok',
+      past: 'rokom',
+      future: 'rok'
+    },
+    twoFour: {
+      regular: '{{count}} roky',
+      past: '{{count}} rokmi',
+      future: '{{count}} roky'
+    },
+    other: {
+      regular: '{{count}} rokov',
+      past: '{{count}} rokmi',
+      future: '{{count}} rokov'
+    }
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var preposition = extractPreposition(token) || '';
+  var key = lowercaseFirstLetter(token.substring(preposition.length));
+  var scheme = formatDistanceLocale[key];
+
+  if (!options.addSuffix) {
+    return prefixPreposition(preposition) + suffixPreposition(preposition) + declension(scheme, count, 'regular');
+  }
+
+  if (options.comparison > 0) {
+    return prefixPreposition(preposition) + 'o ' + suffixPreposition(preposition) + declension(scheme, count, 'future');
+  } else {
+    return prefixPreposition(preposition) + 'pred ' + suffixPreposition(preposition) + declension(scheme, count, 'past');
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sk/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sk/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+ // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1986
+
+var dateFormats = {
+  full: 'EEEE d. MMMM y',
+  long: 'd. MMMM y',
+  medium: 'd. M. y',
+  short: 'd. M. y' // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#2149
+
+};
+var timeFormats = {
+  full: 'H:mm:ss zzzz',
+  long: 'H:mm:ss z',
+  medium: 'H:mm:ss',
+  short: 'H:mm' // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1994
+
+};
+var dateTimeFormats = {
+  full: '{{date}}, {{time}}',
+  long: '{{date}}, {{time}}',
+  medium: '{{date}}, {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sk/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sk/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+/* harmony import */ var _lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../_lib/isSameUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/isSameUTCWeek/index.js");
+ // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1308
+
+var accusativeWeekdays = ['nedeľu', 'pondelok', 'utorok', 'stredu', 'štvrtok', 'piatok', 'sobotu'];
+
+function lastWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  switch (day) {
+    case 0:
+    /* Sun */
+
+    case 4:
+    /* Wed */
+
+    case 6
+    /* Sat */
+    :
+      return "'minulú " + weekday + " o' p";
+
+    default:
+      return "'minulý' eeee 'o' p";
+  }
+}
+
+function thisWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  if (day === 4
+  /* Thu */
+  ) {
+      return "'vo' eeee 'o' p";
+    } else {
+    return "'v " + weekday + " o' p";
+  }
+}
+
+function nextWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  switch (day) {
+    case 0:
+    /* Sun */
+
+    case 4:
+    /* Wed */
+
+    case 6
+    /* Sat */
+    :
+      return "'budúcu' " + weekday + " 'o' p";
+
+    default:
+      return "'budúci' eeee 'o' p";
+  }
+}
+
+var formatRelativeLocale = {
+  lastWeek: function (date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return lastWeek(day);
+    }
+  },
+  yesterday: "'včera o' p",
+  today: "'dnes o' p",
+  tomorrow: "'zajtra o' p",
+  nextWeek: function (date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return nextWeek(day);
+    }
+  },
+  other: 'P'
+};
+function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sk/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sk/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+ // https://www.unicode.org/cldr/charts/32/summary/sk.html#1772
+
+var eraValues = {
+  narrow: ['pred Kr.', 'po Kr.'],
+  abbreviated: ['pred Kr.', 'po Kr.'],
+  wide: ['pred Kristom', 'po Kristovi'] // https://www.unicode.org/cldr/charts/32/summary/sk.html#1780
+
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1. štvrťrok', '2. štvrťrok', '3. štvrťrok', '4. štvrťrok'] // https://www.unicode.org/cldr/charts/32/summary/sk.html#1804
+
+};
+var monthValues = {
+  narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: ['jan', 'feb', 'mar', 'apr', 'máj', 'jún', 'júl', 'aug', 'sep', 'okt', 'nov', 'dec'],
+  wide: ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december']
+};
+var formattingMonthValues = {
+  narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: ['jan', 'feb', 'mar', 'apr', 'máj', 'jún', 'júl', 'aug', 'sep', 'okt', 'nov', 'dec'],
+  wide: ['januára', 'februára', 'marca', 'apríla', 'mája', 'júna', 'júla', 'augusta', 'septembra', 'októbra', 'novembra', 'decembra'] // https://www.unicode.org/cldr/charts/32/summary/sk.html#1876
+
+};
+var dayValues = {
+  narrow: ['n', 'p', 'u', 's', 'š', 'p', 's'],
+  short: ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so'],
+  abbreviated: ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so'],
+  wide: ['nedeľa', 'pondelok', 'utorok', 'streda', 'štvrtok', 'piatok', 'sobota'] // https://www.unicode.org/cldr/charts/32/summary/sk.html#1932
+
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'poln.',
+    noon: 'pol.',
+    morning: 'ráno',
+    afternoon: 'pop.',
+    evening: 'več.',
+    night: 'noc'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'poln.',
+    noon: 'pol.',
+    morning: 'ráno',
+    afternoon: 'popol.',
+    evening: 'večer',
+    night: 'noc'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'polnoc',
+    noon: 'poludnie',
+    morning: 'ráno',
+    afternoon: 'popoludnie',
+    evening: 'večer',
+    night: 'noc'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'o poln.',
+    noon: 'nap.',
+    morning: 'ráno',
+    afternoon: 'pop.',
+    evening: 'več.',
+    night: 'v n.'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'o poln.',
+    noon: 'napol.',
+    morning: 'ráno',
+    afternoon: 'popol.',
+    evening: 'večer',
+    night: 'v noci'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'o polnoci',
+    noon: 'napoludnie',
+    morning: 'ráno',
+    afternoon: 'popoludní',
+    evening: 'večer',
+    night: 'v noci'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues // defaultWidth: 'wide'
+
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sk/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sk/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)\.?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(pred Kr\.|pred n\. l\.|po Kr\.|n\. l\.)/i,
+  abbreviated: /^(pred Kr\.|pred n\. l\.|po Kr\.|n\. l\.)/i,
+  wide: /^(pred Kristom|pred na[šs][íi]m letopo[čc]tom|po Kristovi|n[áa][šs]ho letopo[čc]tu)/i
+};
+var parseEraPatterns = {
+  any: [/^pr/i, /^(po|n)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234]\. [šs]tvr[ťt]rok/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|m[áa]j|j[úu]n|j[úu]l|aug|sep|okt|nov|dec)/i,
+  wide: /^(janu[áa]ra?|febru[áa]ra?|(marec|marca)|apr[íi]la?|m[áa]ja?|j[úu]na?|j[úu]la?|augusta?|(september|septembra)|(okt[óo]ber|okt[óo]bra)|(november|novembra)|(december|decembra))/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^m[áa]j/i, /^j[úu]n/i, /^j[úu]l/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[npusšp]/i,
+  short: /^(ne|po|ut|st|št|pi|so)/i,
+  abbreviated: /^(ne|po|ut|st|št|pi|so)/i,
+  wide: /^(nede[ľl]a|pondelok|utorok|streda|[šs]tvrtok|piatok|sobota])/i
+};
+var parseDayPatterns = {
+  narrow: [/^n/i, /^p/i, /^u/i, /^s/i, /^š/i, /^p/i, /^s/i],
+  any: [/^n/i, /^po/i, /^u/i, /^st/i, /^(št|stv)/i, /^pi/i, /^so/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(am|pm|(o )?poln\.?|(nap\.?|pol\.?)|r[áa]no|pop\.?|ve[čc]\.?|(v n\.?|noc))/i,
+  abbreviated: /^(am|pm|(o )?poln\.?|(napol\.?|pol\.?)|r[áa]no|pop\.?|ve[čc]er|(v )?noci?)/i,
+  any: /^(am|pm|(o )?polnoci?|(na)?poludnie|r[áa]no|popoludn(ie|í|i)|ve[čc]er|(v )?noci?)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^am/i,
+    pm: /^pm/i,
+    midnight: /poln/i,
+    noon: /^(nap|(na)?pol(\.|u))/i,
+    morning: /^r[áa]no/i,
+    afternoon: /^pop/i,
+    evening: /^ve[čc]/i,
+    night: /^(noc|v n\.)/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sk/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sk/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/sk/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/sk/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/sk/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/sk/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/sk/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Slovak locale.
+ * @language Slovak
+ * @iso-639-2 slk
+ * @author Marek Suscak [@mareksuscak]{@link https://github.com/mareksuscak}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sv/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sv/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    singular: 'mindre än en sekund',
+    plural: 'mindre än {{count}} sekunder'
+  },
+  xSeconds: {
+    singular: 'en sekund',
+    plural: '{{count}} sekunder'
+  },
+  halfAMinute: 'en halv minut',
+  lessThanXMinutes: {
+    singular: 'mindre än en minut',
+    plural: 'mindre än {{count}} minuter'
+  },
+  xMinutes: {
+    singular: 'en minut',
+    plural: '{{count}} minuter'
+  },
+  aboutXHours: {
+    singular: 'ungefär en timme',
+    plural: 'ungefär {{count}} timmar'
+  },
+  xHours: {
+    singular: 'en timme',
+    plural: '{{count}} timmar'
+  },
+  xDays: {
+    singular: 'en dag',
+    plural: '{{count}} dagar'
+  },
+  aboutXMonths: {
+    singular: 'ungefär en månad',
+    plural: 'ungefär {{count}} månader'
+  },
+  xMonths: {
+    singular: 'en månad',
+    plural: '{{count}} månader'
+  },
+  aboutXYears: {
+    singular: 'ungefär ett år',
+    plural: 'ungefär {{count}} år'
+  },
+  xYears: {
+    singular: 'ett år',
+    plural: '{{count}} år'
+  },
+  overXYears: {
+    singular: 'över ett år',
+    plural: 'över {{count}} år'
+  },
+  almostXYears: {
+    singular: 'nästan ett år',
+    plural: 'nästan {{count}} år'
+  }
+};
+var wordMapping = ['noll', 'en', 'två', 'tre', 'fyra', 'fem', 'sex', 'sju', 'åtta', 'nio', 'tio', 'elva', 'tolv'];
+function formatDistance(token, count, options) {
+  options = options || {
+    onlyNumeric: false
+  };
+  var translation = formatDistanceLocale[token];
+  var result;
+
+  if (typeof translation === 'string') {
+    result = translation;
+  } else if (count === 0 || count > 1) {
+    if (options.onlyNumeric) {
+      result = translation.plural.replace('{{count}}', count);
+    } else {
+      result = translation.plural.replace('{{count}}', count < 13 ? wordMapping[count] : count);
+    }
+  } else {
+    result = translation.singular;
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return 'om ' + result;
+    } else {
+      return result + ' sedan';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sv/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sv/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE d MMMM y',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'y-MM-dd'
+};
+var timeFormats = {
+  full: "'kl'. HH:mm:ss zzzz",
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'kl.' {{time}}",
+  long: "{{date}} 'kl.' {{time}}",
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sv/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sv/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'i' EEEE's kl.' p",
+  yesterday: "'igår kl.' p",
+  today: "'idag kl.' p",
+  tomorrow: "'imorgon kl.' p",
+  nextWeek: "'på' EEEE 'kl.' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sv/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sv/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['f.Kr.', 'e.Kr.'],
+  abbreviated: ['f.Kr.', 'e.Kr.'],
+  wide: ['före Kristus', 'efter Kristus']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1:a kvartalet', '2:a kvartalet', '3:e kvartalet', '4:e kvartalet']
+};
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'feb.', 'mars', 'apr.', 'maj', 'juni', 'juli', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
+  wide: ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december']
+};
+var dayValues = {
+  narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'],
+  short: ['sö', 'må', 'ti', 'on', 'to', 'fr', 'lö'],
+  abbreviated: ['sön', 'mån', 'tis', 'ons', 'tor', 'fre', 'lör'],
+  wide: ['söndag', 'måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag'] // https://www.unicode.org/cldr/charts/32/summary/sv.html#1888
+
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'fm',
+    pm: 'em',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'morg.',
+    afternoon: 'efterm.',
+    evening: 'kväll',
+    night: 'natt'
+  },
+  abbreviated: {
+    am: 'f.m.',
+    pm: 'e.m.',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'morgon',
+    afternoon: 'efterm.',
+    evening: 'kväll',
+    night: 'natt'
+  },
+  wide: {
+    am: 'förmiddag',
+    pm: 'eftermiddag',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'morgon',
+    afternoon: 'eftermiddag',
+    evening: 'kväll',
+    night: 'natt'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'fm',
+    pm: 'em',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'på morg.',
+    afternoon: 'på efterm.',
+    evening: 'på kvällen',
+    night: 'på natten'
+  },
+  abbreviated: {
+    am: 'fm',
+    pm: 'em',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'på morg.',
+    afternoon: 'på efterm.',
+    evening: 'på kvällen',
+    night: 'på natten'
+  },
+  wide: {
+    am: 'fm',
+    pm: 'em',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'på morgonen',
+    afternoon: 'på eftermiddagen',
+    evening: 'på kvällen',
+    night: 'på natten'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  var rem100 = number % 100;
+
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
+      case 1:
+      case 2:
+        return number + ':a';
+    }
+  }
+
+  return number + ':e';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sv/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sv/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(:a|:e)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(f\.? ?Kr\.?|f\.? ?v\.? ?t\.?|e\.? ?Kr\.?|v\.? ?t\.?)/i,
+  abbreviated: /^(f\.? ?Kr\.?|f\.? ?v\.? ?t\.?|e\.? ?Kr\.?|v\.? ?t\.?)/i,
+  wide: /^(före Kristus|före vår tid|efter Kristus|vår tid)/i
+};
+var parseEraPatterns = {
+  any: [/^f/i, /^[ev]/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^[1234](:a|:e)? kvartalet/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(jan|feb|mar|apr|maj|jun|jul|aug|sep|okt|nov|dec)\.?/i,
+  wide: /^(januari|februari|mars|april|maj|juni|juli|augusti|september|oktober|november|december)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^maj/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+};
+var matchDayPatterns = {
+  narrow: /^[smtofl]/i,
+  short: /^(sö|må|ti|on|to|fr|lö)/i,
+  abbreviated: /^(sön|mån|tis|ons|tor|fre|lör)/i,
+  wide: /^(söndag|måndag|tisdag|onsdag|torsdag|fredag|lördag)/i
+};
+var parseDayPatterns = {
+  any: [/^s/i, /^m/i, /^ti/i, /^o/i, /^to/i, /^f/i, /^l/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^([fe]\.?\s?m\.?|midn(att)?|midd(ag)?|(på) (morgonen|eftermiddagen|kvällen|natten))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^f/i,
+    pm: /^e/i,
+    midnight: /^midn/i,
+    noon: /^midd/i,
+    morning: /morgon/i,
+    afternoon: /eftermiddag/i,
+    evening: /kväll/i,
+    night: /natt/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/sv/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/sv/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/sv/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/sv/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/sv/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/sv/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/sv/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Swedish locale.
+ * @language Swedish
+ * @iso-639-2 swe
+ * @author Johannes Ulén [@ejulen]{@link https://github.com/ejulen}
+ * @author Alexander Nanberg [@alexandernanberg]{@link https://github.com/alexandernanberg}
+ * @author Henrik Andersson [@limelights]{@link https://github.com/limelights}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/th/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/th/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'น้อยกว่า 1 วินาที',
+    other: 'น้อยกว่า {{count}} วินาที'
+  },
+  xSeconds: {
+    one: '1 วินาที',
+    other: '{{count}} วินาที'
+  },
+  halfAMinute: 'ครึ่งนาที',
+  lessThanXMinutes: {
+    one: 'น้อยกว่า 1 นาที',
+    other: 'น้อยกว่า {{count}} นาที'
+  },
+  xMinutes: {
+    one: '1 นาที',
+    other: '{{count}} นาที'
+  },
+  aboutXHours: {
+    one: 'ประมาณ 1 ชั่วโมง',
+    other: 'ประมาณ {{count}} ชั่วโมง'
+  },
+  xHours: {
+    one: '1 ชั่วโมง',
+    other: '{{count}} ชั่วโมง'
+  },
+  xDays: {
+    one: '1 วัน',
+    other: '{{count}} วัน'
+  },
+  aboutXMonths: {
+    one: 'ประมาณ 1 เดือน',
+    other: 'ประมาณ {{count}} เดือน'
+  },
+  xMonths: {
+    one: '1 เดือน',
+    other: '{{count}} เดือน'
+  },
+  aboutXYears: {
+    one: 'ประมาณ 1 ปี',
+    other: 'ประมาณ {{count}} ปี'
+  },
+  xYears: {
+    one: '1 ปี',
+    other: '{{count}} ปี'
+  },
+  overXYears: {
+    one: 'มากกว่า 1 ปี',
+    other: 'มากกว่า {{count}} ปี'
+  },
+  almostXYears: {
+    one: 'เกือบ 1 ปี',
+    other: 'เกือบ {{count}} ปี'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      if (token === 'halfAMinute') {
+        return 'ใน' + result;
+      } else {
+        return 'ใน ' + result;
+      }
+    } else {
+      return result + 'ที่ผ่านมา';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/th/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/th/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'วันEEEEที่ do MMMM y',
+  long: 'do MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/yyyy'
+};
+var timeFormats = {
+  full: 'H:mm:ss น. zzzz',
+  long: 'H:mm:ss น. z',
+  medium: 'H:mm:ss น.',
+  short: 'H:mm น.'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'เวลา' {{time}}",
+  long: "{{date}} 'เวลา' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'medium'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/th/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/th/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee'ที่แล้วเวลา' p",
+  yesterday: "'เมื่อวานนี้เวลา' p",
+  today: "'วันนี้เวลา' p",
+  tomorrow: "'พรุ่งนี้เวลา' p",
+  nextWeek: "eeee 'เวลา' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/th/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/th/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['B', 'คศ'],
+  abbreviated: ['BC', 'ค.ศ.'],
+  wide: ['ปีก่อนคริสตกาล', 'คริสต์ศักราช']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['ไตรมาสแรก', 'ไตรมาสที่สอง', 'ไตรมาสที่สาม', 'ไตรมาสที่สี่']
+};
+var dayValues = {
+  narrow: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
+  short: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
+  abbreviated: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
+  wide: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์']
+};
+var monthValues = {
+  narrow: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'],
+  abbreviated: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'],
+  wide: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
+    midnight: 'เที่ยงคืน',
+    noon: 'เที่ยง',
+    morning: 'เช้า',
+    afternoon: 'บ่าย',
+    evening: 'เย็น',
+    night: 'กลางคืน'
+  },
+  abbreviated: {
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
+    midnight: 'เที่ยงคืน',
+    noon: 'เที่ยง',
+    morning: 'เช้า',
+    afternoon: 'บ่าย',
+    evening: 'เย็น',
+    night: 'กลางคืน'
+  },
+  wide: {
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
+    midnight: 'เที่ยงคืน',
+    noon: 'เที่ยง',
+    morning: 'เช้า',
+    afternoon: 'บ่าย',
+    evening: 'เย็น',
+    night: 'กลางคืน'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
+    midnight: 'เที่ยงคืน',
+    noon: 'เที่ยง',
+    morning: 'ตอนเช้า',
+    afternoon: 'ตอนกลางวัน',
+    evening: 'ตอนเย็น',
+    night: 'ตอนกลางคืน'
+  },
+  abbreviated: {
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
+    midnight: 'เที่ยงคืน',
+    noon: 'เที่ยง',
+    morning: 'ตอนเช้า',
+    afternoon: 'ตอนกลางวัน',
+    evening: 'ตอนเย็น',
+    night: 'ตอนกลางคืน'
+  },
+  wide: {
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
+    midnight: 'เที่ยงคืน',
+    noon: 'เที่ยง',
+    morning: 'ตอนเช้า',
+    afternoon: 'ตอนกลางวัน',
+    evening: 'ตอนเย็น',
+    night: 'ตอนกลางคืน'
+  }
+};
+
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber);
+  return number;
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/th/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/th/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^\d+/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^([bB]|[aA]|คศ)/i,
+  abbreviated: /^([bB]\.?\s?[cC]\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?|ค\.?ศ\.?)/i,
+  wide: /^(ก่อนคริสตกาล|คริสต์ศักราช|คริสตกาล)/i
+};
+var parseEraPatterns = {
+  any: [/^[bB]/i, /^(^[aA]|ค\.?ศ\.?|คริสตกาล|คริสต์ศักราช|)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^ไตรมาส(ที่)? ?[1234]/i
+};
+var parseQuarterPatterns = {
+  any: [/(1|แรก|หนึ่ง)/i, /(2|สอง)/i, /(3|สาม)/i, /(4|สี่)/i]
+};
+var matchMonthPatterns = {
+  narrow: /^(ม\.?ค\.?|ก\.?พ\.?|มี\.?ค\.?|เม\.?ย\.?|พ\.?ค\.?|มิ\.?ย\.?|ก\.?ค\.?|ส\.?ค\.?|ก\.?ย\.?|ต\.?ค\.?|พ\.?ย\.?|ธ\.?ค\.?)/i,
+  abbreviated: /^(ม\.?ค\.?|ก\.?พ\.?|มี\.?ค\.?|เม\.?ย\.?|พ\.?ค\.?|มิ\.?ย\.?|ก\.?ค\.?|ส\.?ค\.?|ก\.?ย\.?|ต\.?ค\.?|พ\.?ย\.?|ธ\.?ค\.?')/i,
+  wide: /^(มกราคม|กุมภาพันธ์|มีนาคม|เมษายน|พฤษภาคม|มิถุนายน|กรกฎาคม|สิงหาคม|กันยายน|ตุลาคม|พฤศจิกายน|ธันวาคม)/i
+};
+var parseMonthPatterns = {
+  wide: [/^มก/i, /^กุม/i, /^มี/i, /^เม/i, /^พฤษ/i, /^มิ/i, /^กรก/i, /^ส/i, /^กัน/i, /^ต/i, /^พฤศ/i, /^ธ/i],
+  any: [/^ม\.?ค\.?/i, /^ก\.?พ\.?/i, /^มี\.?ค\.?/i, /^เม\.?ย\.?/i, /^พ\.?ค\.?/i, /^มิ\.?ย\.?/i, /^ก\.?ค\.?/i, /^ส\.?ค\.?/i, /^ก\.?ย\.?/i, /^ต\.?ค\.?/i, /^พ\.?ย\.?/i, /^ธ\.?ค\.?/i]
+};
+var matchDayPatterns = {
+  narrow: /^(อา\.?|จ\.?|อ\.?|พฤ\.?|พ\.?|ศ\.?|ส\.?)/i,
+  short: /^(อา\.?|จ\.?|อ\.?|พฤ\.?|พ\.?|ศ\.?|ส\.?)/i,
+  abbreviated: /^(อา\.?|จ\.?|อ\.?|พฤ\.?|พ\.?|ศ\.?|ส\.?)/i,
+  wide: /^(อาทิตย์|จันทร์|อังคาร|พุธ|พฤหัสบดี|ศุกร์|เสาร์)/i
+};
+var parseDayPatterns = {
+  wide: [/^อา/i, /^จั/i, /^อั/i, /^พุธ/i, /^พฤ/i, /^ศ/i, /^เส/i],
+  any: [/^อา/i, /^จ/i, /^อ/i, /^พ(?!ฤ)/i, /^พฤ/i, /^ศ/i, /^ส/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(ก่อนเที่ยง|หลังเที่ยง|เที่ยงคืน|เที่ยง|(ตอน.*?)?.*(เที่ยง|เช้า|บ่าย|เย็น|กลางคืน))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^ก่อนเที่ยง/i,
+    pm: /^หลังเที่ยง/i,
+    midnight: /^เที่ยงคืน/i,
+    noon: /^เที่ยง/i,
+    morning: /เช้า/i,
+    afternoon: /บ่าย/i,
+    evening: /เย็น/i,
+    night: /กลางคืน/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/th/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/th/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/th/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/th/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/th/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/th/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/th/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Thai locale.
+ * @language Thai
+ * @iso-639-2 tha
+ * @author Athiwat Hirunworawongkun [@athivvat]{@link https://github.com/athivvat}
+ * @author [@hawkup]{@link https://github.com/hawkup}
+ * @author  Jirawat I. [@nodtem66]{@link https://github.com/nodtem66}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/tr/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/tr/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'bir saniyeden az',
+    other: '{{count}} saniyeden az'
+  },
+  xSeconds: {
+    one: '1 saniye',
+    other: '{{count}} saniye'
+  },
+  halfAMinute: 'yarım dakika',
+  lessThanXMinutes: {
+    one: 'bir dakikadan az',
+    other: '{{count}} dakikadan az'
+  },
+  xMinutes: {
+    one: '1 dakika',
+    other: '{{count}} dakika'
+  },
+  aboutXHours: {
+    one: 'yaklaşık 1 saat',
+    other: 'yaklaşık {{count}} saat'
+  },
+  xHours: {
+    one: '1 saat',
+    other: '{{count}} saat'
+  },
+  xDays: {
+    one: '1 gün',
+    other: '{{count}} gün'
+  },
+  aboutXMonths: {
+    one: 'yaklaşık 1 ay',
+    other: 'yaklaşık {{count}} ay'
+  },
+  xMonths: {
+    one: '1 ay',
+    other: '{{count}} ay'
+  },
+  aboutXYears: {
+    one: 'yaklaşık 1 yıl',
+    other: 'yaklaşık {{count}} yıl'
+  },
+  xYears: {
+    one: '1 yıl',
+    other: '{{count}} yıl'
+  },
+  overXYears: {
+    one: '1 yıldan fazla',
+    other: '{{count}} yıldan fazla'
+  },
+  almostXYears: {
+    one: 'neredeyse 1 yıl',
+    other: 'neredeyse {{count}} yıl'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return result + ' sonra';
+    } else {
+      return result + ' önce';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/tr/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/tr/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'd MMMM y EEEE',
+  long: 'd MMMM y',
+  medium: 'd MMM y',
+  short: 'dd.MM.yyyy'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'saat' {{time}}",
+  long: "{{date}} 'saat' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/tr/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/tr/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'geçen hafta' eeee 'saat' p",
+  yesterday: "'dün saat' p",
+  today: "'bugün saat' p",
+  tomorrow: "'yarın saat' p",
+  nextWeek: "eeee 'saat' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/tr/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/tr/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  abbreviated: ['MÖ', 'MS'],
+  narrow: ['MÖ', 'MS'],
+  wide: ['Milattan Önce', 'Milattan Sonra']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1Ç', '2Ç', '3Ç', '4Ç'],
+  wide: ['İlk çeyrek', 'İkinci Çeyrek', 'Üçüncü çeyrek', 'Son çeyrek']
+};
+var monthValues = {
+  narrow: ['O', 'Ş', 'M', 'N', 'M', 'H', 'T', 'A', 'E', 'E', 'K', 'A'],
+  abbreviated: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+  wide: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+};
+var dayValues = {
+  narrow: ['P', 'P', 'S', 'Ç', 'P', 'C', 'C'],
+  short: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
+  abbreviated: ['Paz', 'Pts', 'Sal', 'Çar', 'Per', 'Cum', 'Cts'],
+  wide: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'öö',
+    pm: 'ös',
+    midnight: 'gy',
+    noon: 'ö',
+    morning: 'sa',
+    afternoon: 'ös',
+    evening: 'ak',
+    night: 'ge'
+  },
+  abbreviated: {
+    am: 'ÖÖ',
+    pm: 'ÖS',
+    midnight: 'gece yarısı',
+    noon: 'öğle',
+    morning: 'sabah',
+    afternoon: 'öğleden sonra',
+    evening: 'akşam',
+    night: 'gece'
+  },
+  wide: {
+    am: 'Ö.Ö.',
+    pm: 'Ö.S.',
+    midnight: 'gece yarısı',
+    noon: 'öğle',
+    morning: 'sabah',
+    afternoon: 'öğleden sonra',
+    evening: 'akşam',
+    night: 'gece'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'öö',
+    pm: 'ös',
+    midnight: 'gy',
+    noon: 'ö',
+    morning: 'sa',
+    afternoon: 'ös',
+    evening: 'ak',
+    night: 'ge'
+  },
+  abbreviated: {
+    am: 'ÖÖ',
+    pm: 'ÖS',
+    midnight: 'gece yarısı',
+    noon: 'öğlen',
+    morning: 'sabahleyin',
+    afternoon: 'öğleden sonra',
+    evening: 'akşamleyin',
+    night: 'geceleyin'
+  },
+  wide: {
+    am: 'ö.ö.',
+    pm: 'ö.s.',
+    midnight: 'gece yarısı',
+    noon: 'öğlen',
+    morning: 'sabahleyin',
+    afternoon: 'öğleden sonra',
+    evening: 'akşamleyin',
+    night: 'geceleyin'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  var number = Number(dirtyNumber);
+  return number + '.';
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaulFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/tr/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/tr/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(\.)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(mö|ms)/i,
+  abbreviated: /^(mö|ms)/i,
+  wide: /^(milattan önce|milattan sonra)/i
+};
+var parseEraPatterns = {
+  any: [/(^mö|^milattan önce)/i, /(^ms|^milattan sonra)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234]ç/i,
+  wide: /^((i|İ)lk|(i|İ)kinci|üçüncü|son) çeyrek/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i],
+  abbreviated: [/1ç/i, /2ç/i, /3ç/i, /4ç/i],
+  wide: [/^(i|İ)lk çeyrek/i, /(i|İ)kinci çeyrek/i, /üçüncü çeyrek/i, /son çeyrek/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(oca|şub|mar|nis|may|haz|tem|ağu|eyl|eki|kas|ara)/i,
+  wide: /^(ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^o/i, /^ş/i, /^m/i, /^n/i, /^m/i, /^h/i, /^t/i, /^a/i, /^e/i, /^e/i, /^k/i, /^a/i],
+  any: [/^o/i, /^ş/i, /^ma/i, /^n/i, /^ma/i, /^h/i, /^t/i, /^a/i, /^ey/i, /^ek/i, /^k/i, /^a/i]
+};
+var matchDayPatterns = {
+  narrow: /^[psçc]/i,
+  short: /^(pz|pt|sa|ça|pe|cu|ct)/i,
+  abbreviated: /^(paz|pts|sal|çar|per|cum|cts)/i,
+  wide: /^(pazar|pazartesi|salı|çarşamba|perşembe|cuma|cumartesi)/i
+};
+var parseDayPatterns = {
+  narrow: [/^p/i, /^p/i, /^s/i, /^ç/i, /^p/i, /^c/i, /^c/i],
+  any: [/^pz/i, /^pt/i, /^sa/i, /^ça/i, /^pe/i, /^cu/i, /^ct/i],
+  wide: [/^pazar/i, /^pazartesi/i, /^salı/i, /^çarşamba/i, /^perşembe/i, /^cuma/i, /cumartesi/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(öö|ös|gy|ö|sa|ös|ak|ge)/i,
+  any: /^(ö\.?\s?[ös]\.?|öğleden sonra|gece yarısı|öğle|(sabah|öğ|akşam|gece)(leyin))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^ö\.?ö\.?/i,
+    pm: /^ö\.?s\.?/i,
+    midnight: /^(gy|gece yarısı)/i,
+    noon: /^öğ/i,
+    morning: /^sa/i,
+    afternoon: /^öğleden sonra/i,
+    evening: /^ak/i,
+    night: /^ge/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/tr/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/tr/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/tr/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/tr/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/tr/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/tr/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/tr/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Turkish locale.
+ * @language Turkish
+ * @iso-639-2 tur
+ * @author Alpcan Aydın [@alpcanaydin]{@link https://github.com/alpcanaydin}
+ * @author Berkay Sargın [@berkaey]{@link https://github.com/berkaey}
+ * @author Ismail Demirbilek [@dbtek]{@link https://github.com/dbtek}
+ * @author İsmail Kayar [@ikayar]{@link https://github.com/ikayar}
+ *
+ *
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ug/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ug/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'بىر سىكۇنت ئىچىدە',
+    other: 'سىكۇنت ئىچىدە {{count}}'
+  },
+  xSeconds: {
+    one: 'بىر سىكۇنت',
+    other: 'سىكۇنت {{count}}'
+  },
+  halfAMinute: 'يىرىم مىنۇت',
+  lessThanXMinutes: {
+    one: 'بىر مىنۇت ئىچىدە',
+    other: 'مىنۇت ئىچىدە {{count}}'
+  },
+  xMinutes: {
+    one: 'بىر مىنۇت',
+    other: 'مىنۇت {{count}}'
+  },
+  aboutXHours: {
+    one: 'تەخمىنەن بىر سائەت',
+    other: 'سائەت {{count}} تەخمىنەن'
+  },
+  xHours: {
+    one: 'بىر سائەت',
+    other: 'سائەت {{count}}'
+  },
+  xDays: {
+    one: 'بىر كۈن',
+    other: 'كۈن {{count}}'
+  },
+  aboutXMonths: {
+    one: 'تەخمىنەن بىر ئاي',
+    other: 'ئاي {{count}} تەخمىنەن'
+  },
+  xMonths: {
+    one: 'بىر ئاي',
+    other: 'ئاي {{count}}'
+  },
+  aboutXYears: {
+    one: 'تەخمىنەن بىر يىل',
+    other: 'يىل {{count}} تەخمىنەن'
+  },
+  xYears: {
+    one: 'بىر يىل',
+    other: 'يىل {{count}}'
+  },
+  overXYears: {
+    one: 'بىر يىلدىن ئارتۇق',
+    other: 'يىلدىن ئارتۇق {{count}}'
+  },
+  almostXYears: {
+    one: 'ئاساسەن بىر يىل',
+    other: 'يىل {{count}} ئاساسەن'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return result;
+    } else {
+      return result + ' بولدى';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ug/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ug/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: 'EEEE, MMMM do, y',
+  long: 'MMMM do, y',
+  medium: 'MMM d, y',
+  short: 'MM/dd/yyyy'
+};
+var timeFormats = {
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'دە' {{time}}",
+  long: "{{date}} 'دە' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ug/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ug/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'ئ‍ۆتكەن' eeee 'دە' p",
+  yesterday: "'تۈنۈگۈن دە' p",
+  today: "'بۈگۈن دە' p",
+  tomorrow: "'ئەتە دە' p",
+  nextWeek: "eeee 'دە' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ug/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ug/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['ب', 'ك'],
+  abbreviated: ['ب', 'ك'],
+  wide: ['مىيلادىدىن بۇرۇن', 'مىيلادىدىن كىيىن']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1', '2', '3', '4'],
+  wide: ['بىرىنجى چارەك', 'ئىككىنجى چارەك', 'ئۈچىنجى چارەك', 'تۆتىنجى چارەك'] // Note: in English, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+};
+var monthValues = {
+  narrow: ['ي', 'ف', 'م', 'ا', 'م', 'ى', 'ى', 'ا', 'س', 'ۆ', 'ن', 'د'],
+  abbreviated: ['يانۋار', 'فېۋىرال', 'مارت', 'ئاپرىل', 'ماي', 'ئىيۇن', 'ئىيول', 'ئاۋغۇست', 'سىنتەبىر', 'ئۆكتەبىر', 'نويابىر', 'دىكابىر'],
+  wide: ['يانۋار', 'فېۋىرال', 'مارت', 'ئاپرىل', 'ماي', 'ئىيۇن', 'ئىيول', 'ئاۋغۇست', 'سىنتەبىر', 'ئۆكتەبىر', 'نويابىر', 'دىكابىر']
+};
+var dayValues = {
+  narrow: ['ي', 'د', 'س', 'چ', 'پ', 'ج', 'ش'],
+  short: ['ي', 'د', 'س', 'چ', 'پ', 'ج', 'ش'],
+  abbreviated: ['يەكشەنبە', 'دۈشەنبە', 'سەيشەنبە', 'چارشەنبە', 'پەيشەنبە', 'جۈمە', 'شەنبە'],
+  wide: ['يەكشەنبە', 'دۈشەنبە', 'سەيشەنبە', 'چارشەنبە', 'پەيشەنبە', 'جۈمە', 'شەنبە']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'ئە',
+    pm: 'چ',
+    midnight: 'ك',
+    noon: 'چ',
+    morning: 'ئەتىگەن',
+    afternoon: 'چۈشتىن كىيىن',
+    evening: 'ئاخشىم',
+    night: 'كىچە'
+  },
+  abbreviated: {
+    am: 'ئە',
+    pm: 'چ',
+    midnight: 'ك',
+    noon: 'چ',
+    morning: 'ئەتىگەن',
+    afternoon: 'چۈشتىن كىيىن',
+    evening: 'ئاخشىم',
+    night: 'كىچە'
+  },
+  wide: {
+    am: 'ئە',
+    pm: 'چ',
+    midnight: 'ك',
+    noon: 'چ',
+    morning: 'ئەتىگەن',
+    afternoon: 'چۈشتىن كىيىن',
+    evening: 'ئاخشىم',
+    night: 'كىچە'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'ئە',
+    pm: 'چ',
+    midnight: 'ك',
+    noon: 'چ',
+    morning: 'ئەتىگەندە',
+    afternoon: 'چۈشتىن كىيىن',
+    evening: 'ئاخشامدا',
+    night: 'كىچىدە'
+  },
+  abbreviated: {
+    am: 'ئە',
+    pm: 'چ',
+    midnight: 'ك',
+    noon: 'چ',
+    morning: 'ئەتىگەندە',
+    afternoon: 'چۈشتىن كىيىن',
+    evening: 'ئاخشامدا',
+    night: 'كىچىدە'
+  },
+  wide: {
+    am: 'ئە',
+    pm: 'چ',
+    midnight: 'ك',
+    noon: 'چ',
+    morning: 'ئەتىگەندە',
+    afternoon: 'چۈشتىن كىيىن',
+    evening: 'ئاخشامدا',
+    night: 'كىچىدە'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
+  return String(dirtyNumber);
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ug/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ug/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(ب|ك)/i,
+  wide: /^(مىيلادىدىن بۇرۇن|مىيلادىدىن كىيىن)/i
+};
+var parseEraPatterns = {
+  any: [/^بۇرۇن/i, /^كىيىن/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^چ[1234]/i,
+  wide: /^چارەك [1234]/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[يفمئامئ‍ئاسۆند]/i,
+  abbreviated: /^(يانۋار|فېۋىرال|مارت|ئاپرىل|ماي|ئىيۇن|ئىيول|ئاۋغۇست|سىنتەبىر|ئۆكتەبىر|نويابىر|دىكابىر)/i,
+  wide: /^(يانۋار|فېۋىرال|مارت|ئاپرىل|ماي|ئىيۇن|ئىيول|ئاۋغۇست|سىنتەبىر|ئۆكتەبىر|نويابىر|دىكابىر)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^ي/i, /^ف/i, /^م/i, /^ا/i, /^م/i, /^ى‍/i, /^ى‍/i, /^ا‍/i, /^س/i, /^ۆ/i, /^ن/i, /^د/i],
+  any: [/^يان/i, /^فېۋ/i, /^مار/i, /^ئاپ/i, /^ماي/i, /^ئىيۇن/i, /^ئىيول/i, /^ئاۋ/i, /^سىن/i, /^ئۆك/i, /^نوي/i, /^دىك/i]
+};
+var matchDayPatterns = {
+  narrow: /^[دسچپجشي]/i,
+  short: /^(يە|دۈ|سە|چا|پە|جۈ|شە)/i,
+  abbreviated: /^(يە|دۈ|سە|چا|پە|جۈ|شە)/i,
+  wide: /^(يەكشەنبە|دۈشەنبە|سەيشەنبە|چارشەنبە|پەيشەنبە|جۈمە|شەنبە)/i
+};
+var parseDayPatterns = {
+  narrow: [/^ي/i, /^د/i, /^س/i, /^چ/i, /^پ/i, /^ج/i, /^ش/i],
+  any: [/^ي/i, /^د/i, /^س/i, /^چ/i, /^پ/i, /^ج/i, /^ش/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(ئە|چ|ك|چ|(دە|ئەتىگەن) ( ئە‍|چۈشتىن كىيىن|ئاخشىم|كىچە))/i,
+  any: /^(ئە|چ|ك|چ|(دە|ئەتىگەن) ( ئە‍|چۈشتىن كىيىن|ئاخشىم|كىچە))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^ئە/i,
+    pm: /^چ/i,
+    midnight: /^ك/i,
+    noon: /^چ/i,
+    morning: /ئەتىگەن/i,
+    afternoon: /چۈشتىن كىيىن/i,
+    evening: /ئاخشىم/i,
+    night: /كىچە/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/ug/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/ug/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/ug/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/ug/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/ug/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/ug/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/ug/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Uighur locale
+ * @language Uighur
+ * @iso-639-2 uig
+ * @author Abduwaly M. [@abduwaly]{@link https://github.com/abduwaly}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 0
+    /* Sunday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/uk/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/uk/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+function declension(scheme, count) {
+  // scheme for count=1 exists
+  if (scheme.one !== undefined && count === 1) {
+    return scheme.one;
+  }
+
+  var rem10 = count % 10;
+  var rem100 = count % 100; // 1, 21, 31, ...
+
+  if (rem10 === 1 && rem100 !== 11) {
+    return scheme.singularNominative.replace('{{count}}', count); // 2, 3, 4, 22, 23, 24, 32 ...
+  } else if (rem10 >= 2 && rem10 <= 4 && (rem100 < 10 || rem100 > 20)) {
+    return scheme.singularGenitive.replace('{{count}}', count); // 5, 6, 7, 8, 9, 10, 11, ...
+  } else {
+    return scheme.pluralGenitive.replace('{{count}}', count);
+  }
+}
+
+function buildLocalizeTokenFn(scheme) {
+  return function (count, options) {
+    if (options.addSuffix) {
+      if (options.comparison > 0) {
+        if (scheme.future) {
+          return declension(scheme.future, count);
+        } else {
+          return 'за ' + declension(scheme.regular, count);
+        }
+      } else {
+        if (scheme.past) {
+          return declension(scheme.past, count);
+        } else {
+          return declension(scheme.regular, count) + ' тому';
+        }
+      }
+    } else {
+      return declension(scheme.regular, count);
+    }
+  };
+}
+
+var formatDistanceLocale = {
+  lessThanXSeconds: buildLocalizeTokenFn({
+    regular: {
+      one: 'менше секунди',
+      singularNominative: 'менше {{count}} секунди',
+      singularGenitive: 'менше {{count}} секунд',
+      pluralGenitive: 'менше {{count}} секунд'
+    },
+    future: {
+      one: 'менше, ніж за секунду',
+      singularNominative: 'менше, ніж за {{count}} секунду',
+      singularGenitive: 'менше, ніж за {{count}} секунди',
+      pluralGenitive: 'менше, ніж за {{count}} секунд'
+    }
+  }),
+  xSeconds: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} секунда',
+      singularGenitive: '{{count}} секунди',
+      pluralGenitive: '{{count}} секунд'
+    },
+    past: {
+      singularNominative: '{{count}} секунду тому',
+      singularGenitive: '{{count}} секунди тому',
+      pluralGenitive: '{{count}} секунд тому'
+    },
+    future: {
+      singularNominative: 'за {{count}} секунду',
+      singularGenitive: 'за {{count}} секунди',
+      pluralGenitive: 'за {{count}} секунд'
+    }
+  }),
+  halfAMinute: function (_, options) {
+    if (options.addSuffix) {
+      if (options.comparison > 0) {
+        return 'за півхвилини';
+      } else {
+        return 'півхвилини тому';
+      }
+    }
+
+    return 'півхвилини';
+  },
+  lessThanXMinutes: buildLocalizeTokenFn({
+    regular: {
+      one: 'менше хвилини',
+      singularNominative: 'менше {{count}} хвилини',
+      singularGenitive: 'менше {{count}} хвилин',
+      pluralGenitive: 'менше {{count}} хвилин'
+    },
+    future: {
+      one: 'менше, ніж за хвилину',
+      singularNominative: 'менше, ніж за {{count}} хвилину',
+      singularGenitive: 'менше, ніж за {{count}} хвилини',
+      pluralGenitive: 'менше, ніж за {{count}} хвилин'
+    }
+  }),
+  xMinutes: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} хвилина',
+      singularGenitive: '{{count}} хвилини',
+      pluralGenitive: '{{count}} хвилин'
+    },
+    past: {
+      singularNominative: '{{count}} хвилину тому',
+      singularGenitive: '{{count}} хвилини тому',
+      pluralGenitive: '{{count}} хвилин тому'
+    },
+    future: {
+      singularNominative: 'за {{count}} хвилину',
+      singularGenitive: 'за {{count}} хвилини',
+      pluralGenitive: 'за {{count}} хвилин'
+    }
+  }),
+  aboutXHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'близько {{count}} години',
+      singularGenitive: 'близько {{count}} годин',
+      pluralGenitive: 'близько {{count}} годин'
+    },
+    future: {
+      singularNominative: 'приблизно за {{count}} годину',
+      singularGenitive: 'приблизно за {{count}} години',
+      pluralGenitive: 'приблизно за {{count}} годин'
+    }
+  }),
+  xHours: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} годину',
+      singularGenitive: '{{count}} години',
+      pluralGenitive: '{{count}} годин'
+    }
+  }),
+  xDays: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} день',
+      singularGenitive: '{{count}} дня',
+      pluralGenitive: '{{count}} днів'
+    }
+  }),
+  aboutXMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'близько {{count}} місяця',
+      singularGenitive: 'близько {{count}} місяців',
+      pluralGenitive: 'близько {{count}} місяців'
+    },
+    future: {
+      singularNominative: 'приблизно за {{count}} місяць',
+      singularGenitive: 'приблизно за {{count}} місяця',
+      pluralGenitive: 'приблизно за {{count}} місяців'
+    }
+  }),
+  xMonths: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} місяць',
+      singularGenitive: '{{count}} місяця',
+      pluralGenitive: '{{count}} місяців'
+    }
+  }),
+  aboutXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'близько {{count}} року',
+      singularGenitive: 'близько {{count}} років',
+      pluralGenitive: 'близько {{count}} років'
+    },
+    future: {
+      singularNominative: 'приблизно за {{count}} рік',
+      singularGenitive: 'приблизно за {{count}} роки',
+      pluralGenitive: 'приблизно за {{count}} років'
+    }
+  }),
+  xYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} рік',
+      singularGenitive: '{{count}} роки',
+      pluralGenitive: '{{count}} років'
+    }
+  }),
+  overXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'більше {{count}} року',
+      singularGenitive: 'більше {{count}} років',
+      pluralGenitive: 'більше {{count}} років'
+    },
+    future: {
+      singularNominative: 'більше, ніж за {{count}} рік',
+      singularGenitive: 'більше, ніж за {{count}} роки',
+      pluralGenitive: 'більше, ніж за {{count}} років'
+    }
+  }),
+  almostXYears: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'майже {{count}} рік',
+      singularGenitive: 'майже {{count}} роки',
+      pluralGenitive: 'майже {{count}} років'
+    },
+    future: {
+      singularNominative: 'майже за {{count}} рік',
+      singularGenitive: 'майже за {{count}} роки',
+      pluralGenitive: 'майже за {{count}} років'
+    }
+  })
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  return formatDistanceLocale[token](count, options);
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/uk/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/uk/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "EEEE, do MMMM y 'р.'",
+  long: "do MMMM y 'р.'",
+  medium: "d MMM y 'р.'",
+  short: 'dd.MM.y'
+};
+var timeFormats = {
+  full: 'H:mm:ss zzzz',
+  long: 'H:mm:ss z',
+  medium: 'H:mm:ss',
+  short: 'H:mm'
+};
+var dateTimeFormats = {
+  full: "{{date}} 'о' {{time}}",
+  long: "{{date}} 'о' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/uk/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/uk/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+/* harmony import */ var _lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../_lib/isSameUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/isSameUTCWeek/index.js");
+
+var accusativeWeekdays = ['неділю', 'понеділок', 'вівторок', 'середу', 'четвер', 'п’ятницю', 'суботу'];
+
+function lastWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  switch (day) {
+    case 0:
+    case 3:
+    case 5:
+    case 6:
+      return "'у минулу " + weekday + " о' p";
+
+    case 1:
+    case 2:
+    case 4:
+      return "'у минулий " + weekday + " о' p";
+  }
+}
+
+function thisWeek(day) {
+  var weekday = accusativeWeekdays[day];
+  return "'у " + weekday + " о' p";
+}
+
+function nextWeek(day) {
+  var weekday = accusativeWeekdays[day];
+
+  switch (day) {
+    case 0:
+    case 3:
+    case 5:
+    case 6:
+      return "'у наступну " + weekday + " о' p";
+
+    case 1:
+    case 2:
+    case 4:
+      return "'у наступний " + weekday + " о' p";
+  }
+}
+
+var formatRelativeLocale = {
+  lastWeek: function (date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return lastWeek(day);
+    }
+  },
+  yesterday: "'вчора о' p",
+  today: "'сьогодні о' p",
+  tomorrow: "'завтра о' p",
+  nextWeek: function (date, baseDate, options) {
+    var day = date.getUTCDay();
+
+    if (Object(_lib_isSameUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(date, baseDate, options)) {
+      return thisWeek(day);
+    } else {
+      return nextWeek(day);
+    }
+  },
+  other: 'P'
+};
+function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token];
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options);
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/uk/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/uk/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['до н.е.', 'н.е.'],
+  abbreviated: ['до н. е.', 'н. е.'],
+  wide: ['до нашої ери', 'нашої ери']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1-й кв.', '2-й кв.', '3-й кв.', '4-й кв.'],
+  wide: ['1-й квартал', '2-й квартал', '3-й квартал', '4-й квартал']
+};
+var monthValues = {
+  // ДСТУ 3582:2013
+  narrow: ['С', 'Л', 'Б', 'К', 'Т', 'Ч', 'Л', 'С', 'В', 'Ж', 'Л', 'Г'],
+  abbreviated: ['січ.', 'лют.', 'берез.', 'квіт.', 'трав.', 'черв.', 'лип.', 'серп.', 'верес.', 'жовт.', 'листоп.', 'груд.'],
+  wide: ['січень', 'лютий', 'березень', 'квітень', 'травень', 'червень', 'липень', 'серпень', 'вересень', 'жовтень', 'листопад', 'грудень']
+};
+var formattingMonthValues = {
+  narrow: ['С', 'Л', 'Б', 'К', 'Т', 'Ч', 'Л', 'С', 'В', 'Ж', 'Л', 'Г'],
+  abbreviated: ['січ.', 'лют.', 'берез.', 'квіт.', 'трав.', 'черв.', 'лип.', 'серп.', 'верес.', 'жовт.', 'листоп.', 'груд.'],
+  wide: ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня']
+};
+var dayValues = {
+  narrow: ['Н', 'П', 'В', 'С', 'Ч', 'П', 'С'],
+  short: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+  abbreviated: ['нед', 'пон', 'вів', 'сер', 'чтв', 'птн', 'суб'],
+  wide: ['неділя', 'понеділок', 'вівторок', 'середа', 'четвер', 'п’ятниця', 'субота']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'півн.',
+    noon: 'пол.',
+    morning: 'ранок',
+    afternoon: 'день',
+    evening: 'веч.',
+    night: 'ніч'
+  },
+  abbreviated: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'півн.',
+    noon: 'пол.',
+    morning: 'ранок',
+    afternoon: 'день',
+    evening: 'веч.',
+    night: 'ніч'
+  },
+  wide: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'північ',
+    noon: 'полудень',
+    morning: 'ранок',
+    afternoon: 'день',
+    evening: 'вечір',
+    night: 'ніч'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'півн.',
+    noon: 'пол.',
+    morning: 'ранку',
+    afternoon: 'дня',
+    evening: 'веч.',
+    night: 'ночі'
+  },
+  abbreviated: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'півн.',
+    noon: 'пол.',
+    morning: 'ранку',
+    afternoon: 'дня',
+    evening: 'веч.',
+    night: 'ночі'
+  },
+  wide: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'північ',
+    noon: 'полудень',
+    morning: 'ранку',
+    afternoon: 'дня',
+    evening: 'веч.',
+    night: 'ночі'
+  }
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var options = dirtyOptions || {};
+  var unit = String(options.unit);
+  var suffix;
+
+  if (unit === 'date') {
+    if (dirtyNumber === 3 || dirtyNumber === 23) {
+      suffix = '-є';
+    } else {
+      suffix = '-е';
+    }
+  } else if (unit === 'minute' || unit === 'second' || unit === 'hour') {
+    suffix = '-а';
+  } else {
+    suffix = '-й';
+  }
+
+  return dirtyNumber + suffix;
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'any',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/uk/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/uk/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)(-?(е|й|є|а|я))?/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^((до )?н\.?\s?е\.?)/i,
+  abbreviated: /^((до )?н\.?\s?е\.?)/i,
+  wide: /^(до нашої ери|нашої ери|наша ера)/i
+};
+var parseEraPatterns = {
+  any: [/^д/i, /^н/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234](-?[иі]?й?)? кв.?/i,
+  wide: /^[1234](-?[иі]?й?)? квартал/i
+};
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+};
+var matchMonthPatterns = {
+  narrow: /^[слбктчвжг]/i,
+  abbreviated: /^(січ|лют|бер|берез|кві|трав?|чер|лип|сер|вер|жов|лис(топ)?|груд)\.?/i,
+  wide: /^(січень|січня|лютий|лютого|березень|березня|квітень|квітня|травень|травня|липень|липня|серпень|серпня|вересень|вересня|жовтень|жовтня|листопада?|грудень|грудня)/i
+};
+var parseMonthPatterns = {
+  narrow: [/^с/i, /^л/i, /^б/i, /^к/i, /^т/i, /^ч/i, /^л/i, /^с/i, /^в/i, /^ж/i, /^л/i, /^г/i],
+  any: [/^сі/i, /^лю/i, /^б/i, /^к/i, /^т/i, /^ч/i, /^лип/i, /^се/i, /^в/i, /^ж/i, /^лис/i, /^г/i]
+};
+var matchDayPatterns = {
+  narrow: /^[нпвсч]/i,
+  short: /^(нд|пн|вт|ср|чт|пт|сб)\.?/i,
+  abbreviated: /^(нед|пон|вів|сер|че?тв|птн?|суб)\.?/i,
+  wide: /^(неділ[яі]|понеділ[ок][ка]|вівтор[ок][ка]|серед[аи]|четвер(га)?|п\W*?ятниц[яі]|субот[аи])/i
+};
+var parseDayPatterns = {
+  narrow: [/^н/i, /^п/i, /^в/i, /^с/i, /^ч/i, /^п/i, /^с/i],
+  any: [/^н/i, /^п[он]/i, /^в/i, /^с[ер]/i, /^ч/i, /^п\W*?[ят]/i, /^с[уб]/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^([дп]п|півн\.?|пол\.?|ранок|ранку|день|дня|веч\.?|ніч|ночі)/i,
+  abbreviated: /^([дп]п|півн\.?|пол\.?|ранок|ранку|день|дня|веч\.?|ніч|ночі)/i,
+  wide: /^([дп]п|північ|полудень|ранок|ранку|день|дня|вечір|вечора|ніч|ночі)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^дп/i,
+    pm: /^пп/i,
+    midnight: /^півн/i,
+    noon: /^пол/i,
+    morning: /^р/i,
+    afternoon: /^д[ен]/i,
+    evening: /^в/i,
+    night: /^н/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/uk/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/uk/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/uk/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/uk/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/uk/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/uk/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/uk/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Ukrainian locale.
+ * @language Ukrainian
+ * @iso-639-2 ukr
+ * @author Andrii Korzh [@korzhyk]{@link https://github.com/korzhyk}
+ * @author Andriy Shcherbyak [@shcherbyakdev]{@link https://github.com/shcherbyakdev}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/vi/_lib/formatDistance/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/vi/_lib/formatDistance/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: 'dưới 1 giây',
+    other: 'dưới {{count}} giây'
+  },
+  xSeconds: {
+    one: '1 giây',
+    other: '{{count}} giây'
+  },
+  halfAMinute: 'nửa phút',
+  lessThanXMinutes: {
+    one: 'dưới 1 phút',
+    other: 'dưới {{count}} phút'
+  },
+  xMinutes: {
+    one: '1 phút',
+    other: '{{count}} phút'
+  },
+  aboutXHours: {
+    one: 'khoảng 1 giờ',
+    other: 'khoảng {{count}} giờ'
+  },
+  xHours: {
+    one: '1 giờ',
+    other: '{{count}} giờ'
+  },
+  xDays: {
+    one: '1 ngày',
+    other: '{{count}} ngày'
+  },
+  aboutXMonths: {
+    one: 'khoảng 1 tháng',
+    other: 'khoảng {{count}} tháng'
+  },
+  xMonths: {
+    one: '1 tháng',
+    other: '{{count}} tháng'
+  },
+  aboutXYears: {
+    one: 'khoảng 1 năm',
+    other: 'khoảng {{count}} năm'
+  },
+  xYears: {
+    one: '1 năm',
+    other: '{{count}} năm'
+  },
+  overXYears: {
+    one: 'hơn 1 năm',
+    other: 'hơn {{count}} năm'
+  },
+  almostXYears: {
+    one: 'gần 1 năm',
+    other: 'gần {{count}} năm'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return result + ' nữa';
+    } else {
+      return result + ' trước';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/vi/_lib/formatLong/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/vi/_lib/formatLong/index.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  // thứ Sáu, ngày 25 tháng 08 năm 2017
+  full: "EEEE, 'ngày' d MMMM 'năm' y",
+  // ngày 25 tháng 08 năm 2017
+  long: "'ngày' d MMMM 'năm' y",
+  // 25 thg 08 năm 2017
+  medium: "d MMM 'năm' y",
+  // 25/08/2017
+  short: 'dd/MM/y'
+};
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+};
+var dateTimeFormats = {
+  // thứ Sáu, ngày 25 tháng 08 năm 2017 23:25:59
+  full: '{{date}} {{time}}',
+  // ngày 25 tháng 08 năm 2017 23:25
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/vi/_lib/formatRelative/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/vi/_lib/formatRelative/index.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "eeee 'tuần trước vào lúc' p",
+  yesterday: "'hôm qua vào lúc' p",
+  today: "'hôm nay vào lúc' p",
+  tomorrow: "'ngày mai vào lúc' p",
+  nextWeek: "eeee 'tới vào lúc' p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/vi/_lib/localize/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/vi/_lib/localize/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+ // Vietnamese locale reference: http://www.localeplanet.com/icu/vi-VN/index.html
+// Capitalization reference: http://hcmup.edu.vn/index.php?option=com_content&view=article&id=4106%3Avit-hoa-trong-vn-bn-hanh-chinh&catid=2345%3Atham-kho&Itemid=4103&lang=vi&site=134
+
+var eraValues = {
+  narrow: ['TCN', 'SCN'],
+  abbreviated: ['trước CN', 'sau CN'],
+  wide: ['trước Công Nguyên', 'sau Công Nguyên']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['Quý 1', 'Quý 2', 'Quý 3', 'Quý 4']
+};
+var formattingQuarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  // I notice many news outlet use this "quý II/2018"
+  wide: ['quý I', 'quý II', 'quý III', 'quý IV'] // Note: in English, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+
+};
+var monthValues = {
+  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  abbreviated: ['Thg 1', 'Thg 2', 'Thg 3', 'Thg 4', 'Thg 5', 'Thg 6', 'Thg 7', 'Thg 8', 'Thg 9', 'Thg 10', 'Thg 11', 'Thg 12'],
+  wide: ['Tháng Một', 'Tháng Hai', 'Tháng Ba', 'Tháng Tư', 'Tháng Năm', 'Tháng Sáu', 'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai'] // In Vietnamese date formatting, month number less than 10 expected to have leading zero
+
+};
+var formattingMonthValues = {
+  narrow: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+  abbreviated: ['thg 1', 'thg 2', 'thg 3', 'thg 4', 'thg 5', 'thg 6', 'thg 7', 'thg 8', 'thg 9', 'thg 10', 'thg 11', 'thg 12'],
+  wide: ['tháng 01', 'tháng 02', 'tháng 03', 'tháng 04', 'tháng 05', 'tháng 06', 'tháng 07', 'tháng 08', 'tháng 09', 'tháng 10', 'tháng 11', 'tháng 12']
+};
+var dayValues = {
+  narrow: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+  short: ['CN', 'Th 2', 'Th 3', 'Th 4', 'Th 5', 'Th 6', 'Th 7'],
+  abbreviated: ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
+  wide: ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'] // Vietnamese are used to AM/PM borrowing from English, hence `narrow` and
+  // `abbreviated` are just like English but I'm leaving the `wide`
+  // format being localized with abbreviations found in some systems (SÁng / CHiều);
+  // however, personally, I don't think `Chiều` sounds appropriate for `PM`
+
+};
+var dayPeriodValues = {
+  // narrow date period is extremely rare in Vietnamese
+  // I used abbreviated form for noon, morning and afternoon
+  // which are regconizable by Vietnamese, others cannot be any shorter
+  narrow: {
+    am: 'am',
+    pm: 'pm',
+    midnight: 'nửa đêm',
+    noon: 'tr',
+    morning: 'sg',
+    afternoon: 'ch',
+    evening: 'tối',
+    night: 'đêm'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'nửa đêm',
+    noon: 'trưa',
+    morning: 'sáng',
+    afternoon: 'chiều',
+    evening: 'tối',
+    night: 'đêm'
+  },
+  wide: {
+    am: 'SA',
+    pm: 'CH',
+    midnight: 'nửa đêm',
+    noon: 'trưa',
+    morning: 'sáng',
+    afternoon: 'chiều',
+    evening: 'tối',
+    night: 'đêm'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'am',
+    pm: 'pm',
+    midnight: 'nửa đêm',
+    noon: 'tr',
+    morning: 'sg',
+    afternoon: 'ch',
+    evening: 'tối',
+    night: 'đêm'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'nửa đêm',
+    noon: 'trưa',
+    morning: 'sáng',
+    afternoon: 'chiều',
+    evening: 'tối',
+    night: 'đêm'
+  },
+  wide: {
+    am: 'SA',
+    pm: 'CH',
+    midnight: 'nửa đêm',
+    noon: 'giữa trưa',
+    morning: 'vào buổi sáng',
+    afternoon: 'vào buổi chiều',
+    evening: 'vào buổi tối',
+    night: 'vào ban đêm'
+  } // If ordinal numbers depend on context, for example,
+  // if they are different for different grammatical genders,
+  // use `options.unit`:
+  //
+  //   var options = dirtyOptions || {}
+  //   var unit = String(options.unit)
+  //
+  // where `unit` can be 'month', 'quarter', 'week', 'isoWeek', 'dayOfYear',
+  // 'dayOfMonth' or 'dayOfWeek'
+
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var options = dirtyOptions || {};
+  var unit = String(options.unit);
+  var number = parseInt(dirtyNumber, 10);
+
+  if (unit === 'quarter') {
+    // many news outlets use "quý I"...
+    switch (number) {
+      case 1:
+        return 'I';
+
+      case 2:
+        return 'II';
+
+      case 3:
+        return 'III';
+
+      case 4:
+        return 'IV';
+    }
+  } else if (unit === 'day') {
+    // day of week in Vietnamese has ordinal number meaning,
+    // so we should use them, else it'll sound weird
+    switch (number) {
+      case 1:
+        return 'thứ 2';
+      // meaning 2nd day but it's the first day of the week :D
+
+      case 2:
+        return 'thứ 3';
+      // meaning 3rd day
+
+      case 3:
+        return 'thứ 4';
+      // meaning 4th day and so on
+
+      case 4:
+        return 'thứ 5';
+
+      case 5:
+        return 'thứ 6';
+
+      case 6:
+        return 'thứ 7';
+
+      case 7:
+        return 'chủ nhật';
+      // meaning Sunday, there's no 8th day :D
+    }
+  } else if (unit === 'week') {
+    if (number === 1) {
+      return 'thứ nhất';
+    } else {
+      return 'thứ ' + number;
+    }
+  } else if (unit === 'dayOfYear') {
+    if (number === 1) {
+      return 'đầu tiên';
+    } else {
+      return 'thứ ' + number;
+    }
+  } // there are no different forms of ordinal numbers in Vietnamese
+
+
+  return number;
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingQuarterValues,
+    defaultFormattingWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/vi/_lib/match/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/vi/_lib/match/index.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(\d+)/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(tcn|scn)/i,
+  abbreviated: /^(trước CN|sau CN)/i,
+  wide: /^(trước Công Nguyên|sau Công Nguyên)/i
+};
+var parseEraPatterns = {
+  any: [/^t/i, /^s/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^([1234]|i{1,3}v?)/i,
+  abbreviated: /^q([1234]|i{1,3}v?)/i,
+  wide: /^quý ([1234]|i{1,3}v?)/i
+};
+var parseQuarterPatterns = {
+  any: [/(1|i)$/i, /(2|ii)$/i, /(3|iii)$/i, /(4|iv)$/i]
+};
+var matchMonthPatterns = {
+  // month number may contain leading 0, 'thg' prefix may have space, underscore or empty before number
+  // note the order of '1' since it is a sub-string of '10', so must be lower priority
+  narrow: /^(0?2|0?3|0?4|0?5|0?6|0?7|0?8|0?9|10|11|12|0?1)/i,
+  // note the order of 'thg 1' since it is sub-string of 'thg 10', so must be lower priority
+  short: /^(thg[ _]?0?2|thg[ _]?0?3|thg[ _]?0?4|thg[ _]?0?5|thg[ _]?0?6|thg[ _]?0?7|thg[ _]?0?8|thg[ _]?0?9|thg[ _]?10|thg[ _]?11|thg[ _]?12|thg[ _]?0?1)/i,
+  // note the order of 'tháng 1' since it is sub-string of 'tháng 10', so must be lower priority
+  abbreviated: /^(tháng[ _]?0?2|tháng[ _]?0?3|tháng[ _]?0?4|tháng[ _]?0?5|tháng[ _]?0?6|tháng[ _]?0?7|tháng[ _]?0?8|tháng[ _]?0?9|tháng[ _]?10|tháng[ _]?11|tháng[ _]?12|tháng[ _]?0?1)/i,
+  // note the order of 'Mười' since it is sub-string of Mười Một, so must be lower priority
+  wide: /^(tháng ?Một|tháng ?Hai|tháng ?Ba|tháng ?Tư|tháng ?Năm|tháng ?Sáu|tháng ?Bảy|tháng ?Tám|tháng ?Chín|tháng ?Mười ?Một|tháng ?Mười ?Hai|tháng ?Mười)/i
+};
+var parseMonthPatterns = {
+  narrow: [/0?1$/i, /0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
+  short: [/thg[ _]?0?1$/i, /thg[ _]?0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
+  abbreviated: [/tháng[ _]?0?1$/i, /tháng[ _]?0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
+  wide: [/tháng ?Một$/i, /tháng ?Hai$/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i, /Tám/i, /Chín/i, /Mười$/i, /Mười ?Một$/i, /Mười ?Hai$/i]
+};
+var matchDayPatterns = {
+  narrow: /^(CN|T2|T3|T4|T5|T6|T7)/i,
+  short: /^(CN|Th ?2|Th ?3|Th ?4|Th ?5|Th ?6|Th ?7)/i,
+  abbreviated: /^(CN|Th ?2|Th ?3|Th ?4|Th ?5|Th ?6|Th ?7)/i,
+  wide: /^(Chủ ?Nhật|Chúa ?Nhật|thứ ?Hai|thứ ?Ba|thứ ?Tư|thứ ?Năm|thứ ?Sáu|thứ ?Bảy)/i
+};
+var parseDayPatterns = {
+  narrow: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
+  short: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
+  abbreviated: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
+  wide: [/(Chủ|Chúa) ?Nhật/i, /Hai/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i]
+};
+var matchDayPeriodPatterns = {
+  narrow: /^(a|p|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
+  abbreviated: /^(am|pm|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
+  wide: /^(ch[^i]*|sa|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^(a|sa)/i,
+    pm: /^(p|ch[^i]*)/i,
+    midnight: /nửa đêm/i,
+    noon: /trưa/i,
+    morning: /sáng/i,
+    afternoon: /chiều/i,
+    evening: /tối/i,
+    night: /^đêm/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/vi/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/vi/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/vi/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/vi/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/vi/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/vi/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/vi/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Vietnamese locale (Vietnam).
+ * @language Vietnamese
+ * @iso-639-2 vie
+ * @author Thanh Tran [@trongthanh]{@link https://github.com/trongthanh}
+ * @author Leroy Hopson [@lihop]{@link https://github.com/lihop}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 1
+    /* First week of new year contains Jan 1st  */
+
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-CN/_lib/formatDistance/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-CN/_lib/formatDistance/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: '不到 1 秒',
+    other: '不到 {{count}} 秒'
+  },
+  xSeconds: {
+    one: '1 秒',
+    other: '{{count}} 秒'
+  },
+  halfAMinute: '半分钟',
+  lessThanXMinutes: {
+    one: '不到 1 分钟',
+    other: '不到 {{count}} 分钟'
+  },
+  xMinutes: {
+    one: '1 分钟',
+    other: '{{count}} 分钟'
+  },
+  xHours: {
+    one: '1 小时',
+    other: '{{count}} 小时'
+  },
+  aboutXHours: {
+    one: '大约 1 小时',
+    other: '大约 {{count}} 小时'
+  },
+  xDays: {
+    one: '1 天',
+    other: '{{count}} 天'
+  },
+  aboutXMonths: {
+    one: '大约 1 个月',
+    other: '大约 {{count}} 个月'
+  },
+  xMonths: {
+    one: '1 个月',
+    other: '{{count}} 个月'
+  },
+  aboutXYears: {
+    one: '大约 1 年',
+    other: '大约 {{count}} 年'
+  },
+  xYears: {
+    one: '1 年',
+    other: '{{count}} 年'
+  },
+  overXYears: {
+    one: '超过 1 年',
+    other: '超过 {{count}} 年'
+  },
+  almostXYears: {
+    one: '将近 1 年',
+    other: '将近 {{count}} 年'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return result + '内';
+    } else {
+      return result + '前';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-CN/_lib/formatLong/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-CN/_lib/formatLong/index.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "y'年'M'月'd'日' EEEE",
+  long: "y'年'M'月'd'日'",
+  medium: 'yyyy-MM-dd',
+  short: 'yy-MM-dd'
+};
+var timeFormats = {
+  full: 'zzzz a h:mm:ss',
+  long: 'z a h:mm:ss',
+  medium: 'a h:mm:ss',
+  short: 'a h:mm'
+};
+var dateTimeFormats = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-CN/_lib/formatRelative/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-CN/_lib/formatRelative/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'上个' eeee p",
+  yesterday: "'昨天' p",
+  today: "'今天' p",
+  tomorrow: "'明天' p",
+  nextWeek: "'下个' eeee p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-CN/_lib/localize/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-CN/_lib/localize/index.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['前', '公元'],
+  abbreviated: ['前', '公元'],
+  wide: ['公元前', '公元']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['第一刻', '第二刻', '第三刻', '第四刻'],
+  wide: ['第一刻钟', '第二刻钟', '第三刻钟', '第四刻钟']
+};
+var monthValues = {
+  narrow: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'],
+  abbreviated: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+  wide: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+};
+var dayValues = {
+  narrow: ['日', '一', '二', '三', '四', '五', '六'],
+  short: ['日', '一', '二', '三', '四', '五', '六'],
+  abbreviated: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+  wide: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: '上',
+    pm: '下',
+    midnight: '凌晨',
+    noon: '午',
+    morning: '早',
+    afternoon: '下午',
+    evening: '晚',
+    night: '夜'
+  },
+  abbreviated: {
+    am: '上午',
+    pm: '下午',
+    midnight: '凌晨',
+    noon: '中午',
+    morning: '早晨',
+    afternoon: '中午',
+    evening: '晚上',
+    night: '夜间'
+  },
+  wide: {
+    am: '上午',
+    pm: '下午',
+    midnight: '凌晨',
+    noon: '中午',
+    morning: '早晨',
+    afternoon: '中午',
+    evening: '晚上',
+    night: '夜间'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: '上',
+    pm: '下',
+    midnight: '凌晨',
+    noon: '午',
+    morning: '早',
+    afternoon: '下午',
+    evening: '晚',
+    night: '夜'
+  },
+  abbreviated: {
+    am: '上午',
+    pm: '下午',
+    midnight: '凌晨',
+    noon: '中午',
+    morning: '早晨',
+    afternoon: '中午',
+    evening: '晚上',
+    night: '夜间'
+  },
+  wide: {
+    am: '上午',
+    pm: '下午',
+    midnight: '凌晨',
+    noon: '中午',
+    morning: '早晨',
+    afternoon: '中午',
+    evening: '晚上',
+    night: '夜间'
+  }
+};
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  // If ordinal numbers depend on context, for example,
+  // if they are different for different grammatical genders,
+  // use `options.unit`:
+  //
+  //   var options = dirtyOptions || {}
+  //   var unit = String(options.unit)
+  //
+  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
+  // 'day', 'hour', 'minute', 'second'
+  var number = Number(dirtyNumber);
+  var options = dirtyOptions || {};
+  var unit = String(options.unit);
+
+  if (unit === 'date' || unit === 'hour' || unit === 'minute' || unit === 'second') {
+    return number.toString();
+  }
+
+  return '第 ' + number.toString();
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-CN/_lib/match/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-CN/_lib/match/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(第\s*)?\d+/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(前)/i,
+  abbreviated: /^(前)/i,
+  wide: /^(公元前|公元)/i
+};
+var parseEraPatterns = {
+  any: [/^(前)/i, /^(公元)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^第[一二三四]刻/i,
+  wide: /^第[一二三四]刻钟/i
+};
+var parseQuarterPatterns = {
+  any: [/(1|一)/i, /(2|二)/i, /(3|三)/i, /(4|四)/i]
+};
+var matchMonthPatterns = {
+  narrow: /^(一|二|三|四|五|六|七|八|九|十[二一])/i,
+  abbreviated: /^(一|二|三|四|五|六|七|八|九|十[二一]|\d|1[12])月/i,
+  wide: /^(一|二|三|四|五|六|七|八|九|十[二一])月/i
+};
+var parseMonthPatterns = {
+  narrow: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十(?!(一|二))/i, /^十一/i, /^十二/i],
+  any: [/^一|[!\d]1[!\d]/i, /^二|[!\d]2[!\d]/i, /^三|3/i, /^四|4/i, /^五|5/i, /^六|6/i, /^七|7/i, /^八|8/i, /^九|9/i, /^十(?!(一|二))|10/i, /^十一|11/i, /^十二|12/i]
+};
+var matchDayPatterns = {
+  narrow: /^[一二三四五六日]/i,
+  short: /^[一二三四五六日]/i,
+  abbreviated: /^周[一二三四五六日]/i,
+  wide: /^星期[一二三四五六日]/i
+};
+var parseDayPatterns = {
+  any: [/日/i, /一/i, /二/i, /三/i, /四/i, /五/i, /六/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(上午|下午|午夜|[中正]午|早上|下午|晚上?|凌晨)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^上午/i,
+    pm: /^下午/i,
+    midnight: /^午夜/i,
+    noon: /^[中正]午/i,
+    morning: /^早上/i,
+    afternoon: /^下午/i,
+    evening: /^晚/i,
+    night: /^凌晨/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-CN/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-CN/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/zh-CN/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/zh-CN/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/zh-CN/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/zh-CN/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/zh-CN/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Chinese Simplified locale.
+ * @language Chinese Simplified
+ * @iso-639-2 zho
+ * @author Changyu Geng [@KingMario]{@link https://github.com/KingMario}
+ * @author Song Shuoyun [@fnlctrl]{@link https://github.com/fnlctrl}
+ * @author sabrinaM [@sabrinamiao]{@link https://github.com/sabrinamiao}
+ * @author Carney Wu [@cubicwork]{@link https://github.com/cubicwork}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (locale);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-TW/_lib/formatDistance/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-TW/_lib/formatDistance/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatDistance; });
+var formatDistanceLocale = {
+  lessThanXSeconds: {
+    one: '少於 1 秒',
+    other: '少於 {{count}} 秒'
+  },
+  xSeconds: {
+    one: '1 秒',
+    other: '{{count}} 秒'
+  },
+  halfAMinute: '半分鐘',
+  lessThanXMinutes: {
+    one: '少於 1 分鐘',
+    other: '少於 {{count}} 分鐘'
+  },
+  xMinutes: {
+    one: '1 分鐘',
+    other: '{{count}} 分鐘'
+  },
+  xHours: {
+    one: '1 小時',
+    other: '{{count}} 小時'
+  },
+  aboutXHours: {
+    one: '大約 1 小時',
+    other: '大約 {{count}} 小時'
+  },
+  xDays: {
+    one: '1 天',
+    other: '{{count}} 天'
+  },
+  aboutXMonths: {
+    one: '大約 1 個月',
+    other: '大約 {{count}} 個月'
+  },
+  xMonths: {
+    one: '1 個月',
+    other: '{{count}} 個月'
+  },
+  aboutXYears: {
+    one: '大約 1 年',
+    other: '大約 {{count}} 年'
+  },
+  xYears: {
+    one: '1 年',
+    other: '{{count}} 年'
+  },
+  overXYears: {
+    one: '超過 1 年',
+    other: '超過 {{count}} 年'
+  },
+  almostXYears: {
+    one: '將近 1 年',
+    other: '將近 {{count}} 年'
+  }
+};
+function formatDistance(token, count, options) {
+  options = options || {};
+  var result;
+
+  if (typeof formatDistanceLocale[token] === 'string') {
+    result = formatDistanceLocale[token];
+  } else if (count === 1) {
+    result = formatDistanceLocale[token].one;
+  } else {
+    result = formatDistanceLocale[token].other.replace('{{count}}', count);
+  }
+
+  if (options.addSuffix) {
+    if (options.comparison > 0) {
+      return result + '內';
+    } else {
+      return result + '前';
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-TW/_lib/formatLong/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-TW/_lib/formatLong/index.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildFormatLongFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildFormatLongFn/index.js");
+
+var dateFormats = {
+  full: "y'年'M'月'd'日' EEEE",
+  long: "y'年'M'月'd'日'",
+  medium: 'yyyy-MM-dd',
+  short: 'yy-MM-dd'
+};
+var timeFormats = {
+  full: 'zzzz a h:mm:ss',
+  long: 'z a h:mm:ss',
+  medium: 'a h:mm:ss',
+  short: 'a h:mm'
+};
+var dateTimeFormats = {
+  full: '{{date}} {{time}}',
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+};
+var formatLong = {
+  date: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+  time: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+  dateTime: Object(_lib_buildFormatLongFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (formatLong);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-TW/_lib/formatRelative/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-TW/_lib/formatRelative/index.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formatRelative; });
+var formatRelativeLocale = {
+  lastWeek: "'上個' eeee p",
+  yesterday: "'昨天' p",
+  today: "'今天' p",
+  tomorrow: "'明天' p",
+  nextWeek: "'下個' eeee p",
+  other: 'P'
+};
+function formatRelative(token, _date, _baseDate, _options) {
+  return formatRelativeLocale[token];
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-TW/_lib/localize/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-TW/_lib/localize/index.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildLocalizeFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildLocalizeFn/index.js");
+
+var eraValues = {
+  narrow: ['前', '公元'],
+  abbreviated: ['前', '公元'],
+  wide: ['公元前', '公元']
+};
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['第一刻', '第二刻', '第三刻', '第四刻'],
+  wide: ['第一刻鐘', '第二刻鐘', '第三刻鐘', '第四刻鐘']
+};
+var monthValues = {
+  narrow: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'],
+  abbreviated: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+  wide: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+};
+var dayValues = {
+  narrow: ['日', '一', '二', '三', '四', '五', '六'],
+  short: ['日', '一', '二', '三', '四', '五', '六'],
+  abbreviated: ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
+  wide: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+};
+var dayPeriodValues = {
+  narrow: {
+    am: '上',
+    pm: '下',
+    midnight: '凌晨',
+    noon: '午',
+    morning: '早',
+    afternoon: '下午',
+    evening: '晚',
+    night: '夜'
+  },
+  abbreviated: {
+    am: '上午',
+    pm: '下午',
+    midnight: '凌晨',
+    noon: '中午',
+    morning: '早晨',
+    afternoon: '中午',
+    evening: '晚上',
+    night: '夜間'
+  },
+  wide: {
+    am: '上午',
+    pm: '下午',
+    midnight: '凌晨',
+    noon: '中午',
+    morning: '早晨',
+    afternoon: '中午',
+    evening: '晚上',
+    night: '夜間'
+  }
+};
+var formattingDayPeriodValues = {
+  narrow: {
+    am: '上',
+    pm: '下',
+    midnight: '凌晨',
+    noon: '午',
+    morning: '早',
+    afternoon: '下午',
+    evening: '晚',
+    night: '夜'
+  },
+  abbreviated: {
+    am: '上午',
+    pm: '下午',
+    midnight: '凌晨',
+    noon: '中午',
+    morning: '早晨',
+    afternoon: '中午',
+    evening: '晚上',
+    night: '夜間'
+  },
+  wide: {
+    am: '上午',
+    pm: '下午',
+    midnight: '凌晨',
+    noon: '中午',
+    morning: '早晨',
+    afternoon: '中午',
+    evening: '晚上',
+    night: '夜間'
+  }
+};
+
+function ordinalNumber(dirtyNumber, _options) {
+  var number = Number(dirtyNumber);
+  return '第 ' + number.toString();
+}
+
+var localize = {
+  ordinalNumber: ordinalNumber,
+  era: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+  quarter: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1;
+    }
+  }),
+  month: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+  day: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: Object(_lib_buildLocalizeFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (localize);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-TW/_lib/match/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-TW/_lib/match/index.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../_lib/buildMatchPatternFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchPatternFn/index.js");
+/* harmony import */ var _lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../_lib/buildMatchFn/index.js */ "./node_modules/date-fns/esm/locale/_lib/buildMatchFn/index.js");
+
+
+var matchOrdinalNumberPattern = /^(第\s*)?\d+/i;
+var parseOrdinalNumberPattern = /\d+/i;
+var matchEraPatterns = {
+  narrow: /^(前)/i,
+  abbreviated: /^(前)/i,
+  wide: /^(公元前|公元)/i
+};
+var parseEraPatterns = {
+  any: [/^(前)/i, /^(公元)/i]
+};
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^第[一二三四]刻/i,
+  wide: /^第[一二三四]刻鐘/i
+};
+var parseQuarterPatterns = {
+  any: [/(1|一)/i, /(2|二)/i, /(3|三)/i, /(4|四)/i]
+};
+var matchMonthPatterns = {
+  narrow: /^(一|二|三|四|五|六|七|八|九|十[二一])/i,
+  abbreviated: /^(一|二|三|四|五|六|七|八|九|十[二一]|\d|1[12])月/i,
+  wide: /^(一|二|三|四|五|六|七|八|九|十[二一])月/i
+};
+var parseMonthPatterns = {
+  narrow: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十(?!(一|二))/i, /^十一/i, /^十二/i],
+  any: [/^一|[!\d]1[!\d]/i, /^二|[!\d]2[!\d]/i, /^三|3/i, /^四|4/i, /^五|5/i, /^六|6/i, /^七|7/i, /^八|8/i, /^九|9/i, /^十(?!(一|二))|10/i, /^十一|11/i, /^十二|12/i]
+};
+var matchDayPatterns = {
+  narrow: /^[一二三四五六日]/i,
+  short: /^[一二三四五六日]/i,
+  abbreviated: /^週[一二三四五六日]/i,
+  wide: /^星期[一二三四五六日]/i
+};
+var parseDayPatterns = {
+  any: [/日/i, /一/i, /二/i, /三/i, /四/i, /五/i, /六/i]
+};
+var matchDayPeriodPatterns = {
+  any: /^(上午|下午|午夜|[中正]午|早上|下午|晚上?|凌晨)/i
+};
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^上午/i,
+    pm: /^下午/i,
+    midnight: /^午夜/i,
+    noon: /^[中正]午/i,
+    morning: /^早上/i,
+    afternoon: /^下午/i,
+    evening: /^晚/i,
+    night: /^凌晨/i
+  }
+};
+var match = {
+  ordinalNumber: Object(_lib_buildMatchPatternFn_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10);
+    }
+  }),
+  era: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+  quarter: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1;
+    }
+  }),
+  month: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+  day: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+  dayPeriod: Object(_lib_buildMatchFn_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
+};
+/* harmony default export */ __webpack_exports__["default"] = (match);
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/locale/zh-TW/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/locale/zh-TW/index.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_lib/formatDistance/index.js */ "./node_modules/date-fns/esm/locale/zh-TW/_lib/formatDistance/index.js");
+/* harmony import */ var _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_lib/formatLong/index.js */ "./node_modules/date-fns/esm/locale/zh-TW/_lib/formatLong/index.js");
+/* harmony import */ var _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_lib/formatRelative/index.js */ "./node_modules/date-fns/esm/locale/zh-TW/_lib/formatRelative/index.js");
+/* harmony import */ var _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_lib/localize/index.js */ "./node_modules/date-fns/esm/locale/zh-TW/_lib/localize/index.js");
+/* harmony import */ var _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_lib/match/index.js */ "./node_modules/date-fns/esm/locale/zh-TW/_lib/match/index.js");
+
+
+
+
+
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Chinese Traditional locale.
+ * @language Chinese Traditional
+ * @iso-639-2 zho
+ * @author tonypai [@tpai]{@link https://github.com/tpai}
+ * @author Jack Hsu [@jackhsu978]{@link https://github.com/jackhsu978}
+ */
+
+var locale = {
+  formatDistance: _lib_formatDistance_index_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+  formatLong: _lib_formatLong_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  formatRelative: _lib_formatRelative_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+  localize: _lib_localize_index_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+  match: _lib_match_index_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  options: {
+    weekStartsOn: 1
+    /* Monday */
+    ,
+    firstWeekContainsDate: 4
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (locale);
@@ -53461,215 +75883,206 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "border rounded px-3 pt-3 pb-2" }, [
-      _c("div", { staticClass: "mb-2" }, [
-        _c("p", { staticClass: "text-sm text-grey-dark mb-2" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.comment.name) +
-              " - il y a " +
-              _vm._s(_vm.diffForHumans) +
-              "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _vm.edit
-          ? _c("p", [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.bodyUpdate,
-                    expression: "bodyUpdate"
-                  }
-                ],
-                staticClass: "border w-full rounded p-5",
-                domProps: { value: _vm.bodyUpdate },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+    _c(
+      "div",
+      { staticClass: "border rounded px-3 pt-3 pb-2 border-teal-light" },
+      [
+        _c("div", { staticClass: "mb-2" }, [
+          _c("p", { staticClass: "text-sm text-teal-dark mb-2" }, [
+            _vm._v(
+              "De " +
+                _vm._s(_vm.comment.name) +
+                ", il y a " +
+                _vm._s(_vm.diffDateForHumans)
+            )
+          ]),
+          _vm._v(" "),
+          _vm.edit
+            ? _c("p", [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.bodyUpdate,
+                      expression: "bodyUpdate"
                     }
-                    _vm.bodyUpdate = $event.target.value
+                  ],
+                  staticClass: "border w-full rounded p-5 text-pink-dark",
+                  domProps: { value: _vm.bodyUpdate },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.bodyUpdate = $event.target.value
+                    }
                   }
-                }
-              })
-            ])
-          : _c("div", [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.comment.body) +
-                  "\n                "
-              ),
-              _c("hr", { staticClass: "border" }),
-              _vm._v(" "),
-              _vm.edit
-                ? _c("p", { staticClass: "flex -mx-2 mt-2" }, [
+                })
+              ])
+            : _c("div", { staticClass: "text-pink-dark" }, [
+                _vm._v("\n        " + _vm._s(_vm.comment.body) + "\n        "),
+                _c("hr", { staticClass: "border border-teal" })
+              ]),
+          _vm._v(" "),
+          _vm.edit
+            ? _c("p", { staticClass: "flex -mx-2 mt-2" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "mx-2 flex items-center text-sm text-teal-dark font-semibold",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.cancel()
+                      }
+                    }
+                  },
+                  [
                     _c(
-                      "button",
+                      "svg",
                       {
                         staticClass:
-                          "mx-2 flex items-center text-sm text-grey-dark font-semibold",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.cancel()
-                          }
+                          "fill-current text-teal-dark h-3 mr-pxm pr-1",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 20 20"
                         }
                       },
                       [
-                        _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "fill-current text-grey-dark h-3 mr-pxm pr-1",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              viewBox: "0 0 20 20"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(
-                          "\n                        Annuler\n                    "
-                        )
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
+                          }
+                        })
                       ]
                     ),
-                    _vm._v(" "),
+                    _vm._v("\n          Annuler\n        ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "mx-2 flex items-center text-sm text-teal-dark font-semibold ml-4",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.updateComment()
+                      }
+                    }
+                  },
+                  [
                     _c(
-                      "button",
+                      "svg",
                       {
                         staticClass:
-                          "mx-2 flex items-center text-sm text-grey-dark font-semibold ml-4",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.updateComment()
-                          }
+                          "fill-current text-teal-dark h-3 mr-px pr-1",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 20 20"
                         }
                       },
                       [
-                        _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "fill-current text-grey-dark h-3 mr-px pr-1",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              viewBox: "0 0 20 20"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M0 2C0 .9.9 0 2 0h14l4 4v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5 0v6h10V2H5zm6 1h3v4h-3V3z"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(
-                          "\n                        Sauvegarder\n                    "
-                        )
-                      ]
-                    )
-                  ])
-                : _c("p", { staticClass: "flex -mx-2  mt-2" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "mx-2 flex items-center text-sm text-grey-dark font-semibold",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.$emit("respond-to", _vm.comment)
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M0 2C0 .9.9 0 2 0h14l4 4v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5 0v6h10V2H5zm6 1h3v4h-3V3z"
                           }
-                        }
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "fill-current text-grey-dark h-3 mr-px pr-1",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              viewBox: "0 0 20 20"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(
-                          "\n                        Répondre\n                    "
-                        )
+                        })
                       ]
                     ),
-                    _vm._v(" "),
+                    _vm._v("\n          Sauvegarder\n        ")
+                  ]
+                )
+              ])
+            : _c("p", { staticClass: "flex -mx-2 mt-2" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "mx-2 flex items-center text-sm text-teal-dark font-semibold",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.$emit("respond-to", _vm.comment)
+                      }
+                    }
+                  },
+                  [
                     _c(
-                      "button",
+                      "svg",
                       {
                         staticClass:
-                          "mx-2 flex items-center text-sm text-grey-dark font-semibold ml-4",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            _vm.edit = true
-                          }
+                          "fill-current text-teal-dark h-3 mr-px pr-1",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 20 20"
                         }
                       },
                       [
-                        _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "fill-current text-grey-dark h-2 mr-px pr-1",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              viewBox: "0 0 20 20"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M12.3 3.7l4 4L4 20H0v-4L12.3 3.7zm1.4-1.4L16 0l4 4-2.3 2.3-4-4z"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(
-                          "\n                        Modifier\n                    "
-                        )
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z"
+                          }
+                        })
                       ]
-                    )
-                  ])
-            ])
-      ])
-    ]),
+                    ),
+                    _vm._v("\n          Répondre\n        ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "mx-2 flex items-center text-sm text-teal-dark font-semibold ml-4",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.edit = true
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass:
+                          "fill-current text-teal-dark h-2 mr-px pr-1",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 20 20"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M12.3 3.7l4 4L4 20H0v-4L12.3 3.7zm1.4-1.4L16 0l4 4-2.3 2.3-4-4z"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v("\n          Modifier\n        ")
+                  ]
+                )
+              ])
+        ])
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "mt-4 pl-4 border-l-4" },
+      { staticClass: "mt-4 pl-4 border-teal border-l-4 ml-5" },
       _vm._l(_vm.comment.children, function(child) {
         return _c("comment", {
           key: child.id,
-          staticClass: "mb-4",
+          staticClass: "mb-4 border-teal",
           attrs: { comment: child, now: _vm.now },
           on: {
             "respond-to": function($event) {
@@ -53717,12 +76130,12 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "mb-3" }, [
-        _c("h3", { staticClass: "font-normal text-md text-grey-darkest" }, [
+        _c("h3", { staticClass: "font-normal text-md text-teal-dark" }, [
           _vm._v("Nouveau commentaire")
         ]),
         _vm._v(" "),
         _vm.respondTo
-          ? _c("p", { staticClass: "text-xs text-grey-darkest" }, [
+          ? _c("p", { staticClass: "text-xs text-teal-dark" }, [
               _vm._v("\n            En réponse à\n            "),
               _c("span", { staticClass: "font-semibold" }, [
                 _vm._v(_vm._s(_vm.respondTo.name))
@@ -53759,7 +76172,7 @@ var render = function() {
               expression: "form.name"
             }
           ],
-          staticClass: "w-full border rounded p-3",
+          staticClass: "w-full border rounded p-3 text-teal-light",
           class: { "border-red": _vm.errors.name },
           attrs: { type: "text", placeholder: "Pseudo" },
           domProps: { value: _vm.form.name },
@@ -53791,7 +76204,7 @@ var render = function() {
               expression: "form.body"
             }
           ],
-          staticClass: "border w-full rounded p-3",
+          staticClass: "border w-full rounded p-3 text-teal-light",
           class: { "border-red": _vm.errors.body },
           attrs: { placeholder: "Commentaire" },
           domProps: { value: _vm.form.body },
@@ -53816,7 +76229,8 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "border rounded py-2 hover:bg-blue hover:text-white",
+          staticClass:
+            "border rounded py-2 hover:bg-teal hover:text-white text-teal",
           attrs: { type: "submit" }
         },
         [_vm._v("Commenter")]
@@ -53871,7 +76285,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "text-grey-darker text-sm",
+                    staticClass: "text-teal-dark text-sm",
                     attrs: { id: "remaining-comments" },
                     on: {
                       click: function($event) {
@@ -66372,8 +88786,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/kaki/Tutoriels/laravel/tdauce/vuejs/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/kaki/Tutoriels/laravel/tdauce/vuejs/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/kaki/Tutoriels/laravel/tdauce/vue-comments/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/kaki/Tutoriels/laravel/tdauce/vue-comments/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

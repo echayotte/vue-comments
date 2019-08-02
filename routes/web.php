@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', 'PageController@page1');
-
+Route::get('/', 'PageController@home');
 Route::get('/page1', 'PageController@page1');
 Route::get('/page2', 'PageController@page2');
 

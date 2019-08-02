@@ -1,8 +1,8 @@
 <template>
     <form class="flex flex-col mb-32" @submit.prevent="submitComment">
         <div class="mb-3">
-            <h3 class="font-normal text-md text-grey-darkest">Nouveau commentaire</h3>
-            <p class="text-xs text-grey-darkest" v-if="respondTo">
+            <h3 class="font-normal text-md text-teal-dark">Nouveau commentaire</h3>
+            <p class="text-xs text-teal-dark" v-if="respondTo">
                 En réponse à
                 <span class="font-semibold">{{ respondTo.name }}</span>
                 : " {{ respondTo.body }} "
@@ -15,7 +15,7 @@
 
         <div class="mb-3">
             <input
-                class="w-full border rounded p-3"
+                class="w-full border rounded p-3 text-teal-light"
                 type="text"
                 placeholder="Pseudo"
                 :class="{'border-red' : errors.name}"
@@ -26,7 +26,7 @@
 
         <div class="mb-3">
             <textarea
-                class="border w-full rounded p-3"
+                class="border w-full rounded p-3 text-teal-light"
                 placeholder="Commentaire"
                 :class="{'border-red' : errors.body}"
                 v-model="form.body"
@@ -34,7 +34,7 @@
             <p class="text-red text-sm px-3 py-1" v-if="errors.body" v-text="errors.body[0]"></p>
         </div>
 
-        <button type="submit" class="border rounded py-2 hover:bg-blue hover:text-white">Commenter</button>
+        <button type="submit" class="border rounded py-2 hover:bg-teal hover:text-white text-teal">Commenter</button>
     </form>
 </template>
 
@@ -77,7 +77,7 @@
                         }
                     })
                     .catch(error => {
-                        // console.log(error.response.data.errors);
+                        console.log(error.response.data.errors);
                         this.errors = error.response.data.errors;
                     });
             }

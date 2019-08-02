@@ -13,12 +13,27 @@
 
 </head>
 
-<body class="font-sans text-black antialiased">
-    <h1>{{ $title }}</h1>
+<body class="font-sans text-teal-light antialiased">
+    @if(Request::is('/'))
+    <div class="text-center py-4">
+        <a class="p-2 text-teal no-underline" href="{{ url('/') }}">Home</a>
+        <a class="p-2 text-teal no-underline"  href="{{ url('page1') }}">Page 1</a>
+        <a class="p-2 text-teal no-underline"  href="{{ url('page2') }}">Page 2</a>
+    </div>
+    <h1 class="text-center py-8">{{ $title }}</h1>
+    <div id="app"></div>
+        
+    @else
+    <div class="text-center py-4">
+        <a class="p-2 text-teal no-underline" href="{{ url('/') }}">Home</a>
+        <a class="p-2 text-teal no-underline" href="{{ url('page1') }}">Page 1</a>
+        <a class="p-2 text-teal no-underline" href="{{ url('page2') }}">Page 2</a>
+    </div>
+    <h1 class="text-center py-8">{{ $title }}</h1>
     <div id="app" class="h-full w-full flex justify-center items-center">
         <comments class="w-1/2 mt-16"></comments>
     </div>
-
+    @endif
     <script src="js/app.js"></script>
 </body>
 </html>
